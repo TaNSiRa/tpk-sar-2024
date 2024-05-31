@@ -754,7 +754,7 @@ class _DataSampleReceiveState extends State<DataSampleReceive> {
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 textStyle: styledata,
-                                primary: Colors.blue,
+                                backgroundColor: Colors.blue,
                               ),
                               child: Text("RECEIVE SAMPLE"),
                               onPressed: () {
@@ -766,7 +766,7 @@ class _DataSampleReceiveState extends State<DataSampleReceive> {
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 textStyle: styledata,
-                                primary: Colors.orange,
+                                backgroundColor: Colors.orange,
                               ),
                               child: Text("REJECT SAMPLE"),
                               onPressed: () {

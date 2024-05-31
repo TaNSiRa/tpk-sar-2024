@@ -1,6 +1,5 @@
 import 'package:custom_searchable_dropdown/custom_searchable_dropdown.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -8,6 +7,7 @@ import 'package:flutter_spinbox/flutter_spinbox.dart';
 import 'package:intl/intl.dart';
 import 'package:tpk_login_arsa_01/Global/global_var.dart';
 import 'package:tpk_login_arsa_01/global/style.dart';
+
 import 'Data/RoutineRequestPageStructure.dart';
 import 'Data/RoutineRequestPage_bloc.dart';
 import 'Data/RoutineRequestPage_event.dart';
@@ -1480,8 +1480,7 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
                                               child: Text("SELECT FILE",
                                                   style: styledata),
                                               style: ElevatedButton.styleFrom(
-                                                textStyle: styledata,
-                                                primary: Colors.blue,
+                                                textStyle: styledata, backgroundColor: Colors.blue,
                                                 /* padding: EdgeInsets.symmetric(
                                                     horizontal: 30,
                                                     vertical: 20), */
@@ -1536,7 +1535,7 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
                                           child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
                                                 textStyle: styledata,
-                                                primary: Colors.blue,
+                                                backgroundColor: Colors.blue,
                                                 /* padding: EdgeInsets.symmetric(
                                                     horizontal: 50,
                                                     vertical: 20), */
