@@ -64,7 +64,7 @@ class _SolidContent_NoxRustState extends State<SolidContent_NoxRust> {
       dataSolidContent_NoxRustInput[index].result_1 =
           (double.parse(dataSolidContent_NoxRustInput[index].w1W2_1) * 1000)
               .toStringAsFixed(4);
-      if (double.parse(dataSolidContent_NoxRustInput[index].result_1) >
+      if (double.parse(dataSolidContent_NoxRustInput[index].result_1) <
           0.0010) {
         dataSolidContent_NoxRustInput[index].result_1 = '< 1';
       }
@@ -84,7 +84,7 @@ class _SolidContent_NoxRustState extends State<SolidContent_NoxRust> {
       dataSolidContent_NoxRustInput[index].result_2 =
           (double.parse(dataSolidContent_NoxRustInput[index].w1W2_2) * 1000)
               .toStringAsFixed(4);
-      if (double.parse(dataSolidContent_NoxRustInput[index].result_2) >
+      if (double.parse(dataSolidContent_NoxRustInput[index].result_2) <
           0.0010) {
         dataSolidContent_NoxRustInput[index].result_2 = '< 1';
       }
