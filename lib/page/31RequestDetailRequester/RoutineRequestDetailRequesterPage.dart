@@ -1258,8 +1258,8 @@ class _SampleDetailState extends State<SampleDetail> {
                                     /* KACReportDataPopUp(
                                         requestData[0].reqNo.toString()); */
                                     /*  _launchURL(
-                                        'http://127.0.0.1/ReportServer?%2fReport+Project1%2fSAR_KAC&rs:Format=PDF&rs:ClearSession=true&rs:Command=Render&ReqNo=${requestData[0].reqNo}');
-                                    */ //http://127.0.0.1/ReportServer/Pages/ReportViewer.aspx?%2fReport+Project1%2fSAR_KAC_TestOp2&rs:Command=Render
+                                        'http://172.23.10.51/ReportServer?%2fReport+Project1%2fSAR_KAC&rs:Format=PDF&rs:ClearSession=true&rs:Command=Render&ReqNo=${requestData[0].reqNo}');
+                                    */ //http://172.23.10.51/ReportServer/Pages/ReportViewer.aspx?%2fReport+Project1%2fSAR_KAC_TestOp2&rs:Command=Render
                                     /* _launchURL(
                                         'http://172.20.30.46/ReportServer/Pages/ReportViewer.aspx?%2fReport+Project4%2fTPK-SAR-${requestData[0].patternReport}&:Command=Render&T1=${requestData[0].reqNo}'); */
                                   },
@@ -1289,6 +1289,24 @@ class _SampleDetailState extends State<SampleDetail> {
                                     ),
                                     onPressed: () {
                                       rejectReport();
+                                    },
+                                  ),
+                                ),
+                                Container(
+                                  child: IconButton(
+                                    padding: EdgeInsets.zero,
+                                    iconSize: 22,
+                                    icon: Icon(
+                                      Icons.mail_rounded,
+                                      color: Colors.black,
+                                    ),
+                                    onPressed: () {
+                                      _launchMail();
+                                      print(requestData[0].incharge);
+                                      print(requestData[0].subLeader);
+                                      print(requestData[0].gL);
+                                      print(requestData[0].dGM);
+                                      print(requestData[0].jP);
                                     },
                                   ),
                                 ),
@@ -3121,5 +3139,13 @@ Future<String> captureToback(GlobalKey<State<StatefulWidget>> globalKey) async {
     return 'ok';
   } catch (e) {
     rethrow;
+  }
+}
+
+Future<void> _launchMail() async {
+  final Uri url = Uri.parse('https://outlook.office.com/mail/deeplink/compose');
+
+  if (!await launchUrl(url)) {
+    throw Exception('Could not launch $url');
   }
 }

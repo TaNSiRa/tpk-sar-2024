@@ -85,6 +85,24 @@ class ActualLineDataState extends State<ActualLineData> {
     super.initState();
   }
 
+  TextStyle styleEvaluate(String dataIn) {
+    Color colorSelect = Colors.black;
+    if (dataIn == 'LOW' || dataIn == 'HIGH') {
+      colorSelect = Colors.red;
+    }
+    return TextStyle(fontSize: 12, fontFamily: 'Mitr', color: colorSelect);
+  }
+
+  var evaluationOptionForDAIHAN = [
+    '-',
+    'Uncomplete box and pallet',
+    'Complete box and pallet',
+    'Fin drop/Wrinkkleless',
+    'No fin drop/Wrinkleless',
+    'Deform',
+    'No deform'
+  ];
+
   void editReportName(int indexItem) {
     showDialog(
         barrierDismissible: true,
@@ -425,23 +443,77 @@ class ActualLineDataState extends State<ActualLineData> {
                                             DataCell(
                                               Container(
                                                 width: 100,
-                                                child: FormBuilderTextField(
-                                                  style: styleDataInTable,
-                                                  decoration: InputDecoration(
-                                                      contentPadding:
-                                                          EdgeInsets.all(10.0),
-                                                      border:
-                                                          OutlineInputBorder()),
-                                                  name: 'remark$index',
-                                                  initialValue:
-                                                      actualLineData[index]
-                                                          .result,
-                                                  onChanged: (value) {
-                                                    actualLineData[index]
-                                                            .result =
-                                                        value.toString();
-                                                  },
-                                                ),
+                                                child: actualLineData[index]
+                                                            .custFull ==
+                                                        'DAIHAN CLIMATE CO.,LTD.'
+                                                    ? FormBuilderDropdown(
+                                                        style: styleEvaluate(
+                                                            actualLineData[
+                                                                    index]
+                                                                .result),
+                                                        decoration:
+                                                            InputDecoration(
+                                                          contentPadding:
+                                                              EdgeInsets.all(
+                                                                  10.0),
+                                                          border:
+                                                              OutlineInputBorder(),
+                                                        ),
+                                                        items:
+                                                            evaluationOptionForDAIHAN
+                                                                .map((option) =>
+                                                                    DropdownMenuItem(
+                                                                      value:
+                                                                          option,
+                                                                      child: Text(
+                                                                          '$option'),
+                                                                    ))
+                                                                .toList(),
+                                                        name:
+                                                            'evaluation$index',
+                                                        key: Key(actualLineData[
+                                                                index]
+                                                            .result
+                                                            .toString()),
+                                                        initialValue: evaluationOptionForDAIHAN.contains(
+                                                                    actualLineData[
+                                                                            index]
+                                                                        .result) &&
+                                                                actualLineData[
+                                                                            index]
+                                                                        .result !=
+                                                                    ''
+                                                            ? actualLineData[
+                                                                    index]
+                                                                .result
+                                                            : null, // ตรวจสอบให้แน่ใจว่า result ไม่ใช่ค่าว่างหรือไม่มีในตัวเลือก
+                                                        onChanged: (value) {
+                                                          actualLineData[index]
+                                                                  .result =
+                                                              value.toString();
+                                                        },
+                                                      )
+                                                    : FormBuilderTextField(
+                                                        style: styleDataInTable,
+                                                        decoration:
+                                                            InputDecoration(
+                                                          contentPadding:
+                                                              EdgeInsets.all(
+                                                                  10.0),
+                                                          border:
+                                                              OutlineInputBorder(),
+                                                        ),
+                                                        name: 'remark$index',
+                                                        initialValue:
+                                                            actualLineData[
+                                                                    index]
+                                                                .result,
+                                                        onChanged: (value) {
+                                                          actualLineData[index]
+                                                                  .result =
+                                                              value.toString();
+                                                        },
+                                                      ),
                                               ),
                                             ),
                                             DataCell(_verticalDivider),

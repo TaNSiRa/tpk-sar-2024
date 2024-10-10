@@ -194,9 +194,15 @@ Future searchKACReportData(String reqNo) async {
         for (int i = 0; i < kACReportData.length; i++) {
           kACReportData[i].createReportDate = (DateTime.now()).toString();
           try {
-            kACReportData[i].resultIn =
-                double.parse(kACReportData[i].resultIn).toStringAsFixed(1);
-            kACReportData[i].resultReport = kACReportData[i].resultIn;
+            if (kACReportData[i].itemReportName == 'S.G. (Nox rust)') {
+              kACReportData[i].resultIn =
+                  double.parse(kACReportData[i].resultIn).toStringAsFixed(2);
+              kACReportData[i].resultReport = kACReportData[i].resultIn;
+            } else {
+              kACReportData[i].resultIn =
+                  double.parse(kACReportData[i].resultIn).toStringAsFixed(1);
+              kACReportData[i].resultReport = kACReportData[i].resultIn;
+            }
           } catch (e) {
             kACReportData[i].resultReport = (kACReportData[i].resultIn);
           }
@@ -258,7 +264,16 @@ Future searchKACReportData(String reqNo) async {
                   kACReportData[i].buffMax.toString() +
                   ':' +
                   kACReportData[i].buffMin.toString());
-              if (double.parse(kACReportData[i].resultIn.toString()) >
+              if (kACReportData[i].controlRange.toString() ==
+                  kACReportData[i].resultIn.toString()) {
+                kACReportData[i].evaluation = 'PASS';
+              } else if (kACReportData[i].processReportName == 'Part name' ||
+                  kACReportData[i].processReportName == 'Part no.' ||
+                  kACReportData[i].processReportName == 'Customer Lot no.' ||
+                  kACReportData[i].processReportName == 'TP Lot no.' ||
+                  kACReportData[i].processReportName == 'Quantity') {
+                kACReportData[i].evaluation = 'PASS';
+              } else if (double.parse(kACReportData[i].resultIn.toString()) >
                   kACReportData[i].buffMax) {
                 kACReportData[i].evaluation = 'HIGH';
               } else if (double.parse(kACReportData[i].resultIn.toString()) <
@@ -274,6 +289,7 @@ Future searchKACReportData(String reqNo) async {
               //print("else$i");
               kACReportData[i].evaluation = '-';
             }
+            print(kACReportData[i].evaluation);
           } on Exception catch (e) {
             //print("error$i $e");
             kACReportData[i].evaluation = '-';
@@ -295,7 +311,7 @@ Future searchKACReportData(String reqNo) async {
   return 0;
 }
 
-// String urlEs = "http://127.0.0.1:3002";
+// String urlEs = "http://172.23.10.51:3002";
 
 Future<void> createKACReport() async {
   Map<String, String> qParams = {

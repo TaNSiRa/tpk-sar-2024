@@ -215,6 +215,15 @@ class KACReportDataState extends State<KACReportData> {
     'NG',
     '1 TIME/MONTH'
   ];
+  var evaluationOptionForDAIHAN = [
+    '-',
+    'Uncomplete box and pallet',
+    'Complete box and pallet',
+    'Fin drop/Wrinkkleless',
+    'No fin drop/Wrinkleless',
+    'Deform',
+    'No Deform'
+  ];
 
   MaterialColor checkColorData() {
     return Colors.red;

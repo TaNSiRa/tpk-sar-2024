@@ -64,8 +64,7 @@ class _SolidContent_NoxRustState extends State<SolidContent_NoxRust> {
       dataSolidContent_NoxRustInput[index].result_1 =
           (double.parse(dataSolidContent_NoxRustInput[index].w1W2_1) * 1000)
               .toStringAsFixed(4);
-      if (double.parse(dataSolidContent_NoxRustInput[index].result_1) <
-          0.0010) {
+      if (double.parse(dataSolidContent_NoxRustInput[index].result_1) < 1.0) {
         dataSolidContent_NoxRustInput[index].result_1 = '< 1';
       }
       dataSolidContent_NoxRustInput[index].resultUnit_1 = "mg/50 mL";
@@ -84,8 +83,7 @@ class _SolidContent_NoxRustState extends State<SolidContent_NoxRust> {
       dataSolidContent_NoxRustInput[index].result_2 =
           (double.parse(dataSolidContent_NoxRustInput[index].w1W2_2) * 1000)
               .toStringAsFixed(4);
-      if (double.parse(dataSolidContent_NoxRustInput[index].result_2) <
-          0.0010) {
+      if (double.parse(dataSolidContent_NoxRustInput[index].result_2) < 1.0) {
         dataSolidContent_NoxRustInput[index].result_2 = '< 1';
       }
       dataSolidContent_NoxRustInput[index].resultUnit_2 = "mg/50 mL";
