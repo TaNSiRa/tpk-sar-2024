@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:math';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/src/provider.dart';
 import 'package:tpk_login_arsa_01/Global/global_var.dart';
@@ -198,6 +199,17 @@ Future searchKACReportData(String reqNo) async {
               kACReportData[i].resultIn =
                   double.parse(kACReportData[i].resultIn).toStringAsFixed(2);
               kACReportData[i].resultReport = kACReportData[i].resultIn;
+            } else if (kACReportData[i].itemReportName == 'Calibration (%)') {
+              double ECvalue =
+                  double.tryParse(kACReportData[i - 3].resultIn.toString()) ??
+                      0;
+              double NVpercent =
+                  double.tryParse(kACReportData[i - 1].resultIn.toString()) ??
+                      0;
+              double calculationResult =
+                  (NVpercent / ((4.7159 * (ECvalue / 10)) - 4.1836)) * 100;
+              kACReportData[i].resultIn = calculationResult.toStringAsFixed(1);
+              kACReportData[i].resultReport = kACReportData[i].resultIn;
             } else {
               kACReportData[i].resultIn =
                   double.parse(kACReportData[i].resultIn).toStringAsFixed(1);
@@ -311,7 +323,7 @@ Future searchKACReportData(String reqNo) async {
   return 0;
 }
 
-// String urlEs = "http://172.23.10.51:3002";
+// String urlEs = "http://127.0.0.1:3002";
 
 Future<void> createKACReport() async {
   Map<String, String> qParams = {

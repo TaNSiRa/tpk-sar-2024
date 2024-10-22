@@ -1,4 +1,5 @@
 import 'package:cool_alert/cool_alert.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -243,6 +244,12 @@ class _XRFState extends State<XRF> {
                   ),
                   DataColumn(label: _verticalDivider2),
                   headerColumn(
+                    'SUBCODE',
+                    'Re print',
+                    widthC13,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
                     'RESULT',
                     'RESULT',
                     widthC3,
@@ -274,6 +281,12 @@ class _XRFState extends State<XRF> {
                     widthC9,
                   ),
                   DataColumn(label: _verticalDivider2),
+                  headerColumn(
+                    'SUBCODE',
+                    'Re print',
+                    widthC13,
+                  ),
+                  DataColumn(label: _verticalDivider),
                   headerColumn(
                     'RESULT(2)',
                     'RESULT',
@@ -357,6 +370,41 @@ class _XRFState extends State<XRF> {
                             ),
                           ),
                           DataCell(_verticalDivider2),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.print,
+                                    color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    // saveResult(index);
+
+                                    Dio().post(
+                                      'http://172.23.10.34:2500/printsubtag_XRF',
+                                      data: {
+                                        "reqNo": dataXRFInput[index].sampleCode,
+                                        "itemName":
+                                            dataXRFInput[index].itemName,
+                                        "itemNo": dataXRFInput[index].itemNo,
+                                        "R": "R1",
+                                        "custFull":
+                                            dataXRFInput[index].custFull,
+                                        "position":
+                                            dataXRFInput[index].position,
+                                        "plant": userBranch,
+                                        "remarkNo":
+                                            dataXRFInput[index].remarkNo,
+                                      },
+                                    ).then((value) {});
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
                           DataCell(
                             Container(
                               width: widthC3,
@@ -474,6 +522,40 @@ class _XRFState extends State<XRF> {
                             ),
                           ),
                           DataCell(_verticalDivider2),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.print,
+                                    color: Colors.blue,
+                                  ),
+                                  onPressed: () {
+                                    // saveResult(index);
+                                    Dio().post(
+                                      'http://172.23.10.34:2500/printsubtag_XRF',
+                                      data: {
+                                        "reqNo": dataXRFInput[index].sampleCode,
+                                        "itemName":
+                                            dataXRFInput[index].itemName,
+                                        "itemNo": dataXRFInput[index].itemNo,
+                                        "R": "R2",
+                                        "custFull":
+                                            dataXRFInput[index].custFull,
+                                        "position":
+                                            dataXRFInput[index].position,
+                                        "remarkNo":
+                                            dataXRFInput[index].remarkNo,
+                                        "plant": userBranch,
+                                      },
+                                    ).then((value) {});
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
                           DataCell(
                             Container(
                               width: widthC6,
