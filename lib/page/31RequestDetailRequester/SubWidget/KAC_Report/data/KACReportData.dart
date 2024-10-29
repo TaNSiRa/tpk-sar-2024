@@ -210,6 +210,11 @@ Future searchKACReportData(String reqNo) async {
                   (NVpercent / ((4.7159 * (ECvalue / 10)) - 4.1836)) * 100;
               kACReportData[i].resultIn = calculationResult.toStringAsFixed(1);
               kACReportData[i].resultReport = kACReportData[i].resultIn;
+            } else if (kACReportData[i].custFull ==
+                'THAI WIRE PRODUCTS PUBLIC COMPANY LIMITED') {
+              kACReportData[i].resultIn =
+                  double.parse(kACReportData[i].resultIn).toStringAsFixed(2);
+              kACReportData[i].resultReport = kACReportData[i].resultIn;
             } else {
               kACReportData[i].resultIn =
                   double.parse(kACReportData[i].resultIn).toStringAsFixed(1);
@@ -323,7 +328,7 @@ Future searchKACReportData(String reqNo) async {
   return 0;
 }
 
-// String urlEs = "http://127.0.0.1:3002";
+// String urlEs = "http://172.23.10.51:3002";
 
 Future<void> createKACReport() async {
   Map<String, String> qParams = {

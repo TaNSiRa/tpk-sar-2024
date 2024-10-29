@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
 //String url = "http://192.168.1.200:1885";
-String url = "http://127.0.0.1:1880";
-String urlE = "http://127.0.0.1:3002";
-//String url = "http://127.0.0.1:1885";
+String url = "http://172.23.10.51:1885";
+String urlE = "http://172.23.10.51:3002";
+//String url = "http://172.23.10.51:1885";
 //Login
 String GloUserID = '';
 String GloPassword = '';
