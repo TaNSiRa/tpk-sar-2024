@@ -57,7 +57,10 @@ class _TiUVState extends State<TiUV> {
                   double.parse(dataTiUVInput[index].rawData_1))
               .toStringAsFixed(2); */
       dataTiUVInput[index].result_1 =
-          double.parse(dataTiUVInput[index].rawData_1).toStringAsFixed(2);
+          (double.parse(dataTiUVInput[index].rawData_1) *
+                  double.parse(dataTiUVInput[index].dilutionTime_1))
+              .toStringAsFixed(2);
+
       if (double.parse(dataTiUVInput[index].result_1) <
           (1 * double.parse(dataTiUVInput[index].dilutionTime_1))) {
         dataTiUVInput[index].result_1 = '<' +
@@ -78,7 +81,9 @@ class _TiUVState extends State<TiUV> {
                   double.parse(dataTiUVInput[index].rawData_2))
               .toStringAsFixed(2);  */
       dataTiUVInput[index].result_2 =
-          double.parse(dataTiUVInput[index].rawData_2).toStringAsFixed(2);
+          (double.parse(dataTiUVInput[index].rawData_2) *
+                  double.parse(dataTiUVInput[index].dilutionTime_2))
+              .toStringAsFixed(2);
       if (double.parse(dataTiUVInput[index].result_2) <
           (1 * double.parse(dataTiUVInput[index].dilutionTime_2))) {
         dataTiUVInput[index].result_2 = '<' +
@@ -228,13 +233,13 @@ class _TiUVState extends State<TiUV> {
                     'DATA/CHART',
                     widthC2,
                   ),
-                  DataColumn(label: _verticalDivider),
+                  DataColumn(label: _verticalDivider2),
                   headerColumn(
                     'SUBCODE',
                     'Re print',
                     widthC13,
                   ),
-                  DataColumn(label: _verticalDivider2),
+                  DataColumn(label: _verticalDivider),
                   headerColumn(
                     'DILUTION TIME',
                     'DILUTION TIME',
@@ -262,23 +267,23 @@ class _TiUVState extends State<TiUV> {
                   ),
                   DataColumn(label: _verticalDivider),
                   headerColumn(
+                    'TEMP.S',
+                    'TEMPORARY SAVE',
+                    widthC12,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'SAVE',
+                    'SAVE',
+                    widthC12,
+                  ),
+                  DataColumn(label: _verticalDivider2),
+                  headerColumn(
                     'SUBCODE',
                     'Re print',
                     widthC13,
                   ),
                   DataColumn(label: _verticalDivider),
-                  headerColumn(
-                    'SAVE',
-                    'SAVE',
-                    widthC12,
-                  ),
-                  DataColumn(label: _verticalDivider),
-                  headerColumn(
-                    'TEMP.S',
-                    'TEMPORARY SAVE',
-                    widthC12,
-                  ),
-                  DataColumn(label: _verticalDivider2),
                   headerColumn(
                     'DILUTION TIME\n(2)',
                     'DILUTION TIME',
@@ -392,7 +397,7 @@ class _TiUVState extends State<TiUV> {
                               ),
                             ),
                           ),
-                          DataCell(_verticalDivider2),
+                          DataCell(_verticalDivider),
                           DataCell(
                             Container(
                               width: widthC3,
@@ -498,6 +503,40 @@ class _TiUVState extends State<TiUV> {
                               ),
                             ),
                           ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC12,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.save,
+                                    color: Colors.black12,
+                                  ),
+                                  onPressed: () {
+                                    tempSave(index);
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC13,
+                              child: Center(
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.save,
+                                    color: Colors.green,
+                                  ),
+                                  onPressed: () {
+                                    saveResult(index);
+                                  },
+                                ),
+                              ),
+                            ),
+                          ),
                           DataCell(_verticalDivider2),
                           DataCell(
                             Container(
@@ -537,40 +576,6 @@ class _TiUVState extends State<TiUV> {
                             ),
                           ),
                           DataCell(_verticalDivider),
-                          DataCell(
-                            Container(
-                              width: widthC12,
-                              child: Center(
-                                child: IconButton(
-                                  icon: Icon(
-                                    Icons.save,
-                                    color: Colors.black12,
-                                  ),
-                                  onPressed: () {
-                                    tempSave(index);
-                                  },
-                                ),
-                              ),
-                            ),
-                          ),
-                          DataCell(_verticalDivider),
-                          DataCell(
-                            Container(
-                              width: widthC13,
-                              child: Center(
-                                child: IconButton(
-                                  icon: Icon(
-                                    Icons.save,
-                                    color: Colors.green,
-                                  ),
-                                  onPressed: () {
-                                    saveResult(index);
-                                  },
-                                ),
-                              ),
-                            ),
-                          ),
-                          DataCell(_verticalDivider2),
                           DataCell(
                             Container(
                               width: widthC8,
