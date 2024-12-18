@@ -130,7 +130,6 @@ class _TableMainRequestState extends State<TableMainRequest>
     prefs.setString('MainPage_CurrentPageTable', pageIn.toString());
   }
 
-
   @override
   Widget build(BuildContext context) {
     return ListView(

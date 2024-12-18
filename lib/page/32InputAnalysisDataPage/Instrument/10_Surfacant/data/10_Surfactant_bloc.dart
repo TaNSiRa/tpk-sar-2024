@@ -46,8 +46,9 @@ Stream<int> searchSurfactantForInput() async* {
   };
   EasyLoading.show(status: 'loading...');
   try {
-        final response = await http
-        .post(Uri.parse("$url/Instrument_searchSurfactantForInput"), body: qParams)
+    final response = await http
+        .post(Uri.parse("$url/Instrument_searchSurfactantForInput"),
+            body: qParams)
         .timeout(Duration(seconds: timeOut));
     if (response.statusCode == 200) {
       EasyLoading.dismiss();
@@ -85,7 +86,8 @@ Stream<int> tempSaveSurfactantData() async* {
   };
   try {
     final response = await http
-        .post(Uri.parse("$url/Instrument_tempSaveDataSurfactant"), body: qParams)
+        .post(Uri.parse("$url/Instrument_tempSaveDataSurfactant"),
+            body: qParams)
         .timeout(Duration(seconds: timeOut));
     if (response.statusCode == 200) {
       if (response.body != "error") {

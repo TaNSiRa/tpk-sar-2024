@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tpk_login_arsa_01/Global/global_structure.dart';
 import 'package:tpk_login_arsa_01/Global/global_var.dart';
+import '../../20SubPage/PopupAlert/PopupAlert.dart';
 import 'MainPage_event.dart';
 import 'TableMainRequesterStructure.dart';
 //----------------------------------------------------------------
@@ -112,11 +113,11 @@ Future fetchRequestWaitApprove() async {
         body: {"User": userName}).timeout(Duration(seconds: timeOut));
     if (response.statusCode == 200) {
       if (response.body != 'error') {
-        print("------------");
-        print(response.body);
+        // print("------------");
+        // print(response.body);
         requestWaitApproveData = modelFullRequestDataFromJson(response.body);
-        print("------------");
-        print(modelFullRequestDataToJson(requestWaitApproveData));
+        // print("------------");
+        // print(modelFullRequestDataToJson(requestWaitApproveData));
         if (requestWaitApproveData.length > 0)
           return 1;
         else {
@@ -130,6 +131,68 @@ Future fetchRequestWaitApprove() async {
   } on TimeoutException catch (e) {
   } on Error catch (e) {
     print(e);
+  }
+}
+
+List<ModelFullRequestData> OverDueKPIData = [];
+Future fetchOverDueKPI() async {
+  /* Map<String, String> qParams = {
+    'User': userName,
+  }; */
+  print("in fetchOverDueKPI");
+  try {
+    /* final response = await http
+        .get(Uri.parse("$url/MainPage_fetchRequestWaitApprove"),
+            headers: qParams)
+        .timeout(Duration(seconds: timeOut)); */
+    final response = await http.post(Uri.parse("$url/MainPage_fetchOverDueKPI"),
+        body: {"User": userName}).timeout(Duration(seconds: timeOut));
+    if (response.statusCode == 200) {
+      if (response.body != 'error') {
+        // print("------------");
+        // print(response.body);
+        OverDueKPIData = modelFullRequestDataFromJson(response.body);
+        // print("------------");
+        // print(modelFullRequestDataToJson(OverDueKPIData));
+        if (OverDueKPIData.length > 0)
+          return 1;
+        else {
+          return 0;
+        }
+      } else {
+        print("where is my server");
+        return 0;
+      }
+    }
+  } on TimeoutException catch (e) {
+  } on Error catch (e) {
+    print(e);
+  }
+}
+
+List<ModelFullRequestData> SaveKPIReason = [];
+Future<void> saveKPIReason() async {
+  Map<String, String> qParams = {
+    'user': userName,
+    'saveReason': modelFullRequestDataToJson(SaveKPIReason),
+  };
+  print("in sentReportToCustomer");
+  try {
+    final response = await http
+        .post(Uri.parse("$urlE/MainPage_SaveKPIReason"), body: qParams)
+        .timeout(Duration(seconds: timeOut));
+    if (response.statusCode == 200) {
+      /* showPDF(response.body, contextBG); */
+      alertSuccess("SAVE REASON COMPLETE");
+    } else {
+      alertNetworkError();
+    }
+  } on TimeoutException catch (e) {
+    print(e);
+    alertNetworkError();
+  } on Error catch (e) {
+    print(e);
+    alertNetworkError();
   }
 }
 

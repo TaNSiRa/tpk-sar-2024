@@ -385,6 +385,8 @@ class _TiUVState extends State<TiUV> {
                                         "R": "R1",
                                         "custFull":
                                             dataTiUVInput[index].custFull,
+                                        "custShort":
+                                            dataTiUVInput[index].custShort,
                                         "sampleType":
                                             dataTiUVInput[index].sampleType,
                                         "sampleTank":
@@ -563,6 +565,8 @@ class _TiUVState extends State<TiUV> {
                                         "R": "R2",
                                         "custFull":
                                             dataTiUVInput[index].custFull,
+                                        "custShort":
+                                            dataTiUVInput[index].custShort,
                                         "sampleType":
                                             dataTiUVInput[index].sampleType,
                                         "sampleTank":

@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:tpk_login_arsa_01/Global/global_structure.dart';
 import 'package:tpk_login_arsa_01/Global/global_var.dart';
 import 'package:tpk_login_arsa_01/page/20SubPage/PopupAlert/PopupAlert.dart';
+import 'package:tpk_login_arsa_01/page/3RoutineRequestPage/RoutineRequestPage.dart';
 import 'RoutineRequestPageStructure.dart';
 import 'RoutineRequestPage_event.dart';
 
@@ -78,6 +79,7 @@ Stream<int> findCustomerData() async* {
   Map<String, String> qParams = {
     'customerName': routineCusmerName,
     'samplingDate': samplingDate.toString(),
+    'fullItem': FullItem.toString(),
   };
   patternData.clear();
   sampleData.clear();

@@ -12,6 +12,8 @@ import 'Data/RoutineRequestPage_bloc.dart';
 import 'Data/RoutineRequestPage_event.dart';
 
 List<MasterAddItem> selectedItemAdd = [];
+bool Closeline = false;
+bool FullItem = false;
 
 class RoutineRequestPage extends StatelessWidget {
   const RoutineRequestPage({Key? key}) : super(key: key);
@@ -39,6 +41,8 @@ class RoutineCreateRequest extends StatefulWidget {
 class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
   void initState() {
     print("InINITIAL");
+    Closeline = false;
+    FullItem = false;
     context
         .read<ManageDataRoutineRequest>()
         .add(EventRoutineRequestPage.fetchMasterCustomerRoutine);
@@ -403,6 +407,8 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
                                             }).toList(),
                                             onChanged: (value) {
                                               if (value != null) {
+                                                Closeline = false;
+                                                FullItem = false;
                                                 /*  setState(() { */
                                                 routineCusmerName =
                                                     value.custShort.toString();
@@ -482,6 +488,99 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
                                     ],
                                   ),
                                 ),
+                                Container(
+                                  height: heightBox1,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: widthsection1,
+                                        child: Text(
+                                          "CLOSE LINE",
+                                          style: stylesection,
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Switch(
+                                          value: Closeline,
+                                          onChanged: (bool value) {
+                                            setState(() {
+                                              Closeline = value;
+                                              for (int i = 0;
+                                                  i < requestData.length;
+                                                  i++) {
+                                                for (int j = 0;
+                                                    j < requestData[i].length;
+                                                    j++) {
+                                                  if (Closeline) {
+                                                    requestData[i][j]
+                                                            .requestStatus =
+                                                        "CLOSE LINE";
+                                                    requestData[i][j]
+                                                            .itemStatus =
+                                                        "CLOSE LINE";
+                                                    requestData[i][j]
+                                                            .sampleStatus =
+                                                        "CLOSE LINE";
+                                                  } else {
+                                                    requestData[i][j]
+                                                            .requestStatus =
+                                                        "WAIT SAMPLE";
+                                                    requestData[i][j]
+                                                            .itemStatus =
+                                                        "WAIT SAMPLE";
+                                                    requestData[i][j]
+                                                            .sampleStatus =
+                                                        "WAIT SAMPLE";
+                                                  }
+                                                }
+                                              }
+                                            });
+                                          },
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                                // Container(
+                                //   height: heightBox1,
+                                //   child: Row(
+                                //     mainAxisAlignment: MainAxisAlignment.start,
+                                //     crossAxisAlignment:
+                                //         CrossAxisAlignment.center,
+                                //     children: [
+                                //       Container(
+                                //         width: widthsection1,
+                                //         child: Text(
+                                //           "FULL ITEM",
+                                //           style: stylesection,
+                                //         ),
+                                //       ),
+                                //       Container(
+                                //         child: Switch(
+                                //           value: FullItem,
+                                //           onChanged: (bool value) {
+                                //             setState(() {
+                                //               FullItem = value;
+                                //               context
+                                //                   .read<
+                                //                       ManageDataRoutineRequest>()
+                                //                   .add(EventRoutineRequestPage
+                                //                       .reselectCustomer);
+                                //               context
+                                //                   .read<
+                                //                       ManageDataRoutineRequest>()
+                                //                   .add(EventRoutineRequestPage
+                                //                       .findCustomerData);
+                                //             });
+                                //           },
+                                //         ),
+                                //       )
+                                //     ],
+                                //   ),
+                                // ),
                                 Container(
                                   height: heightBox1,
                                   child: Row(

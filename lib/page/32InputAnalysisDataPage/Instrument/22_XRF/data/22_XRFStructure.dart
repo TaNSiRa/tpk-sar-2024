@@ -1,55 +1,56 @@
 import 'dart:convert';
 
-List<ModelXRF> modelXRFFromJson(String str) => List<ModelXRF>.from(
-    json.decode(str).map((x) => ModelXRF.fromJson(x)));
+List<ModelXRF> modelXRFFromJson(String str) =>
+    List<ModelXRF>.from(json.decode(str).map((x) => ModelXRF.fromJson(x)));
 
 String modelXRFToJson(List<ModelXRF> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ModelXRF {
-  ModelXRF(
-      {this.requestSampleId,
-      this.reqNo,
-      this.jobType,
-      this.incharge,
-      this.branch,
-      this.requestSection,
-      this.reqDate,
-      this.custFull,
-      this.sampleCode,
-      this.sampleGroup,
-      this.sampleType,
-      this.sampleTank,
-      this.sampleName,
-      this.samplingDate,
-      this.analysisDueDate,
-      this.sampleRemark,
-      this.sampleAttachFile,
-      this.position,
-      this.mag,
-      this.temp,
-      this.stdFactor,
-      this.stdMax,
-      this.stdMin,
-      this.itemNo,
-      this.itemName,
-      this.remarkNo,
-      this.itemStatus,
-      this.userAnalysis,
-      this.userAnalysisBranch,
-      this.analysisDate,
-      this.resultSymbol_1,
-      this.result_1,
-      this.resultUnit_1,
-      this.resultRemark_1,
-      this.resultFile_1,
-      this.resultSymbol_2,
-      this.result_2,
-      this.resultUnit_2,
-      this.resultRemark_2,
-      this.resultFile_2,
-      this.canEdit,
-     });
+  ModelXRF({
+    this.requestSampleId,
+    this.reqNo,
+    this.jobType,
+    this.incharge,
+    this.branch,
+    this.requestSection,
+    this.reqDate,
+    this.custFull,
+    this.custShort,
+    this.sampleCode,
+    this.sampleGroup,
+    this.sampleType,
+    this.sampleTank,
+    this.sampleName,
+    this.samplingDate,
+    this.analysisDueDate,
+    this.sampleRemark,
+    this.sampleAttachFile,
+    this.position,
+    this.mag,
+    this.temp,
+    this.stdFactor,
+    this.stdMax,
+    this.stdMin,
+    this.itemNo,
+    this.itemName,
+    this.remarkNo,
+    this.itemStatus,
+    this.userAnalysis,
+    this.userAnalysisBranch,
+    this.analysisDate,
+    this.resultSymbol_1,
+    this.result_1,
+    this.resultUnit_1,
+    this.resultRemark_1,
+    this.resultFile_1,
+    this.resultSymbol_2,
+    this.result_2,
+    this.resultUnit_2,
+    this.resultRemark_2,
+    this.resultFile_2,
+    this.canEdit,
+  });
 
   dynamic requestSampleId;
   dynamic reqNo;
@@ -59,6 +60,7 @@ class ModelXRF {
   dynamic requestSection;
   dynamic reqDate;
   dynamic custFull;
+  dynamic custShort;
   dynamic sampleCode;
   dynamic sampleGroup;
   dynamic sampleType;
@@ -102,6 +104,7 @@ class ModelXRF {
         requestSection: json["RequestSection"] ?? "",
         reqDate: json["ReqDate"] ?? "",
         custFull: json["CustFull"] ?? "",
+        custShort: json["CustShort"] ?? "",
         sampleCode: json["SampleCode"] ?? "",
         sampleGroup: json["SampleGroup"] ?? "",
         sampleType: json["SampleType"] ?? "",
@@ -146,6 +149,7 @@ class ModelXRF {
         "RequestSection": requestSection ?? "",
         "ReqDate": reqDate ?? "",
         "CustFull": custFull ?? "",
+        "CustShort": custShort ?? "",
         "SampleCode": sampleCode ?? "",
         "SampleGroup": sampleGroup ?? "",
         "SampleType": sampleType ?? "",

@@ -2,7 +2,7 @@
 import 'package:tpk_login_arsa_01/Global/global_var.dart';
 import 'ShowPDFStructure.dart';
 
-String url2 = "http://172.23.10.51:3000";
+String url2 = "http://127.0.0.1:3000";
 
 List<HistoryChartModel> historyChartData = [];
 String picture = "";

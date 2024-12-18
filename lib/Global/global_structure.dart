@@ -163,6 +163,41 @@ class ModelFullRequestData {
     this.reportRemark,
     this.acceptReconfirmdate,
     this.userAcceptReconfirm,
+    this.sentRep,
+    this.sentRepStatus,
+    this.reason = '',
+    this.stage = '',
+    this.blank_1,
+    this.blank_2,
+    this.dilution1,
+    this.dilution2,
+    this.resultgLApprove,
+    this.resultgLApproveUnit,
+    this.factorC,
+    this.repdays,
+    this.bdprepare,
+    this.bdttc,
+    this.bdissue,
+    this.bdsublead,
+    this.bdgl,
+    this.bdmgr,
+    this.bdjp,
+    this.bdrevise1,
+    this.bdsublead1,
+    this.bdgl1,
+    this.bdmgr1,
+    this.bdjp1,
+    this.bdrevise2,
+    this.bdsublead2,
+    this.bdgl2,
+    this.bdmgr2,
+    this.bdjp2,
+    this.bdrevise3,
+    this.bdsublead3,
+    this.bdgl3,
+    this.bdmgr3,
+    this.bdjp3,
+    this.bdsent,
   });
 
   dynamic id;
@@ -319,6 +354,41 @@ class ModelFullRequestData {
   dynamic reviseNo;
   dynamic reportRejectRemark;
   dynamic reportRemark;
+  dynamic sentRep;
+  dynamic sentRepStatus;
+  dynamic stage;
+  dynamic reason;
+  dynamic blank_1;
+  dynamic blank_2;
+  dynamic dilution1;
+  dynamic dilution2;
+  dynamic resultgLApprove;
+  dynamic resultgLApproveUnit;
+  dynamic factorC;
+  dynamic repdays;
+  dynamic bdprepare;
+  dynamic bdttc;
+  dynamic bdissue;
+  dynamic bdsublead;
+  dynamic bdgl;
+  dynamic bdmgr;
+  dynamic bdjp;
+  dynamic bdrevise1;
+  dynamic bdsublead1;
+  dynamic bdgl1;
+  dynamic bdmgr1;
+  dynamic bdjp1;
+  dynamic bdrevise2;
+  dynamic bdsublead2;
+  dynamic bdgl2;
+  dynamic bdmgr2;
+  dynamic bdjp2;
+  dynamic bdrevise3;
+  dynamic bdsublead3;
+  dynamic bdgl3;
+  dynamic bdmgr3;
+  dynamic bdjp3;
+  dynamic bdsent;
 
   factory ModelFullRequestData.fromJson(Map<String, dynamic> json) =>
       ModelFullRequestData(
@@ -474,6 +544,41 @@ class ModelFullRequestData {
         reportRemark: json["ReportRemark"] ?? "",
         acceptReconfirmdate: json["AcceptReconfirmdate"] ?? "",
         userAcceptReconfirm: json["UserAcceptReconfirm"] ?? "",
+        sentRep: json["SentRep"] ?? "",
+        sentRepStatus: json["SentRepStatus"] ?? "NOT SENT YET",
+        stage: json["Stage"] ?? "",
+        reason: json["Reason"] ?? "",
+        blank_1: json["Blank1"] ?? "",
+        blank_2: json["Blank2"] ?? "",
+        dilution1: json["Dilution1"] ?? "",
+        dilution2: json["Dilution2"] ?? "",
+        resultgLApprove: json["ResultgLApprove"] ?? "",
+        resultgLApproveUnit: json["ResultgLApproveUnit"] ?? "",
+        factorC: json["FactorC"] ?? "",
+        repdays: json["RepDays"] ?? "",
+        bdprepare: json["BDPrepare"] ?? "",
+        bdttc: json["BDTTC"] ?? "",
+        bdissue: json["BDIssue"] ?? "",
+        bdsublead: json["BDSublead"] ?? "",
+        bdgl: json["BDGL"] ?? "",
+        bdmgr: json["BDMGR"] ?? "",
+        bdjp: json["BDJP"] ?? "",
+        bdrevise1: json["BDRevise1"] ?? "",
+        bdsublead1: json["BDSublead1"] ?? "",
+        bdgl1: json["BDGL1"] ?? "",
+        bdmgr1: json["BDMGR1"] ?? "",
+        bdjp1: json["BDJP1"] ?? "",
+        bdrevise2: json["BDRevise2"] ?? "",
+        bdsublead2: json["BDSublead2"] ?? "",
+        bdgl2: json["BDGL2"] ?? "",
+        bdmgr2: json["BDMGR2"] ?? "",
+        bdjp2: json["BDJP2"] ?? "",
+        bdrevise3: json["BDRevise3"] ?? "",
+        bdsublead3: json["BDSublead3"] ?? "",
+        bdgl3: json["BDGL3"] ?? "",
+        bdmgr3: json["BDMGR3"] ?? "",
+        bdjp3: json["BDJP3"] ?? "",
+        bdsent: json["BDSent"] ?? "",
       );
 
   Map<dynamic, dynamic> toJson() => {
@@ -628,5 +733,39 @@ class ModelFullRequestData {
         "ReportRemark": reportRemark ?? "",
         "AcceptReconfirmdate": acceptReconfirmdate ?? "",
         "UserAcceptReconfirm": userAcceptReconfirm ?? "",
+        "SentRep": sentRep ?? "",
+        "SentRepStatus": sentRepStatus ?? "NOT SENT YET",
+        "Stage": stage ?? "",
+        "Reason": reason ?? "",
+        "Blank1": blank_1 ?? "",
+        "Blank2": blank_2 ?? "",
+        "Dilution1": dilution1 ?? "",
+        "Dilution2": dilution2 ?? "",
+        "ResultgLApprove": resultgLApprove ?? "",
+        "ResultgLApproveUnit": resultgLApproveUnit ?? "",
+        "FactorC": factorC ?? "",
+        "RepDays": repdays ?? "",
+        "BDPrepare": bdprepare ?? "",
+        "BDTTC": bdttc ?? "",
+        "BDIssue": bdissue ?? "",
+        "BDSublead": bdsublead ?? "",
+        "BDGL": bdgl ?? "",
+        "BDJP": bdjp ?? "",
+        "BDRevise1": bdrevise1 ?? "",
+        "BDSublead1": bdsublead1 ?? "",
+        "BDGL1": bdgl1 ?? "",
+        "BDMGR1": bdmgr1 ?? "",
+        "BDJP1": bdjp1 ?? "",
+        "BDRevise2": bdrevise2 ?? "",
+        "BDSublead2": bdsublead2 ?? "",
+        "BDGL2": bdgl2 ?? "",
+        "BDMGR2": bdmgr2 ?? "",
+        "BDJP2": bdjp2 ?? "",
+        "BDRevise3": bdrevise3 ?? "",
+        "BDSublead3": bdsublead3 ?? "",
+        "BDGL3": bdgl3 ?? "",
+        "BDMGR3": bdmgr3 ?? "",
+        "BDJP3": bdjp3 ?? "",
+        "BDSent": bdsent ?? "",
       };
 }

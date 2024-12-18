@@ -3,6 +3,7 @@ import 'package:tpk_login_arsa_01/Global/global_var.dart';
 import 'package:tpk_login_arsa_01/Global/style.dart';
 import 'package:tpk_login_arsa_01/page/12SummaryDataPage/SummaryDataPage.dart';
 import 'package:tpk_login_arsa_01/page/2Mainapage/SubWidget/TableMainRequester.dart';
+import 'package:tpk_login_arsa_01/page/2Mainapage/SubWidget/TableOverDueKPI.dart';
 import 'package:tpk_login_arsa_01/page/2Mainapage/SubWidget/TableWaitAnalysis.dart';
 import 'package:tpk_login_arsa_01/page/2Mainapage/SubWidget/TableWaitApprove.dart';
 //---------------------------------------------------------
@@ -96,6 +97,34 @@ class MainPage extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(0),
                     child: Container(child: TableWaitApprove()),
+                  );
+                else
+                  return Container();
+              }),
+          FutureBuilder(
+              future: fetchOverDueKPI(),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.data == 1)
+                  return Container(
+                    height: 310,
+                    margin: EdgeInsets.only(top: 10),
+                    decoration: BoxDecoration(
+                      color: CustomTheme.colorWhite,
+                      border: Border.all(
+                        color: Colors.black,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      boxShadow: [
+                        BoxShadow(
+                            color: CustomTheme.colorShadowBgStrong,
+                            offset: Offset(0, 0),
+                            blurRadius: 10,
+                            spreadRadius: 0)
+                      ],
+                    ),
+                    padding: EdgeInsets.all(0),
+                    child: Container(child: TableOverDueKPI()),
                   );
                 else
                   return Container();

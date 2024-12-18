@@ -322,6 +322,38 @@ Future<void> saveApproveReport() async {
   }
 }
 
+List<ModelFullRequestData> sentReportData = [];
+Future<void> SentReport() async {
+  Map<String, String> qParams = {
+    'user': userName,
+    'sentReportData': modelFullRequestDataToJson(sentReportData),
+  };
+  print("in sentReportToCustomer");
+  try {
+    final response = await http
+        .post(
+            Uri.parse(
+                "$urlE/RoutineRequestDetailRequesterPage_sentReportToCustomer"),
+            body: qParams)
+        .timeout(Duration(seconds: timeOut));
+    if (response.statusCode == 200) {
+      /* showPDF(response.body, contextBG); */
+      alertSuccess("SENT REPORT COMPLETE");
+      contextRoutineRequestDetail
+          .read<ManageDataRoutineRequestDetailRequesterPage>()
+          .add(RoutineRequestDetailRequesterPageEvent.searchRequestData);
+    } else {
+      alertNetworkError();
+    }
+  } on TimeoutException catch (e) {
+    print(e);
+    alertNetworkError();
+  } on Error catch (e) {
+    print(e);
+    alertNetworkError();
+  }
+}
+
 List<ModelFullRequestData> rejectReportData = [];
 Future<void> saveRejectReport() async {
   Map<String, String> qParams = {
@@ -369,6 +401,38 @@ Future<void> submitDeleteReport() async {
         .timeout(Duration(seconds: timeOut));
     if (response.statusCode == 200) {
       alertSuccess("DELETE REPORT COMPLETE");
+      contextRoutineRequestDetail
+          .read<ManageDataRoutineRequestDetailRequesterPage>()
+          .add(RoutineRequestDetailRequesterPageEvent.searchRequestData);
+    } else {
+      alertNetworkError();
+    }
+  } on TimeoutException catch (e) {
+    print(e);
+    alertNetworkError();
+  } on Error catch (e) {
+    print(e);
+    alertNetworkError();
+  }
+}
+
+List<ModelFullRequestData> cancelReportData = [];
+Future<void> submitcancelsentReport() async {
+  Map<String, String> qParams = {
+    'user': userName,
+    'cancelReportData': modelFullRequestDataToJson(cancelReportData),
+  };
+  print("in cancelReportData");
+  try {
+    final response = await http
+        .post(
+            Uri.parse(
+                "$urlE/RoutineRequestDetailRequesterPage_cancelsentReportToCustomer"),
+            body: qParams)
+        .timeout(Duration(seconds: timeOut));
+    if (response.statusCode == 200) {
+      /* showPDF(response.body, contextBG); */
+      alertSuccess("CANCEL SENT REPORT COMPLETE");
       contextRoutineRequestDetail
           .read<ManageDataRoutineRequestDetailRequesterPage>()
           .add(RoutineRequestDetailRequesterPageEvent.searchRequestData);

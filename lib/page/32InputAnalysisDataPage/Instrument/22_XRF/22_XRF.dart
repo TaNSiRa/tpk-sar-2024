@@ -392,6 +392,8 @@ class _XRFState extends State<XRF> {
                                         "R": "R1",
                                         "custFull":
                                             dataXRFInput[index].custFull,
+                                        "custShort":
+                                            dataXRFInput[index].custShort,
                                         "position":
                                             dataXRFInput[index].position,
                                         "plant": userBranch,
@@ -543,6 +545,8 @@ class _XRFState extends State<XRF> {
                                         "R": "R2",
                                         "custFull":
                                             dataXRFInput[index].custFull,
+                                        "custShort":
+                                            dataXRFInput[index].custShort,
                                         "position":
                                             dataXRFInput[index].position,
                                         "remarkNo":

@@ -16,6 +16,7 @@ class ModelTiUV {
     this.requestSection,
     this.reqDate,
     this.custFull,
+    this.custShort,
     this.sampleCode,
     this.sampleGroup,
     this.sampleType,
@@ -63,6 +64,7 @@ class ModelTiUV {
   dynamic requestSection;
   dynamic reqDate;
   dynamic custFull;
+  dynamic custShort;
   dynamic sampleCode;
   dynamic sampleGroup;
   dynamic sampleType;
@@ -110,6 +112,7 @@ class ModelTiUV {
         requestSection: json["RequestSection"] ?? "",
         reqDate: json["ReqDate"] ?? "",
         custFull: json["CustFull"] ?? "",
+        custShort: json["CustShort"] ?? "",
         sampleCode: json["SampleCode"] ?? "",
         sampleGroup: json["SampleGroup"] ?? "",
         sampleType: json["SampleType"] ?? "",
@@ -158,6 +161,7 @@ class ModelTiUV {
         "RequestSection": requestSection ?? "",
         "ReqDate": reqDate ?? "",
         "CustFull": custFull ?? "",
+        "CustShort": custShort ?? "",
         "SampleCode": sampleCode ?? "",
         "SampleGroup": sampleGroup ?? "",
         "SampleType": sampleType ?? "",

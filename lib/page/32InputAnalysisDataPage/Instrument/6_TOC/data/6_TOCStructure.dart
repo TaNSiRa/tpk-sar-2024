@@ -16,6 +16,7 @@ class ModelTOC {
     this.requestSection,
     this.reqDate,
     this.custFull,
+    this.custShort,
     this.sampleCode,
     this.sampleGroup,
     this.sampleType,
@@ -71,6 +72,7 @@ class ModelTOC {
   dynamic requestSection;
   dynamic reqDate;
   dynamic custFull;
+  dynamic custShort;
   dynamic sampleCode;
   dynamic sampleGroup;
   dynamic sampleType;
@@ -126,6 +128,7 @@ class ModelTOC {
         requestSection: json["RequestSection"] ?? "",
         reqDate: json["ReqDate"] ?? "",
         custFull: json["CustFull"] ?? "",
+        custShort: json["CustShort"] ?? "",
         sampleCode: json["SampleCode"] ?? "",
         sampleGroup: json["SampleGroup"] ?? "",
         sampleType: json["SampleType"] ?? "",
@@ -167,10 +170,10 @@ class ModelTOC {
         iC_DilutionTime_2: json["IC_DilutionTime_2"] ?? "",
         iC_RawData_2: json["IC_RawData_2"] ?? "",
         canEdit: false,
-        tC_Vial_1:json ["TC_Vial_1"]??"",
-        iC_Vial_1:json ["IC_Vial_1"]??"",
-        tC_Vial_2:json ["TC_Vial_2"]??"",
-        iC_Vial_2:json ["IC_Vial_2"]??"",
+        tC_Vial_1: json["TC_Vial_1"] ?? "",
+        iC_Vial_1: json["IC_Vial_1"] ?? "",
+        tC_Vial_2: json["TC_Vial_2"] ?? "",
+        iC_Vial_2: json["IC_Vial_2"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -182,6 +185,7 @@ class ModelTOC {
         "RequestSection": requestSection ?? "",
         "ReqDate": reqDate ?? "",
         "CustFull": custFull ?? "",
+        "CustShort": custShort ?? "",
         "SampleCode": sampleCode ?? "",
         "SampleGroup": sampleGroup ?? "",
         "SampleType": sampleType ?? "",
@@ -222,9 +226,9 @@ class ModelTOC {
         "TC_RawData_2": tC_RawData_2 ?? "",
         "IC_DilutionTime_2": iC_DilutionTime_2 ?? "",
         "IC_RawData_2": iC_RawData_2 ?? "",
-        "TC_Vial_1":tC_Vial_1 ?? "",
-        "IC_Vial_1":iC_Vial_1 ?? "",
-        "TC_Vial_2":tC_Vial_2 ?? "",
-        "IC_Vial_2":iC_Vial_2 ?? "",
+        "TC_Vial_1": tC_Vial_1 ?? "",
+        "IC_Vial_1": iC_Vial_1 ?? "",
+        "TC_Vial_2": tC_Vial_2 ?? "",
+        "IC_Vial_2": iC_Vial_2 ?? "",
       };
 }

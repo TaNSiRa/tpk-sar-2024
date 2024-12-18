@@ -1,61 +1,70 @@
 import 'dart:convert';
 
 List<ModelSurfactant> modelSurfactantFromJson(String str) =>
-    List<ModelSurfactant>.from(json.decode(str).map((x) => ModelSurfactant.fromJson(x)));
+    List<ModelSurfactant>.from(
+        json.decode(str).map((x) => ModelSurfactant.fromJson(x)));
 
 String modelSurfactantToJson(List<ModelSurfactant> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ModelSurfactant {
-  ModelSurfactant({
-    this.requestSampleId,
-    this.reqNo,
-    this.jobType,
-    this.incharge,
-    this.branch,
-    this.requestSection,
-    this.reqDate,
-    this.custFull,
-    this.sampleCode,
-    this.sampleGroup,
-    this.sampleType,
-    this.sampleTank,
-    this.sampleName,
-    this.samplingDate,
-    this.analysisDueDate,
-    this.sampleRemark,
-    this.sampleAttachFile,
-    this.position,
-    this.mag,
-    this.temp,
-    this.stdFactor,
-    this.stdMax,
-    this.stdMin,
-    this.itemNo,
-    this.itemName,
-    this.remarkNo,
-    this.itemStatus,
-    this.userAnalysis,
-    this.userAnalysisBranch,
-    this.analysisDate,
-    this.resultSymbol_1,
-    this.result_1,
-    this.resultUnit_1,
-    this.resultRemark_1,
-    this.resultFile_1,
-    this.resultSymbol_2,
-    this.result_2,
-    this.resultUnit_2,
-    this.resultRemark_2,
-    this.resultFile_2,
-    this.canEdit,
-    this.no_1,
-    this.startPoint_1,
-    this.finalPoint_1,
-    this.no_2,
-    this.startPoint_2,
-    this.finalPoint_2,
-  });
+  ModelSurfactant(
+      {this.requestSampleId,
+      this.reqNo,
+      this.jobType,
+      this.incharge,
+      this.branch,
+      this.requestSection,
+      this.reqDate,
+      this.custFull,
+      this.sampleCode,
+      this.sampleGroup,
+      this.sampleType,
+      this.sampleTank,
+      this.sampleName,
+      this.samplingDate,
+      this.analysisDueDate,
+      this.sampleRemark,
+      this.sampleAttachFile,
+      this.position,
+      this.mag,
+      this.temp,
+      this.stdFactor,
+      this.stdMax,
+      this.stdMin,
+      this.itemNo,
+      this.itemName,
+      this.remarkNo,
+      this.itemStatus,
+      this.userAnalysis,
+      this.userAnalysisBranch,
+      this.analysisDate,
+      this.resultSymbol_1,
+      this.result_1,
+      this.resultUnit_1,
+      this.resultRemark_1,
+      this.resultFile_1,
+      this.resultSymbol_2,
+      this.result_2,
+      this.resultUnit_2,
+      this.resultRemark_2,
+      this.resultFile_2,
+      this.canEdit,
+      this.no_1,
+      this.startPoint_1,
+      this.finalPoint_1,
+      this.no_2,
+      this.startPoint_2,
+      this.finalPoint_2,
+      this.blank_1,
+      this.blank_2,
+      this.dilution1,
+      this.dilution2,
+      this.resultgl_1,
+      this.resultglUnit_1,
+      this.resultgl_2,
+      this.resultglUnit_2,
+      this.factorC});
 
   dynamic requestSampleId;
   dynamic reqNo;
@@ -104,8 +113,18 @@ class ModelSurfactant {
   dynamic no_2;
   dynamic startPoint_2;
   dynamic finalPoint_2;
+  dynamic blank_1;
+  dynamic blank_2;
+  dynamic dilution1;
+  dynamic dilution2;
+  dynamic resultgl_1;
+  dynamic resultglUnit_1;
+  dynamic resultgl_2;
+  dynamic resultglUnit_2;
+  dynamic factorC;
 
-  factory ModelSurfactant.fromJson(Map<String, dynamic> json) => ModelSurfactant(
+  factory ModelSurfactant.fromJson(Map<String, dynamic> json) =>
+      ModelSurfactant(
         requestSampleId: json["RequestSample_ID"] ?? "",
         reqNo: json["ReqNo"] ?? "",
         jobType: json["JobType"] ?? "",
@@ -153,6 +172,15 @@ class ModelSurfactant {
         startPoint_2: json["StartPoint_2"] ?? "",
         finalPoint_2: json["FinalPoint_2"] ?? "",
         canEdit: false,
+        blank_1: json["Blank1"] ?? "",
+        blank_2: json["Blank2"] ?? "",
+        dilution1: json["Dilution1"] ?? "",
+        dilution2: json["Dilution2"] ?? "",
+        resultgl_1: json["ResultgL1"] ?? "",
+        resultglUnit_1: json["ResultgLUnit1"] ?? "",
+        resultgl_2: json["ResultgL2"] ?? "",
+        resultglUnit_2: json["ResultgLUnit2"] ?? "",
+        factorC: json["FactorC"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -201,5 +229,14 @@ class ModelSurfactant {
         "No_2": no_2 ?? "",
         "StartPoint_2": startPoint_2 ?? "",
         "FinalPoint_2": finalPoint_2 ?? "",
+        "Blank1": blank_1 ?? "",
+        "Blank2": blank_2 ?? "",
+        "Dilution1": dilution1 ?? "",
+        "Dilution2": dilution2 ?? "",
+        "ResultgL1": resultgl_1 ?? "",
+        "ResultgLUnit1": resultglUnit_1 ?? "",
+        "ResultgL2": resultgl_2 ?? "",
+        "ResultgLUnit2": resultglUnit_2 ?? "",
+        "FactorC": factorC ?? "",
       };
 }

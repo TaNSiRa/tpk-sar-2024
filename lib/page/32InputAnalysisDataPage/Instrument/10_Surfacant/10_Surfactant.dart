@@ -53,11 +53,31 @@ class _SurfactantState extends State<Surfactant> {
 
   void calculate(int index) {
     try {
-      dataSurfactantInput[index].result_1 =
-          (double.parse(dataSurfactantInput[index].finalPoint_1) -
-                  double.parse(dataSurfactantInput[index].startPoint_1))
-              .toStringAsFixed(2);
+      double factorC = dataSurfactantInput[index].factorC.isNotEmpty
+          ? double.parse(dataSurfactantInput[index].factorC)
+          : 0.0;
+      dataSurfactantInput[index]
+          .result_1 = (((double.parse(dataSurfactantInput[index].finalPoint_1) -
+                      double.parse(dataSurfactantInput[index].startPoint_1)) *
+                  double.parse(dataSurfactantInput[index].dilution1)) /
+              20)
+          .toStringAsFixed(2);
       dataSurfactantInput[index].resultUnit_1 = "mL";
+      if (factorC != 0.0) {
+        dataSurfactantInput[index].resultgl_1 = ((double.parse(
+                        dataSurfactantInput[index].finalPoint_1) -
+                    double.parse(dataSurfactantInput[index].startPoint_1) -
+                    double.parse(dataSurfactantInput[index].blank_1)) /
+                (((factorC - double.parse(dataSurfactantInput[index].blank_1)) *
+                        10) /
+                    double.parse(dataSurfactantInput[index].dilution1)))
+            .toStringAsFixed(2);
+        dataSurfactantInput[index].resultglUnit_1 = "g/L";
+      } else {
+        dataSurfactantInput[index].resultgl_1 = "";
+        dataSurfactantInput[index].resultglUnit_1 = "g/L";
+      }
+
       setState(() {});
     } on Exception catch (e) {
       // TODO
@@ -66,11 +86,25 @@ class _SurfactantState extends State<Surfactant> {
 
   void calculate2(int index) {
     try {
-      dataSurfactantInput[index].result_2 =
-          (double.parse(dataSurfactantInput[index].finalPoint_2) -
-                  double.parse(dataSurfactantInput[index].startPoint_2))
-              .toStringAsFixed(2);
+      double factorC = dataSurfactantInput[index].factorC.isNotEmpty
+          ? double.parse(dataSurfactantInput[index].factorC)
+          : 1.0;
+      dataSurfactantInput[index]
+          .result_2 = (((double.parse(dataSurfactantInput[index].finalPoint_2) -
+                      double.parse(dataSurfactantInput[index].startPoint_2)) *
+                  double.parse(dataSurfactantInput[index].dilution2)) /
+              20)
+          .toStringAsFixed(2);
       dataSurfactantInput[index].resultUnit_2 = "mL";
+      dataSurfactantInput[index].resultgl_2 = ((double.parse(
+                      dataSurfactantInput[index].finalPoint_2) -
+                  double.parse(dataSurfactantInput[index].startPoint_2) -
+                  double.parse(dataSurfactantInput[index].blank_2)) /
+              (((factorC - double.parse(dataSurfactantInput[index].blank_2)) *
+                      10) /
+                  double.parse(dataSurfactantInput[index].dilution2)))
+          .toStringAsFixed(2);
+      dataSurfactantInput[index].resultglUnit_2 = "g/L";
       setState(() {});
     } on Exception catch (e) {
       // TODO
@@ -176,6 +210,14 @@ class _SurfactantState extends State<Surfactant> {
   double widthC15 = 50;
   double widthC16 = 50;
   double widthC17 = 40;
+  double widthC18 = 50;
+  double widthC19 = 50;
+  double widthC20 = 50;
+  double widthC21 = 50;
+  double widthC22 = 50;
+  double widthC23 = 50;
+  double widthC24 = 50;
+  double widthC25 = 50;
   double fieldHeight = 30;
 
   TextStyle styleDataInTable =
@@ -225,6 +267,24 @@ class _SurfactantState extends State<Surfactant> {
                   headerColumn('NO', 'NO', widthC3),
                   DataColumn(label: _verticalDivider),
                   headerColumn(
+                    'Factor',
+                    'Factor',
+                    widthC22,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'Blank',
+                    'Blank',
+                    widthC18,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'Dilution',
+                    'Dilution',
+                    widthC19,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
                     'START PT\n(mL)',
                     'START POINT (mL)',
                     widthC4,
@@ -238,8 +298,14 @@ class _SurfactantState extends State<Surfactant> {
                   DataColumn(label: _verticalDivider),
                   headerColumn(
                     'RESULT\n(mL)',
-                    'RESULT = Final - Start',
+                    'RESULT = (Final PT - Start PT)*Dilution/20',
                     widthC6,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'RESULT\n(g/L)',
+                    'RESULT = (Final PT - Start PT - Blank)/((Factor C - Blank)*10/Dilution)',
+                    widthC24,
                   ),
                   DataColumn(label: _verticalDivider),
                   headerColumn('ERROR', 'ERROR', widthC7),
@@ -265,6 +331,24 @@ class _SurfactantState extends State<Surfactant> {
                   headerColumn('NO(2)', 'NO', widthC9),
                   DataColumn(label: _verticalDivider),
                   headerColumn(
+                    'Factor\n(2)',
+                    'Factor\n(2)',
+                    widthC23,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'Blank\n(2)',
+                    'Blank\n(2)',
+                    widthC20,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'Dilution\n(2)',
+                    'Dilution\n(2)',
+                    widthC21,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
                     'START PT\n(mL)(2)',
                     'START POINT (mL)',
                     widthC10,
@@ -278,8 +362,14 @@ class _SurfactantState extends State<Surfactant> {
                   DataColumn(label: _verticalDivider),
                   headerColumn(
                     'RESULT\n(mL)(2)',
-                    'RESULT = Final - Start',
+                    'RESULT = (Final PT - Start PT)*Dilution/20',
                     widthC12,
+                  ),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'RESULT\n(g/L)(2)',
+                    'RESULT = (Final PT - Start PT - Blank)/((Factor C - Blank)*10/Dilution)',
+                    widthC25,
                   ),
                   DataColumn(label: _verticalDivider),
                   headerColumn(
@@ -354,8 +444,70 @@ class _SurfactantState extends State<Surfactant> {
                                 onChanged: (value) {
                                   dataSurfactantInput[index].no_1 =
                                       value.toString();
-                                   },onSubmitted: (value) {
+                                },
+                                onSubmitted: (value) {
                                   calculate(index);
+                                },
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC22,
+                              child: FormBuilderTextField(
+                                textInputAction: TextInputAction.next,
+                                style: styleDataInTable,
+                                decoration: formField(),
+                                name: '${index}_22',
+                                initialValue:
+                                    (dataSurfactantInput[index].factorC !=
+                                                null &&
+                                            dataSurfactantInput[index]
+                                                .factorC
+                                                .isNotEmpty)
+                                        ? dataSurfactantInput[index]
+                                            .factorC
+                                            .toString()
+                                        : '',
+                                readOnly: true,
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC18,
+                              child: FormBuilderTextField(
+                                textInputAction: TextInputAction.next,
+                                style: styleDataInTable,
+                                decoration: formField(),
+                                name: '${index}_18',
+                                initialValue: dataSurfactantInput[index]
+                                    .blank_1
+                                    .toString(),
+                                onChanged: (value) {
+                                  dataSurfactantInput[index].blank_1 =
+                                      value.toString();
+                                },
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC19,
+                              child: FormBuilderTextField(
+                                textInputAction: TextInputAction.next,
+                                style: styleDataInTable,
+                                decoration: formField(),
+                                name: '${index}_19',
+                                initialValue: dataSurfactantInput[index]
+                                    .dilution1
+                                    .toString(),
+                                onChanged: (value) {
+                                  dataSurfactantInput[index].dilution1 =
+                                      value.toString();
                                 },
                               ),
                             ),
@@ -375,7 +527,8 @@ class _SurfactantState extends State<Surfactant> {
                                 onChanged: (value) {
                                   dataSurfactantInput[index].startPoint_1 =
                                       value.toString();
-                                   },onSubmitted: (value) {
+                                },
+                                onSubmitted: (value) {
                                   calculate(index);
                                 },
                               ),
@@ -396,7 +549,8 @@ class _SurfactantState extends State<Surfactant> {
                                 onChanged: (value) {
                                   dataSurfactantInput[index].finalPoint_1 =
                                       value.toString();
-                                   },onSubmitted: (value) {
+                                },
+                                onSubmitted: (value) {
                                   calculate(index);
                                 },
                               ),
@@ -422,6 +576,30 @@ class _SurfactantState extends State<Surfactant> {
                                       value.toString();
                                   dataSurfactantInput[index].resultUnit_1 =
                                       "mL";
+                                },
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC24,
+                              child: FormBuilderTextField(
+                                style: styleDataInTable,
+                                decoration: formField(),
+                                //enabled: false,
+                                name: '${index}_24',
+                                key: Key(dataSurfactantInput[index]
+                                    .resultgl_1
+                                    .toString()),
+                                initialValue: dataSurfactantInput[index]
+                                    .resultgl_1
+                                    .toString(),
+                                onChanged: (value) {
+                                  dataSurfactantInput[index].resultgl_1 =
+                                      value.toString();
+                                  dataSurfactantInput[index].resultglUnit_1 =
+                                      "g/L";
                                 },
                               ),
                             ),
@@ -457,7 +635,6 @@ class _SurfactantState extends State<Surfactant> {
                               width: widthC8,
                               child: FormBuilderTextField(
                                 textInputAction: TextInputAction.done,
-                                
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_8',
@@ -519,8 +696,70 @@ class _SurfactantState extends State<Surfactant> {
                                 onChanged: (value) {
                                   dataSurfactantInput[index].no_2 =
                                       value.toString();
-                                   },onSubmitted: (value) {
+                                },
+                                onSubmitted: (value) {
                                   calculate2(index);
+                                },
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC23,
+                              child: FormBuilderTextField(
+                                textInputAction: TextInputAction.next,
+                                style: styleDataInTable,
+                                decoration: formField(),
+                                name: '${index}_23',
+                                initialValue:
+                                    (dataSurfactantInput[index].factorC !=
+                                                null &&
+                                            dataSurfactantInput[index]
+                                                .factorC
+                                                .isNotEmpty)
+                                        ? dataSurfactantInput[index]
+                                            .factorC
+                                            .toString()
+                                        : '1',
+                                readOnly: true,
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC20,
+                              child: FormBuilderTextField(
+                                textInputAction: TextInputAction.next,
+                                style: styleDataInTable,
+                                decoration: formField(),
+                                name: '${index}_20',
+                                initialValue: dataSurfactantInput[index]
+                                    .blank_2
+                                    .toString(),
+                                onChanged: (value) {
+                                  dataSurfactantInput[index].blank_2 =
+                                      value.toString();
+                                },
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC21,
+                              child: FormBuilderTextField(
+                                textInputAction: TextInputAction.next,
+                                style: styleDataInTable,
+                                decoration: formField(),
+                                name: '${index}_21',
+                                initialValue: dataSurfactantInput[index]
+                                    .dilution2
+                                    .toString(),
+                                onChanged: (value) {
+                                  dataSurfactantInput[index].dilution2 =
+                                      value.toString();
                                 },
                               ),
                             ),
@@ -540,7 +779,8 @@ class _SurfactantState extends State<Surfactant> {
                                 onChanged: (value) {
                                   dataSurfactantInput[index].startPoint_2 =
                                       value.toString();
-                                   },onSubmitted: (value) {
+                                },
+                                onSubmitted: (value) {
                                   calculate2(index);
                                 },
                               ),
@@ -561,7 +801,8 @@ class _SurfactantState extends State<Surfactant> {
                                 onChanged: (value) {
                                   dataSurfactantInput[index].finalPoint_2 =
                                       value.toString();
-                                   },onSubmitted: (value) {
+                                },
+                                onSubmitted: (value) {
                                   calculate2(index);
                                 },
                               ),
@@ -594,10 +835,33 @@ class _SurfactantState extends State<Surfactant> {
                           DataCell(_verticalDivider),
                           DataCell(
                             Container(
+                              width: widthC25,
+                              child: FormBuilderTextField(
+                                style: styleDataInTable,
+                                decoration: formField(),
+                                //enabled: false,
+                                name: '${index}_25',
+                                key: Key(dataSurfactantInput[index]
+                                    .resultgl_2
+                                    .toString()),
+                                initialValue: dataSurfactantInput[index]
+                                    .resultgl_2
+                                    .toString(),
+                                onChanged: (value) {
+                                  dataSurfactantInput[index].resultgl_2 =
+                                      value.toString();
+                                  dataSurfactantInput[index].resultglUnit_2 =
+                                      "g/L";
+                                },
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
                               width: widthC13,
                               child: FormBuilderTextField(
                                 textInputAction: TextInputAction.done,
-                                
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_13',

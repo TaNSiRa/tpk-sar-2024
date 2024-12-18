@@ -16,6 +16,7 @@ class ModelICP {
       this.requestSection,
       this.reqDate,
       this.custFull,
+      this.custShort,
       this.sampleCode,
       this.sampleGroup,
       this.sampleType,
@@ -58,8 +59,7 @@ class ModelICP {
       this.w_2,
       this.volume_2,
       this.tW_1,
-      this.tW_2
-      });
+      this.tW_2});
 
   dynamic requestSampleId;
   dynamic reqNo;
@@ -69,6 +69,7 @@ class ModelICP {
   dynamic requestSection;
   dynamic reqDate;
   dynamic custFull;
+  dynamic custShort;
   dynamic sampleCode;
   dynamic sampleGroup;
   dynamic sampleType;
@@ -122,6 +123,7 @@ class ModelICP {
         requestSection: json["RequestSection"] ?? "",
         reqDate: json["ReqDate"] ?? "",
         custFull: json["CustFull"] ?? "",
+        custShort: json["CustShort"] ?? "",
         sampleCode: json["SampleCode"] ?? "",
         sampleGroup: json["SampleGroup"] ?? "",
         sampleType: json["SampleType"] ?? "",
@@ -176,6 +178,7 @@ class ModelICP {
         "RequestSection": requestSection ?? "",
         "ReqDate": reqDate ?? "",
         "CustFull": custFull ?? "",
+        "CustShort": custShort ?? "",
         "SampleCode": sampleCode ?? "",
         "SampleGroup": sampleGroup ?? "",
         "SampleType": sampleType ?? "",

@@ -376,6 +376,8 @@ class _CnUVState extends State<CnUV> {
                                         "R": "R1",
                                         "custFull":
                                             dataCnUVInput[index].custFull,
+                                        "custShort":
+                                            dataCnUVInput[index].custShort,
                                         "sampleType":
                                             dataCnUVInput[index].sampleType,
                                         "sampleTank":
@@ -519,6 +521,8 @@ class _CnUVState extends State<CnUV> {
                                         "R": "R2",
                                         "custFull":
                                             dataCnUVInput[index].custFull,
+                                        "custShort":
+                                            dataCnUVInput[index].custShort,
                                         "sampleType":
                                             dataCnUVInput[index].sampleType,
                                         "sampleTank":

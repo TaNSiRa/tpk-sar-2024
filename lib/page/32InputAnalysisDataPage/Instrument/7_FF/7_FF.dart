@@ -86,12 +86,34 @@ class _FFState extends State<FF> {
           dataFFInput[index].result_1 = '< 1';
         }
       } else if (userBranch == "BANGPOO") {
-        if (double.parse(dataFFInput[index].result_1) < 1) {
-          dataFFInput[index].result_1 = '< 1';
+        if (dataFFInput[index].sampleType == 'P/H') {
+          if (double.parse(dataFFInput[index].result_1) < 50) {
+            dataFFInput[index].result_1 = '< 50';
+          }
+        }
+        if (dataFFInput[index].sampleType == 'Water') {
+          if (double.parse(dataFFInput[index].result_1) < 1) {
+            dataFFInput[index].result_1 = '< 1';
+          }
+        } else {
+          if (double.parse(dataFFInput[index].result_1) < 5) {
+            dataFFInput[index].result_1 = '< 5';
+          }
         }
       } else if (userBranch == "RAYONG") {
-        if (double.parse(dataFFInput[index].result_1) < 10) {
-          dataFFInput[index].result_1 = '< 10';
+        if (dataFFInput[index].sampleType == 'P/H') {
+          if (double.parse(dataFFInput[index].result_1) < 50) {
+            dataFFInput[index].result_1 = '< 50';
+          }
+        }
+        if (dataFFInput[index].sampleType == 'Water') {
+          if (double.parse(dataFFInput[index].result_1) < 1) {
+            dataFFInput[index].result_1 = '< 1';
+          }
+        } else {
+          if (double.parse(dataFFInput[index].result_1) < 5) {
+            dataFFInput[index].result_1 = '< 5';
+          }
         }
       }
       dataFFInput[index].resultUnit_1 = "ppm";
@@ -117,8 +139,8 @@ class _FFState extends State<FF> {
           dataFFInput[index].result_2 = '< 1';
         }
       } else if (userBranch == "RAYONG") {
-        if (double.parse(dataFFInput[index].result_2) < 10) {
-          dataFFInput[index].result_2 = '< 10';
+        if (double.parse(dataFFInput[index].result_2) < 5) {
+          dataFFInput[index].result_2 = '< 5';
         }
       }
 
@@ -196,7 +218,7 @@ class _FFState extends State<FF> {
             dataFFInput[index].userAnalysisBranch = userBranch;
             dataFFsave.add(dataFFInput[index]);
             context.read<ManageDataFF>().add(FFEvent.saveFFData);
-          //  Navigator.pop(context);
+            //  Navigator.pop(context);
           });
     } else {
       CoolAlert.show(

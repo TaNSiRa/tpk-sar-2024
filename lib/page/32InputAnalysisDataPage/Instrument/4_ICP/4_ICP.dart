@@ -812,6 +812,8 @@ class _ICPState extends State<ICP> {
                                         "R": "R1",
                                         "custFull":
                                             dataICPInput[index].custFull,
+                                        "custShort":
+                                            dataICPInput[index].custShort,
                                         "sampleType":
                                             dataICPInput[index].sampleType,
                                         "plant": userBranch,
@@ -1078,6 +1080,8 @@ class _ICPState extends State<ICP> {
                                         "R": "R2",
                                         "custFull":
                                             dataICPInput[index].custFull,
+                                        "custShort":
+                                            dataICPInput[index].custShort,
                                         "sampleType":
                                             dataICPInput[index].sampleType,
                                         "plant": userBranch,

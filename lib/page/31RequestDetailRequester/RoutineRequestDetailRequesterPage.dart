@@ -411,6 +411,31 @@ class _SampleDetailState extends State<SampleDetail> {
     );
   }
 
+  void sentReport() {
+    CoolAlert.show(
+      barrierDismissible: false,
+      width: 200,
+      showCancelBtn: true,
+      context: context,
+      type: CoolAlertType.custom,
+      text: 'SENT REPORT TO CUSTOMER',
+      confirmBtnText: 'Yes',
+      cancelBtnText: 'No',
+      loopAnimation: false,
+      onConfirmBtnTap: () {
+        DateTime now = new DateTime.now();
+        print(now.toString());
+        print(sampleData[0]);
+        sentReportData.clear();
+        sentReportData.add(sampleData[0]);
+        sentReportData[0].sentRep = now.toString();
+        sentReportData[0].sentRepStatus = "SENT REPORT";
+        SentReport();
+      },
+      onCancelBtnTap: () {},
+    );
+  }
+
   void rejectReport() {
     rejectReportData.clear();
     rejectReportData.add(sampleData[0]);
@@ -493,6 +518,27 @@ class _SampleDetailState extends State<SampleDetail> {
       onCancelBtnTap: () {
         // Navigator.pop(context);
       },
+    );
+  }
+
+  void cancelsendReport(String reqNo) {
+    CoolAlert.show(
+      barrierDismissible: true,
+      width: 200,
+      context: context,
+      type: CoolAlertType.warning,
+      text: 'CANCEL SENT REPORT',
+      confirmBtnText: 'Yes',
+      cancelBtnText: 'No',
+      loopAnimation: true,
+      onConfirmBtnTap: () {
+        cancelReportData.clear();
+        cancelReportData.add(sampleData[0]);
+        cancelReportData[0].sentRep = null;
+        cancelReportData[0].sentRepStatus = null;
+        submitcancelsentReport();
+      },
+      onCancelBtnTap: () {},
     );
   }
 
@@ -1258,8 +1304,8 @@ class _SampleDetailState extends State<SampleDetail> {
                                     /* KACReportDataPopUp(
                                         requestData[0].reqNo.toString()); */
                                     /*  _launchURL(
-                                        'http://172.23.10.51/ReportServer?%2fReport+Project1%2fSAR_KAC&rs:Format=PDF&rs:ClearSession=true&rs:Command=Render&ReqNo=${requestData[0].reqNo}');
-                                    */ //http://172.23.10.51/ReportServer/Pages/ReportViewer.aspx?%2fReport+Project1%2fSAR_KAC_TestOp2&rs:Command=Render
+                                        'http://127.0.0.1/ReportServer?%2fReport+Project1%2fSAR_KAC&rs:Format=PDF&rs:ClearSession=true&rs:Command=Render&ReqNo=${requestData[0].reqNo}');
+                                    */ //http://127.0.0.1/ReportServer/Pages/ReportViewer.aspx?%2fReport+Project1%2fSAR_KAC_TestOp2&rs:Command=Render
                                     /* _launchURL(
                                         'http://172.20.30.46/ReportServer/Pages/ReportViewer.aspx?%2fReport+Project4%2fTPK-SAR-${requestData[0].patternReport}&:Command=Render&T1=${requestData[0].reqNo}'); */
                                   },
@@ -1342,6 +1388,70 @@ class _SampleDetailState extends State<SampleDetail> {
                             child: Text(requestData[0].nextApprover.toString()),
                           ),
                         ),
+                        if (requestData[0].nextApprover.toString() ==
+                            "COMPLETE") ...[
+                          rowData(
+                            "SEND TO CUSTOMER",
+                            Row(
+                              children: [
+                                Container(
+                                  child: Text(
+                                    (requestData[0].sentRepStatus == null ||
+                                            requestData[0].sentRepStatus == "")
+                                        ? "NOT SENT YET"
+                                        : requestData[0]
+                                            .sentRepStatus
+                                            .toString(),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                if (requestData[0].sentRepStatus !=
+                                        'SENT COMPLETE' &&
+                                    requestData[0].incharge == userName) ...[
+                                  Container(
+                                    child: IconButton(
+                                      padding: EdgeInsets.zero,
+                                      iconSize: 22,
+                                      icon: Icon(
+                                        Icons.send_rounded,
+                                        color: Colors.black,
+                                      ),
+                                      onPressed: () {
+                                        sentReport();
+                                      },
+                                    ),
+                                  ),
+                                ],
+                                if (requestData[0].sentRepStatus.toString() ==
+                                        "SENT COMPLETE" &&
+                                    requestData[0].incharge == userName) ...[
+                                  Container(
+                                    child: IconButton(
+                                      padding: EdgeInsets.zero,
+                                      icon: Icon(
+                                        Icons.cancel,
+                                        color: Colors.red,
+                                      ),
+                                      onPressed: () {
+                                        cancelsendReport(
+                                            requestData[0].reqNo.toString());
+                                      },
+                                    ),
+                                  ),
+                                ],
+                                if (requestData[0].sentRep.toString() ==
+                                    "SENT COMPLETE") ...[
+                                  Text(
+                                    toDateTime(
+                                        requestData[0].sentRep.toString()),
+                                  ),
+                                ],
+                              ],
+                            ),
+                          ),
+                        ],
                         rowData(
                           "APPROVE HISTORY",
                           Container(
@@ -1359,10 +1469,10 @@ class _SampleDetailState extends State<SampleDetail> {
                           ),
                         ),
                       ],
-                      /*  rowData(
-                          "CANCEL REQUEST",
-                          (() {
-                            if (userCheck)
+                      if (userCheck)
+                        rowData(
+                            "CANCEL REQUEST",
+                            (() {
                               return IconButton(
                                 padding: EdgeInsets.zero,
                                 icon: Icon(
@@ -1373,9 +1483,9 @@ class _SampleDetailState extends State<SampleDetail> {
                                   cancelRequest(0);
                                 },
                               );
-                            else
-                              return Container();
-                          }())), */
+                              // else
+                              //   return Container();
+                            }())),
                       rowData(
                         "SETTING VIEW",
                         Container(
@@ -1970,18 +2080,46 @@ class _SampleDetailState extends State<SampleDetail> {
                                                 ),
                                               ),
                                               DataCell(_verticalDivider),
-                                              DataCell(Text(
-                                                  // raw data from lab
-                                                  itemData[indexSample]
-                                                              [indexItem]
-                                                          .resultApprove
-                                                          .toString() +
-                                                      " " +
-                                                      itemData[indexSample]
-                                                              [indexItem]
-                                                          .resultApproveUnit
-                                                          .toString(),
-                                                  style: styleDataInTable)),
+                                              DataCell(
+                                                Text(
+                                                  itemData[indexSample][indexItem]
+                                                                  .itemName ==
+                                                              'Surfactant' &&
+                                                          itemData[indexSample][indexItem]
+                                                                  .resultgLApprove !=
+                                                              ''
+                                                      ? itemData[indexSample]
+                                                                  [indexItem]
+                                                              .resultApprove
+                                                              .toString() +
+                                                          " " +
+                                                          itemData[indexSample]
+                                                                  [indexItem]
+                                                              .resultApproveUnit
+                                                              .toString() +
+                                                          " " +
+                                                          "(" +
+                                                          itemData[indexSample]
+                                                                  [indexItem]
+                                                              .resultgLApprove
+                                                              .toString() +
+                                                          " " +
+                                                          itemData[indexSample]
+                                                                  [indexItem]
+                                                              .resultgLApproveUnit
+                                                              .toString() +
+                                                          ")"
+                                                      : itemData[indexSample][indexItem]
+                                                              .resultApprove
+                                                              .toString() +
+                                                          " " +
+                                                          itemData[indexSample]
+                                                                  [indexItem]
+                                                              .resultApproveUnit
+                                                              .toString(),
+                                                  style: styleDataInTable,
+                                                ),
+                                              ),
                                               DataCell(_verticalDivider),
                                               DataCell(Row(
                                                 children: [

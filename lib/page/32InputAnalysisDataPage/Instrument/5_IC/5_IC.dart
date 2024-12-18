@@ -388,6 +388,8 @@ class _ICState extends State<IC> {
                                             .toString(),
                                         "R": "R1",
                                         "custFull": dataICInput[index].custFull,
+                                        "custShort":
+                                            dataICInput[index].custShort,
                                         "sampleType":
                                             dataICInput[index].sampleType,
                                         "sampleTank":
@@ -586,6 +588,8 @@ class _ICState extends State<IC> {
                                             .toString(),
                                         "R": "R2",
                                         "custFull": dataICInput[index].custFull,
+                                        "custShort":
+                                            dataICInput[index].custShort,
                                         "sampleType":
                                             dataICInput[index].sampleType,
                                         "sampleTank":

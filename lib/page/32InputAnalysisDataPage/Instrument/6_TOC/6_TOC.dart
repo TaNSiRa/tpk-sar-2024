@@ -425,6 +425,8 @@ class _TOCState extends State<TOC> {
                                         "R": "R1",
                                         "custFull":
                                             dataTOCInput[index].custFull,
+                                        "custShort":
+                                            dataTOCInput[index].custShort,
                                         "sampleType":
                                             dataTOCInput[index].sampleType,
                                         "plant": userBranch,
@@ -700,6 +702,8 @@ class _TOCState extends State<TOC> {
                                         "R": "R2",
                                         "custFull":
                                             dataTOCInput[index].custFull,
+                                        "custShort":
+                                            dataTOCInput[index].custShort,
                                         "sampleType":
                                             dataTOCInput[index].sampleType,
                                         "plant": userBranch,
