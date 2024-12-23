@@ -88,7 +88,7 @@ class _SurfactantState extends State<Surfactant> {
     try {
       double factorC = dataSurfactantInput[index].factorC.isNotEmpty
           ? double.parse(dataSurfactantInput[index].factorC)
-          : 1.0;
+          : 0.0;
       dataSurfactantInput[index]
           .result_2 = (((double.parse(dataSurfactantInput[index].finalPoint_2) -
                       double.parse(dataSurfactantInput[index].startPoint_2)) *
@@ -721,7 +721,7 @@ class _SurfactantState extends State<Surfactant> {
                                         ? dataSurfactantInput[index]
                                             .factorC
                                             .toString()
-                                        : '1',
+                                        : '',
                                 readOnly: true,
                               ),
                             ),
