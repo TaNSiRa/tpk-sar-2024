@@ -50,6 +50,7 @@ Stream<int> searchCnUVForInput() async* {
         .post(Uri.parse("$url/Instrument_searchCnUVForInput"), body: qParams)
         .timeout(Duration(seconds: timeOut));
     if (response.statusCode == 200) {
+      print(response.statusCode);
       EasyLoading.dismiss();
       //print(response.body);
       if (response.body != "error") {

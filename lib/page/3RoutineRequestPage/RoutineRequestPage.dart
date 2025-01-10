@@ -544,43 +544,43 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
                                     ],
                                   ),
                                 ),
-                                // Container(
-                                //   height: heightBox1,
-                                //   child: Row(
-                                //     mainAxisAlignment: MainAxisAlignment.start,
-                                //     crossAxisAlignment:
-                                //         CrossAxisAlignment.center,
-                                //     children: [
-                                //       Container(
-                                //         width: widthsection1,
-                                //         child: Text(
-                                //           "FULL ITEM",
-                                //           style: stylesection,
-                                //         ),
-                                //       ),
-                                //       Container(
-                                //         child: Switch(
-                                //           value: FullItem,
-                                //           onChanged: (bool value) {
-                                //             setState(() {
-                                //               FullItem = value;
-                                //               context
-                                //                   .read<
-                                //                       ManageDataRoutineRequest>()
-                                //                   .add(EventRoutineRequestPage
-                                //                       .reselectCustomer);
-                                //               context
-                                //                   .read<
-                                //                       ManageDataRoutineRequest>()
-                                //                   .add(EventRoutineRequestPage
-                                //                       .findCustomerData);
-                                //             });
-                                //           },
-                                //         ),
-                                //       )
-                                //     ],
-                                //   ),
-                                // ),
+                                Container(
+                                  height: heightBox1,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      Container(
+                                        width: widthsection1,
+                                        child: Text(
+                                          "FULL ITEM",
+                                          style: stylesection,
+                                        ),
+                                      ),
+                                      Container(
+                                        child: Switch(
+                                          value: FullItem,
+                                          onChanged: (bool value) {
+                                            setState(() {
+                                              FullItem = value;
+                                              context
+                                                  .read<
+                                                      ManageDataRoutineRequest>()
+                                                  .add(EventRoutineRequestPage
+                                                      .reselectCustomer);
+                                              context
+                                                  .read<
+                                                      ManageDataRoutineRequest>()
+                                                  .add(EventRoutineRequestPage
+                                                      .findCustomerData);
+                                            });
+                                          },
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
                                 Container(
                                   height: heightBox1,
                                   child: Row(

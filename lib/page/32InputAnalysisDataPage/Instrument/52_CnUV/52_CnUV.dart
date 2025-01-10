@@ -496,6 +496,7 @@ class _CnUVState extends State<CnUV> {
                               ),
                             ),
                           ),
+                          DataCell(_verticalDivider),
                           DataCell(
                             Container(
                               width: widthC13,
@@ -620,7 +621,6 @@ class _CnUVState extends State<CnUV> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 textInputAction: TextInputAction.done,
-                                //
                                 name: '${index}_10',
                                 key: Key(
                                     dataCnUVInput[index].result_2.toString()),

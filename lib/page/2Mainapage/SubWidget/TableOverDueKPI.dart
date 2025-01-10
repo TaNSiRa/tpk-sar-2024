@@ -276,6 +276,10 @@ class TableOverDueKPIDataSource extends DataTableSource {
     String picSample4 = "";
     String picSample5 = "";
     String dropdownStage = dataBuff.stage;
+    String dropdownReason = "";
+    List<MapEntry<String, String>> dropdownStage2Values = [
+      MapEntry('No Data', 'No Data')
+    ];
     final List<double> values = [
       double.tryParse(dataBuff.bdprepare ?? '0') ?? 0,
       double.tryParse(dataBuff.bdttc ?? '0') ?? 0,
@@ -424,6 +428,29 @@ class TableOverDueKPIDataSource extends DataTableSource {
                   borderCO: Colors.transparent,
                   onChangeinside: (d, k) {
                     dropdownStage = d;
+
+                    final Map<String, List<MapEntry<String, String>>>
+                        stageMapping = {
+                      'GL sign': [
+                        MapEntry('Cut sample', 'Cut sample'),
+                        MapEntry('Re-check chemical values',
+                            'Re-check chemical values'),
+                      ],
+                      'TTC analysis': [
+                        MapEntry('Re-analyze', 'Re-analyze'),
+                        MapEntry('Review results', 'Review results'),
+                      ],
+                      'No Data': [MapEntry('No Action', 'No Action')],
+                    };
+                    dropdownStage2Values =
+                        stageMapping[d] ?? [MapEntry('No Data', 'No Data')];
+                    print(dropdownStage2Values);
+                    // for (var i = 0; i < stageMapping.length; i++) {
+                    //   if (stageMapping == d) {
+                    //     dropdownStage2Values == stageMapping;
+                    //     print(dropdownStage2Values);
+                    //   }
+                    // }
                   },
                   value: dataBuff.stage,
                   height: 29.5,
@@ -435,18 +462,53 @@ class TableOverDueKPIDataSource extends DataTableSource {
                 ),
         ),
         DataCell(
-          TextFormField(
-            initialValue: dataBuff.reason,
-            onChanged: (value) {
-              dataBuff.reason = value;
-            },
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-            ),
-            style: styleDataRow,
-          ),
+          dropdownStage2Values.length > 1
+              ? AdvanceDropDown(
+                  listdropdown: dropdownStage2Values,
+                  borderCO: Colors.transparent,
+                  onChangeinside: (d, k) {
+                    dropdownReason = d;
+                  },
+                  value: dropdownReason,
+                  height: 29.5,
+                  width: 200,
+                )
+              : Container(
+                  child: Text("  " + dropdownStage2Values.first.value,
+                      style: styleDataRow, textAlign: TextAlign.start),
+                ),
         ),
+
+        // DataCell(
+        //   listdropdown.length > 1
+        //       ? AdvanceDropDown(
+        //           listdropdown: listdropdown,
+        //           borderCO: Colors.transparent,
+        //           onChangeinside: (d, k) {
+        //             dropdownStage = d;
+        //           },
+        //           value: dataBuff.stage,
+        //           height: 29.5,
+        //           width: 200,
+        //         )
+        //       : Container(
+        //           child: Text("  " + listdropdown.first.value,
+        //               style: styleDataRow, textAlign: TextAlign.start),
+        //         ),
+        // ),
+        // DataCell(
+        //   TextFormField(
+        //     initialValue: dataBuff.reason,
+        //     onChanged: (value) {
+        //       dataBuff.reason = value;
+        //     },
+        //     decoration: InputDecoration(
+        //       border: OutlineInputBorder(),
+        //       contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        //     ),
+        //     style: styleDataRow,
+        //   ),
+        // ),
         DataCell(
             // IconButton(
             //   icon: Icon(Icons.check_circle_outline_rounded, color: Colors.green),
@@ -458,7 +520,8 @@ class TableOverDueKPIDataSource extends DataTableSource {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.green,
                 ),
-                onPressed: () => saveKPIreason(index, dropdownStage),
+                onPressed: () =>
+                    saveKPIreason(index, dropdownStage, dropdownReason),
                 child: Text('Save'))),
       ],
     );
@@ -481,7 +544,7 @@ class TableOverDueKPIDataSource extends DataTableSource {
     notifyListeners();
   }
 
-  void saveKPIreason(int index, String dropdownStage) {
+  void saveKPIreason(int index, String dropdownStage, String dropdownReason) {
     final dataBuff = dataSource[index];
 
     CoolAlert.show(
@@ -498,7 +561,8 @@ class TableOverDueKPIDataSource extends DataTableSource {
         print(dataBuff.reqNo);
         SaveKPIReason.clear();
         SaveKPIReason.add(dataBuff);
-        SaveKPIReason[0].reason = dataBuff.reason;
+        // SaveKPIReason[0].reason = dataBuff.reason;
+        SaveKPIReason[0].reason = dropdownReason;
         SaveKPIReason[0].stage = dropdownStage;
         print('Saved Reason: ${SaveKPIReason[0].reason}');
         saveKPIReason();

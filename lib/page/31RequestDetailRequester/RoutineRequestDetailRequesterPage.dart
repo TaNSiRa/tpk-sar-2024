@@ -1304,8 +1304,8 @@ class _SampleDetailState extends State<SampleDetail> {
                                     /* KACReportDataPopUp(
                                         requestData[0].reqNo.toString()); */
                                     /*  _launchURL(
-                                        'http://172.23.10.51/ReportServer?%2fReport+Project1%2fSAR_KAC&rs:Format=PDF&rs:ClearSession=true&rs:Command=Render&ReqNo=${requestData[0].reqNo}');
-                                    */ //http://172.23.10.51/ReportServer/Pages/ReportViewer.aspx?%2fReport+Project1%2fSAR_KAC_TestOp2&rs:Command=Render
+                                        'http://127.0.0.1/ReportServer?%2fReport+Project1%2fSAR_KAC&rs:Format=PDF&rs:ClearSession=true&rs:Command=Render&ReqNo=${requestData[0].reqNo}');
+                                    */ //http://127.0.0.1/ReportServer/Pages/ReportViewer.aspx?%2fReport+Project1%2fSAR_KAC_TestOp2&rs:Command=Render
                                     /* _launchURL(
                                         'http://172.20.30.46/ReportServer/Pages/ReportViewer.aspx?%2fReport+Project4%2fTPK-SAR-${requestData[0].patternReport}&:Command=Render&T1=${requestData[0].reqNo}'); */
                                   },
