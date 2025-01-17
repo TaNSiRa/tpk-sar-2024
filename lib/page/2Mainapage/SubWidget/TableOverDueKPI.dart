@@ -8,6 +8,7 @@ import 'package:tpk_login_arsa_01/Layout/ChangePage/Data/BlocChagpage.dart';
 import 'package:tpk_login_arsa_01/page/2Mainapage/Data/MainPage_bloc.dart';
 
 import '../../../Global/dataTime.dart';
+import '../../../Layout/ChangePage/Data/BlocPageRebuild.dart';
 import '../../../widget/common/Advancedropdown.dart';
 
 // Copyright 2019 The Flutter team. All rights reserved.
@@ -18,6 +19,10 @@ import '../../../widget/common/Advancedropdown.dart';
 // Changes and modifications by Maxim Saplin, 2021
 
 Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+//----------------------------------------------------------
+
+//----------------------------------------------------------
 
 class TableOverDueKPI extends StatefulWidget {
   const TableOverDueKPI();
@@ -204,6 +209,7 @@ class _TableOverDueKPIState extends State<TableOverDueKPI>
   }
 }
 
+List<MapEntry<String, String>> dropdownStage2Values = [MapEntry('', '')];
 TextStyle styleDataRow = TextStyle(fontSize: 12, fontFamily: 'Mitr');
 TextStyle styleDataColumn =
     TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
@@ -262,6 +268,9 @@ class TableOverDueKPIDataSource extends DataTableSource {
   }
 
   @override
+  bool get isRowCountApproximate => false;
+
+  @override
   DataRow getRow(int index) {
     final format = NumberFormat.decimalPercentPattern(
       locale: 'en',
@@ -277,9 +286,7 @@ class TableOverDueKPIDataSource extends DataTableSource {
     String picSample5 = "";
     String dropdownStage = dataBuff.stage;
     String dropdownReason = "";
-    List<MapEntry<String, String>> dropdownStage2Values = [
-      MapEntry('No Data', 'No Data')
-    ];
+
     final List<double> values = [
       double.tryParse(dataBuff.bdprepare ?? '0') ?? 0,
       double.tryParse(dataBuff.bdttc ?? '0') ?? 0,
@@ -395,7 +402,7 @@ class TableOverDueKPIDataSource extends DataTableSource {
     // ตรวจสอบว่ามีตัวเลือกใน dropdown หรือไม่
     if (listdropdown.isEmpty) {
       listdropdown = [
-        MapEntry('No Data', 'No Data'),
+        MapEntry('', ''),
       ];
     }
 
@@ -428,7 +435,7 @@ class TableOverDueKPIDataSource extends DataTableSource {
                   borderCO: Colors.transparent,
                   onChangeinside: (d, k) {
                     dropdownStage = d;
-
+                    print(d);
                     final Map<String, List<MapEntry<String, String>>>
                         stageMapping = {
                       'GL sign': [
@@ -440,10 +447,9 @@ class TableOverDueKPIDataSource extends DataTableSource {
                         MapEntry('Re-analyze', 'Re-analyze'),
                         MapEntry('Review results', 'Review results'),
                       ],
-                      'No Data': [MapEntry('No Action', 'No Action')],
                     };
                     dropdownStage2Values =
-                        stageMapping[d] ?? [MapEntry('No Data', 'No Data')];
+                        stageMapping[d] ?? [MapEntry('', '')];
                     print(dropdownStage2Values);
                     // for (var i = 0; i < stageMapping.length; i++) {
                     //   if (stageMapping == d) {
@@ -451,8 +457,10 @@ class TableOverDueKPIDataSource extends DataTableSource {
                     //     print(dropdownStage2Values);
                     //   }
                     // }
+                    BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
                   },
-                  value: dataBuff.stage,
+                  // value: dataBuff.stage,
+                  value: dropdownStage,
                   height: 29.5,
                   width: 200,
                 )
@@ -467,14 +475,15 @@ class TableOverDueKPIDataSource extends DataTableSource {
                   listdropdown: dropdownStage2Values,
                   borderCO: Colors.transparent,
                   onChangeinside: (d, k) {
-                    dropdownReason = d;
+                    dataBuff.reason = d;
+                    BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
                   },
-                  value: dropdownReason,
+                  value: dataBuff.reason,
                   height: 29.5,
                   width: 200,
                 )
               : Container(
-                  child: Text("  " + dropdownStage2Values.first.value,
+                  child: Text("  " + dataBuff.reason,
                       style: styleDataRow, textAlign: TextAlign.start),
                 ),
         ),

@@ -5,6 +5,7 @@ class BlocPageRebuild extends Cubit<bool> {
 
   //! not rebuild app bar and left menu
   void rebuildPage() {
+    print("object");
     emit(!state);
   }
 }
