@@ -54,11 +54,13 @@ Stream<int> searchTOCForInput() async* {
       //print(response.body);
       if (response.body != "error") {
         dataTOCInput = modelTOCFromJson(response.body);
+        print(dataTOCInput.length);
         for (int i = 0; i < dataTOCInput.length; i++) {
           try {
             //print(dataTOCInput[i].mag);
             var buff = dataTOCInput[i].mag.split('/');
-            //print(buff);
+            // print(buff);
+            print(dataTOCInput[i].tC_RawData_1);
             if (buff.length == 2) {
               if (dataTOCInput[i].tC_DilutionTime_1 == "" &&
                   dataTOCInput[i].iC_DilutionTime_1 == "") {

@@ -8,6 +8,7 @@ import 'package:tpk_login_arsa_01/Layout/ChangePage/Data/BlocChagpage.dart';
 import 'package:tpk_login_arsa_01/page/2Mainapage/Data/MainPage_bloc.dart';
 
 import '../../../Global/dataTime.dart';
+import '../../../Global/global_var.dart';
 import '../../../Layout/ChangePage/Data/BlocPageRebuild.dart';
 import '../../../widget/common/Advancedropdown.dart';
 
@@ -160,32 +161,32 @@ class _TableOverDueKPIState extends State<TableOverDueKPI>
               label: Text('REQUEST NO',
                   style: styleDataColumn, textAlign: TextAlign.center),
               numeric: false,
-              onSort: (columnIndex, ascending) =>
-                  sort<String>((d) => d.reqNo, columnIndex, ascending),
+              // onSort: (columnIndex, ascending) =>
+              //     sort<String>((d) => d.reqNo, columnIndex, ascending),
             ),
             DataColumn(
               label: Text('CUSTOMER NAME',
                   style: styleDataColumn, textAlign: TextAlign.center),
               numeric: false,
               tooltip: 'CUSTOMER NAME',
-              onSort: (columnIndex, ascending) =>
-                  sort<String>((d) => d.custFull, columnIndex, ascending),
+              // onSort: (columnIndex, ascending) =>
+              //     sort<String>((d) => d.custFull, columnIndex, ascending),
             ),
             DataColumn(
               label: Text('OVER DUE (DAYS)',
                   style: styleDataColumn, textAlign: TextAlign.center),
               numeric:
                   false, // Deliberately set to false to avoid right alignment.
-              onSort: (columnIndex, ascending) =>
-                  sort<String>((d) => d.repdays, columnIndex, ascending),
+              // onSort: (columnIndex, ascending) =>
+              //     sort<String>((d) => d.repdays, columnIndex, ascending),
             ),
             DataColumn(
               label: Text('  STAGE',
                   style: styleDataColumn, textAlign: TextAlign.center),
               numeric:
                   false, // Deliberately set to false to avoid right alignment.
-              onSort: (columnIndex, ascending) =>
-                  sort<String>((d) => d.repdays, columnIndex, ascending),
+              // onSort: (columnIndex, ascending) =>
+              //     sort<String>((d) => d.repdays, columnIndex, ascending),
             ),
             DataColumn(
               label: Text('REASON',
@@ -193,11 +194,17 @@ class _TableOverDueKPIState extends State<TableOverDueKPI>
               numeric:
                   false, // Deliberately set to false to avoid right alignment.
               tooltip: 'REASON',
-              onSort: (columnIndex, ascending) =>
-                  sort<String>((d) => d.reason, columnIndex, ascending),
+              // onSort: (columnIndex, ascending) =>
+              //     sort<String>((d) => d.reason, columnIndex, ascending),
             ),
             DataColumn(
               label: Text('SAVE REASON',
+                  style: styleDataColumn, textAlign: TextAlign.center),
+              numeric:
+                  false, // Deliberately set to false to avoid right alignment.
+            ),
+            DataColumn(
+              label: Text('EDIT DATA',
                   style: styleDataColumn, textAlign: TextAlign.center),
               numeric:
                   false, // Deliberately set to false to avoid right alignment.
@@ -209,7 +216,6 @@ class _TableOverDueKPIState extends State<TableOverDueKPI>
   }
 }
 
-List<MapEntry<String, String>> dropdownStage2Values = [MapEntry('', '')];
 TextStyle styleDataRow = TextStyle(fontSize: 12, fontFamily: 'Mitr');
 TextStyle styleDataColumn =
     TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
@@ -268,9 +274,6 @@ class TableOverDueKPIDataSource extends DataTableSource {
   }
 
   @override
-  bool get isRowCountApproximate => false;
-
-  @override
   DataRow getRow(int index) {
     final format = NumberFormat.decimalPercentPattern(
       locale: 'en',
@@ -285,7 +288,7 @@ class TableOverDueKPIDataSource extends DataTableSource {
     String picSample4 = "";
     String picSample5 = "";
     String dropdownStage = dataBuff.stage;
-    String dropdownReason = "";
+    String dropdownReason = dataBuff.reason;
 
     final List<double> values = [
       double.tryParse(dataBuff.bdprepare ?? '0') ?? 0,
@@ -375,15 +378,15 @@ class TableOverDueKPIDataSource extends DataTableSource {
 
     // final int maxValue = values.reduce((a, b) => a > b ? a : b);
     final Map<String, double> valueMap = {
-      'Prepare+Requestsample': double.tryParse(dataBuff.bdprepare ?? '0') ?? 0,
+      'Prepare+Request TTC': double.tryParse(dataBuff.bdprepare ?? '0') ?? 0,
       'TTC analysis': double.tryParse(dataBuff.bdttc ?? '0') ?? 0,
-      'Issue report after TTC': double.tryParse(dataBuff.bdissue ?? '0') ?? 0,
+      'Issue report': double.tryParse(dataBuff.bdissue ?? '0') ?? 0,
       'Revise report': averageRevise,
-      'Sub lead sign': averageSublead,
-      'GL sign': averageGL,
-      'MGR sign': averageMGR,
-      'JP sign': averageJP,
-      'Sent to customer': double.tryParse(dataBuff.bdsent ?? '0') ?? 0,
+      'SL approve': averageSublead,
+      'GL approve': averageGL,
+      'MGR approve': averageMGR,
+      'JP approve': averageJP,
+      'Send to customer': double.tryParse(dataBuff.bdsent ?? '0') ?? 0,
     };
 
     // หาค่า maxValue
@@ -394,18 +397,109 @@ class TableOverDueKPIDataSource extends DataTableSource {
         valueMap.entries.where((entry) => entry.value == maxValue).toList();
 
     // แปลง maxEntries เป็น listdropdown
-    List<MapEntry<String, String>> listdropdown =
+    List<MapEntry<String, String>> listdropdownstage =
         maxEntries.map((entry) => MapEntry(entry.key, entry.key)).toList();
 
+    List<MapEntry<String, String>>? listdropdownreason = [];
     // print(valueMap);
 
     // ตรวจสอบว่ามีตัวเลือกใน dropdown หรือไม่
-    if (listdropdown.isEmpty) {
-      listdropdown = [
-        MapEntry('', ''),
+    if (listdropdownstage.isEmpty) {
+      listdropdownstage = [
+        MapEntry('-', '-'),
       ];
     }
 
+    if (listdropdownreason.isEmpty) {
+      listdropdownreason = [
+        MapEntry('-', '-'),
+      ];
+    }
+
+    final Map<String, List<MapEntry<String, String>>> stageMapping = {
+      'Prepare+Request TTC': [
+        MapEntry('Cut sample', 'Cut sample'),
+        MapEntry('Re-check chemical values', 'Re-check chemical values'),
+        MapEntry('Not in the office', 'Not in the office'),
+        MapEntry('Forget sample at customer', 'Forget sample at customer'),
+        MapEntry('Other', 'Other'),
+      ],
+      'TTC analysis': [
+        MapEntry('Re-check chemicals', 'Re-check chemicals'),
+        MapEntry(
+            'Re-check SEM or coating weight', 'Re-check SEM or coating weight'),
+        MapEntry('Instrument breakdown', 'Instrument breakdown'),
+        MapEntry('Other', 'Other'),
+      ],
+      'Issue report': [
+        MapEntry('Request TTC to re-check chemicals',
+            'Request TTC to re-check chemicals'),
+        MapEntry('Request TTC to re-check SEM or coating weight',
+            'Request TTC to re-check SEM or coating weight'),
+        MapEntry('Follow up project', 'Follow up project'),
+        MapEntry('SAR error', 'SAR error'),
+        MapEntry('Revise data in SAR system', 'Revise data in SAR system'),
+        MapEntry('Sick / Vacation', 'Sick / Vacation'),
+        MapEntry('Forget', 'Forget'),
+        MapEntry('Other', 'Other'),
+      ],
+      'Revise report': [
+        MapEntry('Forget', 'Forget'),
+        MapEntry('Sick / Vacation', 'Sick / Vacation'),
+        MapEntry('Other', 'Other'),
+      ],
+      'SL approve': [
+        MapEntry('Follow up project', 'Follow up project'),
+        MapEntry('Sick / Vacation', 'Sick / Vacation'),
+        MapEntry('Other', 'Other'),
+      ],
+      'GL approve': [
+        MapEntry('Follow up project', 'Follow up project'),
+        MapEntry('Sick / Vacation', 'Sick / Vacation'),
+        MapEntry('Other', 'Other'),
+      ],
+      'MGR approve': [
+        MapEntry('Follow up project', 'Follow up project'),
+        MapEntry('Sick / Vacation', 'Sick / Vacation'),
+        MapEntry('Other', 'Other'),
+      ],
+      'JP approve': [
+        MapEntry('Follow up project', 'Follow up project'),
+        MapEntry('Sick / Vacation', 'Sick / Vacation'),
+        MapEntry('Other', 'Other'),
+      ],
+      'Send to customer': [
+        MapEntry('Forget', 'Forget'),
+        MapEntry('Other', 'Other'),
+      ],
+    };
+
+    // print(listdropdownreason);
+    // print(listdropdownreason!.length);
+
+    if (dataBuff.stage.isNotEmpty) {
+      dataBuff.listdropdownstage = [MapEntry(dataBuff.stage, dataBuff.stage)];
+    } else if (dataBuff.stage.isEmpty) {
+      List<MapEntry<String, String>> listdropdownstage =
+          maxEntries.map((entry) => MapEntry(entry.key, entry.key)).toList();
+      dataBuff.listdropdownstage = listdropdownstage;
+      dropdownStage = listdropdownstage.first.key;
+    }
+    if (dataBuff.reason.isNotEmpty) {
+      dataBuff.listdropdownreason = [
+        MapEntry(dataBuff.reason, dataBuff.reason)
+      ];
+    } else if (dataBuff.reason.isEmpty) {
+      listdropdownreason =
+          stageMapping[listdropdownstage.first.key] ?? [MapEntry('-', '-')];
+      dataBuff.listdropdownreason = listdropdownreason;
+
+      // if (!listdropdownreason.any((entry) => entry.key == dataBuff.reason)) {
+      //   dataBuff.reason = listdropdownreason.first.key;
+      // }
+    }
+
+    print('dropdownStage: $dropdownStage');
     return DataRow.byIndex(
       index: index,
       selected: dataBuff.selected,
@@ -429,109 +523,65 @@ class TableOverDueKPIDataSource extends DataTableSource {
             child: Text("              " + dataBuff.repdays,
                 style: styleDataRow, textAlign: TextAlign.start))),
         DataCell(
-          listdropdown.length > 1
+          dataBuff.listdropdownstage.length > 1
               ? AdvanceDropDown(
-                  listdropdown: listdropdown,
+                  listdropdown: dataBuff.listdropdownstage,
                   borderCO: Colors.transparent,
                   onChangeinside: (d, k) {
                     dropdownStage = d;
-                    print(d);
-                    final Map<String, List<MapEntry<String, String>>>
-                        stageMapping = {
-                      'GL sign': [
-                        MapEntry('Cut sample', 'Cut sample'),
-                        MapEntry('Re-check chemical values',
-                            'Re-check chemical values'),
-                      ],
-                      'TTC analysis': [
-                        MapEntry('Re-analyze', 'Re-analyze'),
-                        MapEntry('Review results', 'Review results'),
-                      ],
-                    };
-                    dropdownStage2Values =
-                        stageMapping[d] ?? [MapEntry('', '')];
-                    print(dropdownStage2Values);
-                    // for (var i = 0; i < stageMapping.length; i++) {
-                    //   if (stageMapping == d) {
-                    //     dropdownStage2Values == stageMapping;
-                    //     print(dropdownStage2Values);
-                    //   }
-                    // }
-                    BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+                    dataBuff.stage = d;
+                    // print(d);
+
+                    // BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+                    notifyListeners();
                   },
-                  // value: dataBuff.stage,
                   value: dropdownStage,
                   height: 29.5,
                   width: 200,
                 )
               : Container(
-                  child: Text("  " + listdropdown.first.value,
+                  child: Text("  " + dropdownStage,
                       style: styleDataRow, textAlign: TextAlign.start),
                 ),
         ),
         DataCell(
-          dropdownStage2Values.length > 1
+          dataBuff.listdropdownreason.length > 1
               ? AdvanceDropDown(
-                  listdropdown: dropdownStage2Values,
+                  listdropdown: dataBuff.listdropdownreason,
                   borderCO: Colors.transparent,
                   onChangeinside: (d, k) {
+                    dropdownReason = d;
                     dataBuff.reason = d;
-                    BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+
+                    // BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+                    // notifyListeners();
                   },
-                  value: dataBuff.reason,
+                  value: dropdownReason,
                   height: 29.5,
                   width: 200,
                 )
               : Container(
-                  child: Text("  " + dataBuff.reason,
+                  child: Text("  " + dropdownReason,
                       style: styleDataRow, textAlign: TextAlign.start),
                 ),
         ),
-
-        // DataCell(
-        //   listdropdown.length > 1
-        //       ? AdvanceDropDown(
-        //           listdropdown: listdropdown,
-        //           borderCO: Colors.transparent,
-        //           onChangeinside: (d, k) {
-        //             dropdownStage = d;
-        //           },
-        //           value: dataBuff.stage,
-        //           height: 29.5,
-        //           width: 200,
-        //         )
-        //       : Container(
-        //           child: Text("  " + listdropdown.first.value,
-        //               style: styleDataRow, textAlign: TextAlign.start),
-        //         ),
-        // ),
-        // DataCell(
-        //   TextFormField(
-        //     initialValue: dataBuff.reason,
-        //     onChanged: (value) {
-        //       dataBuff.reason = value;
-        //     },
-        //     decoration: InputDecoration(
-        //       border: OutlineInputBorder(),
-        //       contentPadding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-        //     ),
-        //     style: styleDataRow,
-        //   ),
-        // ),
-        DataCell(
-            // IconButton(
-            //   icon: Icon(Icons.check_circle_outline_rounded, color: Colors.green),
-            //   onPressed: () {
-            //     saveKPIreason(index);
-            //   },
-            // ),
-            ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green,
-                ),
-                onPressed: () =>
-                    saveKPIreason(index, dropdownStage, dropdownReason),
-                child: Text('Save'))),
+        DataCell(ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.green,
+          ),
+          onPressed: () {
+            saveKPIreason(index, dropdownStage, dropdownReason);
+          },
+          child: Text('Save'),
+        )),
+        DataCell(IconButton(
+            icon: Icon(
+              Icons.delete,
+              color: Colors.red,
+            ),
+            onPressed: () {
+              deleteKPIReason(index);
+            }))
       ],
     );
   }
@@ -574,7 +624,42 @@ class TableOverDueKPIDataSource extends DataTableSource {
         SaveKPIReason[0].reason = dropdownReason;
         SaveKPIReason[0].stage = dropdownStage;
         print('Saved Reason: ${SaveKPIReason[0].reason}');
+        print('Saved stage: ${SaveKPIReason[0].stage}');
         saveKPIReason();
+        // BlocProvider.of<SwPageCubit>(context).togglePage("RefreshPage");
+        // Future.delayed(Duration(milliseconds: 10));
+        // BlocProvider.of<SwPageCubit>(context).togglePage("MainPage");
+        // BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+        notifyListeners();
+      },
+      onCancelBtnTap: () {},
+    );
+  }
+
+  void deleteKPIReason(int index) {
+    final dataBuff = dataSource[index];
+
+    CoolAlert.show(
+      barrierDismissible: false,
+      width: 200,
+      showCancelBtn: true,
+      context: context,
+      type: CoolAlertType.custom,
+      text: 'DELETE STAGE & REASON',
+      confirmBtnText: 'Yes',
+      cancelBtnText: 'No',
+      loopAnimation: false,
+      onConfirmBtnTap: () {
+        print(dataBuff.reqNo);
+        DeleteKPIreason.clear();
+        DeleteKPIreason.add(dataBuff);
+        deleteKPIreason();
+        // BlocProvider.of<SwPageCubit>(context).togglePage("RefreshPage");
+        // Future.delayed(Duration(milliseconds: 10));
+        // BlocProvider.of<SwPageCubit>(context).togglePage("MainPage");
+        // BlocProvider.of<BlocPageRebuild>(context).rebuildPage();
+        dataBuff.reason = "";
+        notifyListeners();
       },
       onCancelBtnTap: () {},
     );

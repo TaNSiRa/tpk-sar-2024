@@ -196,6 +196,32 @@ Future<void> saveKPIReason() async {
   }
 }
 
+List<ModelFullRequestData> DeleteKPIreason = [];
+Future<void> deleteKPIreason() async {
+  Map<String, String> qParams = {
+    'user': userName,
+    'DeleteKPIreason': modelFullRequestDataToJson(DeleteKPIreason),
+  };
+  print("in deleteKPIreason");
+  try {
+    final response = await http
+        .post(Uri.parse("$urlE/MainPage_DeleteStageReason"), body: qParams)
+        .timeout(Duration(seconds: timeOut));
+    if (response.statusCode == 200) {
+      /* showPDF(response.body, contextBG); */
+      alertSuccess("DELETE STAGE & REASON COMPLETE");
+    } else {
+      alertNetworkError();
+    }
+  } on TimeoutException catch (e) {
+    print(e);
+    alertNetworkError();
+  } on Error catch (e) {
+    print(e);
+    alertNetworkError();
+  }
+}
+
 List<ModelFullRequestData> dataTablitemList = [];
 
 Future fetchItemJobdata() async {

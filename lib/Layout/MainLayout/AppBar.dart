@@ -101,7 +101,6 @@ class _App_BarState extends State<App_Bar> {
   }
 
   ///###################################################################################
-
 }
 
 class Logo2 extends StatelessWidget {

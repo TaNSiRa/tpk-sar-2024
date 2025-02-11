@@ -389,6 +389,8 @@ class ModelFullRequestData {
   dynamic bdmgr3;
   dynamic bdjp3;
   dynamic bdsent;
+  List<MapEntry<String, String>> listdropdownreason = [];
+  List<MapEntry<String, String>> listdropdownstage = [];
 
   factory ModelFullRequestData.fromJson(Map<String, dynamic> json) =>
       ModelFullRequestData(
