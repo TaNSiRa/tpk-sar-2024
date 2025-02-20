@@ -1119,7 +1119,7 @@ class _ICPState extends State<ICP> {
                               width: widthC3,
                               //height: fieldHeight,
                               child: FormBuilderTextField(
-                                enabled: false,
+                                enabled: true,
                                 textInputAction: TextInputAction.next,
                                 style: styleDataInTable,
                                 decoration: formField(),
@@ -1141,7 +1141,7 @@ class _ICPState extends State<ICP> {
                               width: widthC3,
                               //height: fieldHeight,
                               child: FormBuilderTextField(
-                                enabled: false,
+                                enabled: true,
                                 textInputAction: TextInputAction.next,
                                 style: styleDataInTable,
                                 decoration: formField(),
