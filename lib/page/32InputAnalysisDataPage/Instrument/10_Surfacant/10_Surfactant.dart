@@ -470,7 +470,7 @@ class _SurfactantState extends State<Surfactant> {
                                             .factorC
                                             .toString()
                                         : '',
-                                readOnly: true,
+                                readOnly: false,
                               ),
                             ),
                           ),

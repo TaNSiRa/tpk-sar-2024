@@ -146,7 +146,7 @@ class _LoginSignin extends StatelessWidget {
     return InkWell(
         onTap: () {
           context.read<LoginBloc>().add(LoginEvent.login);
-      BlocProvider.of<SwPageCubit>(context).togglePage("MainPage");
+          BlocProvider.of<SwPageCubit>(context).togglePage("MainPage");
         },
         child: Container(
           height: 40,
