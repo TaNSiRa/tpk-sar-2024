@@ -471,6 +471,10 @@ class _SurfactantState extends State<Surfactant> {
                                             .toString()
                                         : '',
                                 readOnly: false,
+                                onSubmitted: (value) {
+                                  dataSurfactantInput[index].factorC = value;
+                                  calculate(index);
+                                },
                               ),
                             ),
                           ),
@@ -722,7 +726,11 @@ class _SurfactantState extends State<Surfactant> {
                                             .factorC
                                             .toString()
                                         : '',
-                                readOnly: true,
+                                readOnly: false,
+                                onSubmitted: (value) {
+                                  dataSurfactantInput[index].factorC = value;
+                                  calculate2(index);
+                                },
                               ),
                             ),
                           ),
