@@ -2080,46 +2080,91 @@ class _SampleDetailState extends State<SampleDetail> {
                                                 ),
                                               ),
                                               DataCell(_verticalDivider),
-                                              DataCell(
-                                                Text(
-                                                  itemData[indexSample][indexItem]
-                                                                  .itemName ==
-                                                              'Surfactant' &&
-                                                          itemData[indexSample][indexItem]
-                                                                  .resultgLApprove !=
-                                                              ''
-                                                      ? itemData[indexSample]
-                                                                  [indexItem]
-                                                              .resultApprove
-                                                              .toString() +
-                                                          " " +
-                                                          itemData[indexSample]
-                                                                  [indexItem]
-                                                              .resultApproveUnit
-                                                              .toString() +
-                                                          " " +
-                                                          "(" +
-                                                          itemData[indexSample]
-                                                                  [indexItem]
-                                                              .resultgLApprove
-                                                              .toString() +
-                                                          " " +
-                                                          itemData[indexSample]
-                                                                  [indexItem]
-                                                              .resultgLApproveUnit
-                                                              .toString() +
-                                                          ")"
-                                                      : itemData[indexSample][indexItem]
-                                                              .resultApprove
-                                                              .toString() +
-                                                          " " +
-                                                          itemData[indexSample]
-                                                                  [indexItem]
-                                                              .resultApproveUnit
-                                                              .toString(),
-                                                  style: styleDataInTable,
-                                                ),
-                                              ),
+                                              if (DateTime.parse(
+                                                      itemData[indexSample]
+                                                              [indexItem]
+                                                          .reqDate)
+                                                  .isAfter(DateTime(
+                                                      2025, 3, 5))) ...[
+                                                DataCell(
+                                                  Text(
+                                                    itemData[indexSample][indexItem]
+                                                                    .itemName ==
+                                                                'Surfactant' &&
+                                                            itemData[indexSample]
+                                                                        [
+                                                                        indexItem]
+                                                                    .resultgLApprove !=
+                                                                ''
+                                                        ? itemData[indexSample]
+                                                                    [indexItem]
+                                                                .resultgLApprove
+                                                                .toString() +
+                                                            " " +
+                                                            itemData[indexSample]
+                                                                    [indexItem]
+                                                                .resultgLApproveUnit
+                                                                .toString()
+                                                        : itemData[indexSample]
+                                                                    [indexItem]
+                                                                .resultApprove
+                                                                .toString() +
+                                                            " " +
+                                                            itemData[indexSample]
+                                                                    [indexItem]
+                                                                .resultApproveUnit
+                                                                .toString(),
+                                                    style: styleDataInTable,
+                                                  ),
+                                                )
+                                              ],
+                                              if (DateTime.parse(
+                                                      itemData[indexSample]
+                                                              [indexItem]
+                                                          .reqDate)
+                                                  .isBefore(DateTime(
+                                                      2025, 3, 5))) ...[
+                                                DataCell(
+                                                  Text(
+                                                    itemData[indexSample][indexItem]
+                                                                    .itemName ==
+                                                                'Surfactant' &&
+                                                            itemData[indexSample][indexItem]
+                                                                    .resultgLApprove !=
+                                                                ''
+                                                        ? itemData[indexSample]
+                                                                    [indexItem]
+                                                                .resultApprove
+                                                                .toString() +
+                                                            " " +
+                                                            itemData[indexSample]
+                                                                    [indexItem]
+                                                                .resultApproveUnit
+                                                                .toString() +
+                                                            " " +
+                                                            "(" +
+                                                            itemData[indexSample]
+                                                                    [indexItem]
+                                                                .resultgLApprove
+                                                                .toString() +
+                                                            " " +
+                                                            itemData[indexSample]
+                                                                    [indexItem]
+                                                                .resultgLApproveUnit
+                                                                .toString() +
+                                                            ")"
+                                                        : itemData[indexSample][indexItem]
+                                                                .resultApprove
+                                                                .toString() +
+                                                            " " +
+                                                            itemData[indexSample]
+                                                                    [indexItem]
+                                                                .resultApproveUnit
+                                                                .toString(),
+                                                    style: styleDataInTable,
+                                                  ),
+                                                )
+                                              ],
                                               DataCell(_verticalDivider),
                                               DataCell(Row(
                                                 children: [

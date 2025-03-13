@@ -99,17 +99,30 @@ Stream<int> searchRequestData() async* {
       //approve result to complete 23-02-06
       //if (requestData[i].resultComplete == '') {
       try {
-        buff = (double.parse(requestData[i].resultApprove) +
-                double.parse(requestData[i].std1) -
-                double.parse(requestData[i].std2)) *
-            double.parse(requestData[i].std3) /
-            double.parse(requestData[i].std4);
-        buff = ((buff +
-                double.parse(requestData[i].std5) -
-                double.parse(requestData[i].std6)) *
-            double.parse(requestData[i].std7) /
-            double.parse(requestData[i].std8));
-        requestData[i].resultComplete = buff.toStringAsFixed(2);
+        // print(requestData[i].reqDate);
+        if (requestData[i].resultComplete != '' ||
+            requestData[i].resultComplete != null) {
+          requestData[i].resultComplete = requestData[i].resultComplete;
+        } else {
+          String approveValue = (requestData[i].reqDate != null &&
+                  DateTime.parse(requestData[i].reqDate)
+                      .isBefore(DateTime(2025, 3, 5)))
+              ? requestData[i].resultApprove
+              : (requestData[i].resultgLApprove?.isNotEmpty == true
+                  ? requestData[i].resultgLApprove
+                  : requestData[i].resultApprove);
+          buff = (double.parse(approveValue) +
+                  double.parse(requestData[i].std1) -
+                  double.parse(requestData[i].std2)) *
+              double.parse(requestData[i].std3) /
+              double.parse(requestData[i].std4);
+          buff = ((buff +
+                  double.parse(requestData[i].std5) -
+                  double.parse(requestData[i].std6)) *
+              double.parse(requestData[i].std7) /
+              double.parse(requestData[i].std8));
+          requestData[i].resultComplete = buff.toStringAsFixed(2);
+        }
       } on Exception catch (e) {
         requestData[i].resultComplete = requestData[i].resultApprove;
         //print(e);
