@@ -100,7 +100,7 @@ Stream<int> searchRequestData() async* {
       //if (requestData[i].resultComplete == '') {
       try {
         // print(requestData[i].reqDate);
-        if (requestData[i].resultComplete != '' ||
+        if (requestData[i].resultComplete != '' &&
             requestData[i].resultComplete != null) {
           requestData[i].resultComplete = requestData[i].resultComplete;
         } else {
