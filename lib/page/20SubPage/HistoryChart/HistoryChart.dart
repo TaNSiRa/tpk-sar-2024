@@ -345,7 +345,7 @@ class _LineChart extends StatelessWidget {
                   );
                 } else {
                   return LineTooltipItem(
-                    '${flSpot.y} ${historyChartData[flSpot.x.toInt()].resultApproveUnit}\nDate\n${historyChartData[flSpot.x.toInt()].samplingDate}',
+                    '${historyChartData[flSpot.x.toInt()].resultgLApprove} ${historyChartData[flSpot.x.toInt()].resultgLApproveUnit}\n${flSpot.y} ${historyChartData[flSpot.x.toInt()].resultApproveUnit}\nDate\n${historyChartData[flSpot.x.toInt()].samplingDate}',
                     TextStyle(
                       fontSize: 15,
                       color: Colors.grey[900],

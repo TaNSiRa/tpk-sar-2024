@@ -531,7 +531,7 @@ Future<void> loadReport(String reqNo) async {
         .post(Uri.parse("$urlE/KACReportData_LoadReport"), body: qParams)
         .timeout(Duration(seconds: timeOut));
     if (response.statusCode == 200) {
-      // print(response.body);
+      print(response.body);
       EasyLoading.dismiss();
       showPDF(response.body, contextBG);
     } else {

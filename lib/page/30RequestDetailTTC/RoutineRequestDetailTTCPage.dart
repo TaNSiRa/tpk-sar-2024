@@ -747,7 +747,7 @@ class _ApproveResultState extends State<ApproveResult> {
         cancelBtnText: 'No',
         loopAnimation: true,
         widget: Text("$countItem ITEM"),
-            /* Text(
+        /* Text(
                 "ITEM $countItem {itemData[indexSample][indexItem].itemName.toString()}"), */
         onConfirmBtnTap: () {
           context.read<ManageDataRoutineRequestDetailTTCPage>().add(
@@ -1539,21 +1539,42 @@ class _ApproveResultState extends State<ApproveResult> {
                                                   );
                                                 } else {
                                                   return Text(
-                                                      itemData[indexSample]
-                                                                  [indexItem]
-                                                              .resultSymbol1
-                                                              .toString() +
-                                                          " " +
-                                                          itemData[indexSample]
-                                                                  [indexItem]
-                                                              .result1
-                                                              .toString() +
-                                                          " " +
-                                                          itemData[indexSample]
-                                                                  [indexItem]
-                                                              .resultUnit1
-                                                              .toString(),
-                                                      style: styleDataInTable);
+                                                    itemData[indexSample]
+                                                                [indexItem]
+                                                            .resultSymbol1
+                                                            .toString() +
+                                                        " " +
+                                                        itemData[indexSample]
+                                                                [indexItem]
+                                                            .result1
+                                                            .toString() +
+                                                        " " +
+                                                        itemData[indexSample]
+                                                                [indexItem]
+                                                            .resultUnit1
+                                                            .toString() +
+                                                        (itemData[indexSample][indexItem]
+                                                                        .resultgL1 !=
+                                                                    null &&
+                                                                itemData[indexSample][
+                                                                        indexItem]
+                                                                    .resultgL1
+                                                                    .toString()
+                                                                    .isNotEmpty
+                                                            ? " (" +
+                                                                itemData[indexSample][
+                                                                        indexItem]
+                                                                    .resultgL1
+                                                                    .toString() +
+                                                                " " +
+                                                                itemData[indexSample]
+                                                                        [indexItem]
+                                                                    .resultgLUnit1
+                                                                    .toString() +
+                                                                ")"
+                                                            : ""),
+                                                    style: styleDataInTable,
+                                                  );
                                                 }
                                               }())),
                                               DataCell(_verticalDivider),
@@ -1584,21 +1605,42 @@ class _ApproveResultState extends State<ApproveResult> {
                                                   );
                                                 } else {
                                                   return Text(
-                                                      itemData[indexSample]
-                                                                  [indexItem]
-                                                              .resultSymbol2
-                                                              .toString() +
-                                                          " " +
-                                                          itemData[indexSample]
-                                                                  [indexItem]
-                                                              .result2
-                                                              .toString() +
-                                                          " " +
-                                                          itemData[indexSample]
-                                                                  [indexItem]
-                                                              .resultUnit2
-                                                              .toString(),
-                                                      style: styleDataInTable);
+                                                    itemData[indexSample]
+                                                                [indexItem]
+                                                            .resultSymbol2
+                                                            .toString() +
+                                                        " " +
+                                                        itemData[indexSample]
+                                                                [indexItem]
+                                                            .result2
+                                                            .toString() +
+                                                        " " +
+                                                        itemData[indexSample]
+                                                                [indexItem]
+                                                            .resultUnit2
+                                                            .toString() +
+                                                        (itemData[indexSample][indexItem]
+                                                                        .resultgL2 !=
+                                                                    null &&
+                                                                itemData[indexSample][
+                                                                        indexItem]
+                                                                    .resultgL2
+                                                                    .toString()
+                                                                    .isNotEmpty
+                                                            ? " (" +
+                                                                itemData[indexSample][
+                                                                        indexItem]
+                                                                    .resultgL2
+                                                                    .toString() +
+                                                                " " +
+                                                                itemData[indexSample]
+                                                                        [indexItem]
+                                                                    .resultgLUnit2
+                                                                    .toString() +
+                                                                ")"
+                                                            : ""),
+                                                    style: styleDataInTable,
+                                                  );
                                                 }
                                               }())),
                                               DataCell(_verticalDivider),
@@ -1639,10 +1681,31 @@ class _ApproveResultState extends State<ApproveResult> {
                                                               .result3
                                                               .toString() +
                                                           " " +
-                                                          itemData[indexSample]
+                                                          itemData[
+                                                                      indexSample]
                                                                   [indexItem]
                                                               .resultUnit3
-                                                              .toString(),
+                                                              .toString() +
+                                                          (itemData[indexSample][indexItem]
+                                                                          .resultgL3 !=
+                                                                      null &&
+                                                                  itemData[indexSample][indexItem]
+                                                                      .resultgL3
+                                                                      .toString()
+                                                                      .isNotEmpty
+                                                              ? " (" +
+                                                                  itemData[indexSample]
+                                                                          [
+                                                                          indexItem]
+                                                                      .resultgL3
+                                                                      .toString() +
+                                                                  " " +
+                                                                  itemData[indexSample]
+                                                                          [indexItem]
+                                                                      .resultgLUnit3
+                                                                      .toString() +
+                                                                  ")"
+                                                              : ""),
                                                       style: styleDataInTable);
                                                 }
                                               }())),
@@ -1684,10 +1747,31 @@ class _ApproveResultState extends State<ApproveResult> {
                                                               .result4
                                                               .toString() +
                                                           " " +
-                                                          itemData[indexSample]
+                                                          itemData[
+                                                                      indexSample]
                                                                   [indexItem]
                                                               .resultUnit4
-                                                              .toString(),
+                                                              .toString() +
+                                                          (itemData[indexSample][indexItem]
+                                                                          .resultgL4 !=
+                                                                      null &&
+                                                                  itemData[indexSample][indexItem]
+                                                                      .resultgL4
+                                                                      .toString()
+                                                                      .isNotEmpty
+                                                              ? " (" +
+                                                                  itemData[indexSample]
+                                                                          [
+                                                                          indexItem]
+                                                                      .resultgL4
+                                                                      .toString() +
+                                                                  " " +
+                                                                  itemData[indexSample]
+                                                                          [indexItem]
+                                                                      .resultgLUnit4
+                                                                      .toString() +
+                                                                  ")"
+                                                              : ""),
                                                       style: styleDataInTable);
                                                 }
                                               }())),
@@ -1729,10 +1813,31 @@ class _ApproveResultState extends State<ApproveResult> {
                                                               .result5
                                                               .toString() +
                                                           " " +
-                                                          itemData[indexSample]
+                                                          itemData[
+                                                                      indexSample]
                                                                   [indexItem]
                                                               .resultUnit5
-                                                              .toString(),
+                                                              .toString() +
+                                                          (itemData[indexSample][indexItem]
+                                                                          .resultgL5 !=
+                                                                      null &&
+                                                                  itemData[indexSample][indexItem]
+                                                                      .resultgL5
+                                                                      .toString()
+                                                                      .isNotEmpty
+                                                              ? " (" +
+                                                                  itemData[indexSample]
+                                                                          [
+                                                                          indexItem]
+                                                                      .resultgL5
+                                                                      .toString() +
+                                                                  " " +
+                                                                  itemData[indexSample]
+                                                                          [indexItem]
+                                                                      .resultgLUnit5
+                                                                      .toString() +
+                                                                  ")"
+                                                              : ""),
                                                       style: styleDataInTable);
                                                 }
                                               }())),
@@ -1774,10 +1879,31 @@ class _ApproveResultState extends State<ApproveResult> {
                                                               .result6
                                                               .toString() +
                                                           " " +
-                                                          itemData[indexSample]
+                                                          itemData[
+                                                                      indexSample]
                                                                   [indexItem]
                                                               .resultUnit6
-                                                              .toString(),
+                                                              .toString() +
+                                                          (itemData[indexSample][indexItem]
+                                                                          .resultgL6 !=
+                                                                      null &&
+                                                                  itemData[indexSample][indexItem]
+                                                                      .resultgL6
+                                                                      .toString()
+                                                                      .isNotEmpty
+                                                              ? " (" +
+                                                                  itemData[indexSample]
+                                                                          [
+                                                                          indexItem]
+                                                                      .resultgL6
+                                                                      .toString() +
+                                                                  " " +
+                                                                  itemData[indexSample]
+                                                                          [indexItem]
+                                                                      .resultgLUnit6
+                                                                      .toString() +
+                                                                  ")"
+                                                              : ""),
                                                       style: styleDataInTable);
                                                 }
                                               }())),
@@ -1823,17 +1949,34 @@ class _ApproveResultState extends State<ApproveResult> {
                                                                       indexItem]
                                                                   .resultApproveSymbol
                                                                   .toString() +
-                                                              itemData[indexSample]
-                                                                      [
+                                                              itemData[indexSample][
                                                                       indexItem]
                                                                   .resultApprove
                                                                   .toString() +
                                                               ' ' +
-                                                              itemData[indexSample]
-                                                                      [
+                                                              itemData[indexSample][
                                                                       indexItem]
                                                                   .resultApproveUnit
-                                                                  .toString(),
+                                                                  .toString() +
+                                                              (itemData[indexSample][indexItem]
+                                                                              .resultgLApprove !=
+                                                                          null &&
+                                                                      itemData[indexSample][indexItem]
+                                                                          .resultgL1
+                                                                          .toString()
+                                                                          .isNotEmpty
+                                                                  ? " (" +
+                                                                      itemData[indexSample][indexItem]
+                                                                          .resultgL1
+                                                                          .toString() +
+                                                                      " " +
+                                                                      itemData[indexSample]
+                                                                              [
+                                                                              indexItem]
+                                                                          .resultgLApproveUnit
+                                                                          .toString() +
+                                                                      ")"
+                                                                  : ""),
                                                           style:
                                                               styleDataInTable);
                                                     }

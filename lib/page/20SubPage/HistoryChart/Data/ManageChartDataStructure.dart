@@ -21,6 +21,8 @@ class HistoryChartModel {
     this.stdMin,
     this.resultApprove,
     this.resultApproveUnit,
+    this.resultgLApprove,
+    this.resultgLApproveUnit,
     this.position,
   });
 
@@ -32,6 +34,8 @@ class HistoryChartModel {
   dynamic stdMin;
   dynamic resultApprove;
   dynamic resultApproveUnit;
+  dynamic resultgLApprove;
+  dynamic resultgLApproveUnit;
   dynamic position;
 
   factory HistoryChartModel.fromJson(Map<String, dynamic> json) =>
@@ -44,6 +48,8 @@ class HistoryChartModel {
         stdMin: json["StdMin"] ?? "0",
         resultApprove: json["ResultApprove"] ?? "",
         resultApproveUnit: json["ResultApproveUnit"] ?? "",
+        resultgLApprove: json["ResultgLApprove"] ?? "",
+        resultgLApproveUnit: json["ResultgLApproveUnit"] ?? "",
         position: json["Position"] ?? "",
       );
 
@@ -56,6 +62,8 @@ class HistoryChartModel {
         "StdMin": stdMin ?? "",
         "ResultApprove": resultApprove ?? "",
         "ResultApproveUnit": resultApproveUnit ?? "",
+        "ResultgLApprove": resultgLApprove ?? "",
+        "ResultgLApproveUnit": resultgLApproveUnit ?? "",
         "Position": position ?? "",
       };
 }

@@ -67,6 +67,8 @@ class ModelFullRequestData {
     this.resultSymbol1 = "",
     this.result1 = "",
     this.resultUnit1 = "",
+    this.resultgL1 = "",
+    this.resultgLUnit1 = "",
     this.resultRemark1 = "",
     this.resultFile1 = "",
     this.userAnalysis1 = "",
@@ -74,6 +76,8 @@ class ModelFullRequestData {
     this.resultSymbol2 = "",
     this.result2 = "",
     this.resultUnit2 = "",
+    this.resultgL2 = "",
+    this.resultgLUnit2 = "",
     this.resultRemark2 = "",
     this.resultFile2 = "",
     this.userAnalysis2 = "",
@@ -81,6 +85,8 @@ class ModelFullRequestData {
     this.resultSymbol3 = "",
     this.result3 = "",
     this.resultUnit3 = "",
+    this.resultgL3 = "",
+    this.resultgLUnit3 = "",
     this.resultRemark3 = "",
     this.resultFile3 = "",
     this.userAnalysis3 = "",
@@ -88,6 +94,8 @@ class ModelFullRequestData {
     this.resultSymbol4 = "",
     this.result4 = "",
     this.resultUnit4 = "",
+    this.resultgL4 = "",
+    this.resultgLUnit4 = "",
     this.resultRemark4 = "",
     this.resultFile4 = "",
     this.userAnalysis4 = "",
@@ -95,6 +103,8 @@ class ModelFullRequestData {
     this.resultSymbol5 = "",
     this.result5 = "",
     this.resultUnit5 = "",
+    this.resultgL5 = "",
+    this.resultgLUnit5 = "",
     this.resultRemark5 = "",
     this.resultFile5 = "",
     this.userAnalysis5 = "",
@@ -102,6 +112,8 @@ class ModelFullRequestData {
     this.resultSymbol6 = "",
     this.result6 = "",
     this.resultUnit6 = "",
+    this.resultgL6 = "",
+    this.resultgLUnit6 = "",
     this.resultRemark6 = "",
     this.resultFile6 = "",
     this.userAnalysis6 = "",
@@ -258,6 +270,8 @@ class ModelFullRequestData {
   dynamic resultSymbol1;
   dynamic result1;
   dynamic resultUnit1;
+  dynamic resultgL1;
+  dynamic resultgLUnit1;
   dynamic resultRemark1;
   dynamic resultFile1;
   dynamic userAnalysis1;
@@ -265,6 +279,8 @@ class ModelFullRequestData {
   dynamic resultSymbol2;
   dynamic result2;
   dynamic resultUnit2;
+  dynamic resultgL2;
+  dynamic resultgLUnit2;
   dynamic resultRemark2;
   dynamic resultFile2;
   dynamic userAnalysis2;
@@ -272,6 +288,8 @@ class ModelFullRequestData {
   dynamic resultSymbol3;
   dynamic result3;
   dynamic resultUnit3;
+  dynamic resultgL3;
+  dynamic resultgLUnit3;
   dynamic resultRemark3;
   dynamic resultFile3;
   dynamic userAnalysis3;
@@ -279,6 +297,8 @@ class ModelFullRequestData {
   dynamic resultSymbol4;
   dynamic result4;
   dynamic resultUnit4;
+  dynamic resultgL4;
+  dynamic resultgLUnit4;
   dynamic resultRemark4;
   dynamic resultFile4;
   dynamic userAnalysis4;
@@ -286,6 +306,8 @@ class ModelFullRequestData {
   dynamic resultSymbol5;
   dynamic result5;
   dynamic resultUnit5;
+  dynamic resultgL5;
+  dynamic resultgLUnit5;
   dynamic resultRemark5;
   dynamic resultFile5;
   dynamic userAnalysis5;
@@ -293,6 +315,8 @@ class ModelFullRequestData {
   dynamic resultSymbol6;
   dynamic result6;
   dynamic resultUnit6;
+  dynamic resultgL6;
+  dynamic resultgLUnit6;
   dynamic resultRemark6;
   dynamic resultFile6;
   dynamic userAnalysis6;
@@ -452,6 +476,8 @@ class ModelFullRequestData {
         resultSymbol1: json["ResultSymbol1"] ?? "",
         result1: json["Result1"] ?? "",
         resultUnit1: json["ResultUnit1"] ?? "",
+        resultgL1: json["ResultgL1"] ?? "",
+        resultgLUnit1: json["ResultgLUnit1"] ?? "",
         resultRemark1: json["ResultRemark1"] ?? "",
         resultFile1: json["ResultFile1"] ?? "",
         userAnalysis1: json["UserAnalysis1"] ?? "",
@@ -459,6 +485,8 @@ class ModelFullRequestData {
         resultSymbol2: json["ResultSymbol2"] ?? "",
         result2: json["Result2"] ?? "",
         resultUnit2: json["ResultUnit2"] ?? "",
+        resultgL2: json["ResultgL2"] ?? "",
+        resultgLUnit2: json["ResultgLUnit2"] ?? "",
         resultRemark2: json["ResultRemark2"] ?? "",
         resultFile2: json["ResultFile2"] ?? "",
         userAnalysis2: json["UserAnalysis2"] ?? "",
@@ -466,6 +494,8 @@ class ModelFullRequestData {
         resultSymbol3: json["ResultSymbol3"] ?? "",
         result3: json["Result3"] ?? "",
         resultUnit3: json["ResultUnit3"] ?? "",
+        resultgL3: json["ResultgL3"] ?? "",
+        resultgLUnit3: json["ResultgLUnit3"] ?? "",
         resultRemark3: json["ResultRemark3"] ?? "",
         resultFile3: json["ResultFile3"] ?? "",
         userAnalysis3: json["UserAnalysis3"] ?? "",
@@ -473,6 +503,8 @@ class ModelFullRequestData {
         resultSymbol4: json["ResultSymbol4"] ?? "",
         result4: json["Result4"] ?? "",
         resultUnit4: json["ResultUnit4"] ?? "",
+        resultgL4: json["ResultgL4"] ?? "",
+        resultgLUnit4: json["ResultgLUnit4"] ?? "",
         resultRemark4: json["ResultRemark4"] ?? "",
         resultFile4: json["ResultFile4"] ?? "",
         userAnalysis4: json["UserAnalysis4"] ?? "",
@@ -480,6 +512,8 @@ class ModelFullRequestData {
         resultSymbol5: json["ResultSymbol5"] ?? "",
         result5: json["Result5"] ?? "",
         resultUnit5: json["ResultUnit5"] ?? "",
+        resultgL5: json["ResultgL5"] ?? "",
+        resultgLUnit5: json["ResultgLUnit5"] ?? "",
         resultRemark5: json["ResultRemark5"] ?? "",
         resultFile5: json["ResultFile5"] ?? "",
         userAnalysis5: json["UserAnalysis5"] ?? "",
@@ -487,6 +521,8 @@ class ModelFullRequestData {
         resultSymbol6: json["ResultSymbol6"] ?? "",
         result6: json["Result6"] ?? "",
         resultUnit6: json["ResultUnit6"] ?? "",
+        resultgL6: json["ResultgL6"] ?? "",
+        resultgLUnit6: json["ResultgLUnit6"] ?? "",
         resultRemark6: json["ResultRemark6"] ?? "",
         resultFile6: json["ResultFile6"] ?? "",
         userAnalysis6: json["UserAnalysis6"] ?? "",
@@ -642,6 +678,8 @@ class ModelFullRequestData {
         "ResultSymbol1": resultSymbol1 ?? "",
         "Result1": result1 ?? "",
         "ResultUnit1": resultUnit1 ?? "",
+        "ResultgL1": resultgL1 ?? "",
+        "ResultgLUnit1": resultgLUnit1 ?? "",
         "ResultRemark1": resultRemark1 ?? "",
         "ResultFile1": resultFile1 ?? "",
         "UserAnalysis1": userAnalysis1 ?? "",
@@ -649,6 +687,8 @@ class ModelFullRequestData {
         "ResultSymbol2": resultSymbol2 ?? "",
         "Result2": result2 ?? "",
         "ResultUnit2": resultUnit2 ?? "",
+        "ResultgL2": resultgL2 ?? "",
+        "ResultgLUnit2": resultgLUnit2 ?? "",
         "ResultRemark2": resultRemark2 ?? "",
         "ResultFile2": resultFile2 ?? "",
         "UserAnalysis2": userAnalysis2 ?? "",
@@ -656,6 +696,8 @@ class ModelFullRequestData {
         "ResultSymbol3": resultSymbol3 ?? "",
         "Result3": result3 ?? "",
         "ResultUnit3": resultUnit3 ?? "",
+        "ResultgL3": resultgL3 ?? "",
+        "ResultgLUnit3": resultgLUnit3 ?? "",
         "ResultRemark3": resultRemark3 ?? "",
         "ResultFile3": resultFile3 ?? "",
         "UserAnalysis3": userAnalysis3 ?? "",
@@ -663,6 +705,8 @@ class ModelFullRequestData {
         "ResultSymbol4": resultSymbol4 ?? "",
         "Result4": result4 ?? "",
         "ResultUnit4": resultUnit4 ?? "",
+        "ResultgL4": resultgL4 ?? "",
+        "ResultgLUnit4": resultgLUnit4 ?? "",
         "ResultRemark4": resultRemark4 ?? "",
         "ResultFile4": resultFile4 ?? "",
         "UserAnalysis4": userAnalysis4 ?? "",
@@ -670,6 +714,8 @@ class ModelFullRequestData {
         "ResultSymbol5": resultSymbol5 ?? "",
         "Result5": result5 ?? "",
         "ResultUnit5": resultUnit5 ?? "",
+        "ResultgL5": resultgL5 ?? "",
+        "ResultgLUnit5": resultgLUnit5 ?? "",
         "ResultRemark5": resultRemark5 ?? "",
         "ResultFile5": resultFile5 ?? "",
         "UserAnalysis5": userAnalysis5 ?? "",
@@ -677,6 +723,8 @@ class ModelFullRequestData {
         "ResultSymbol6": resultSymbol6 ?? "",
         "Result6": result6 ?? "",
         "ResultUnit6": resultUnit6 ?? "",
+        "ResultgL6": resultgL6 ?? "",
+        "ResultgLUnit6": resultgLUnit6 ?? "",
         "ResultRemark6": resultRemark6 ?? "",
         "ResultFile6": resultFile6 ?? "",
         "UserAnalysis6": userAnalysis6 ?? "",

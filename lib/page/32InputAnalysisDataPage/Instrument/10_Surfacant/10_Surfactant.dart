@@ -96,15 +96,21 @@ class _SurfactantState extends State<Surfactant> {
               20)
           .toStringAsFixed(2);
       dataSurfactantInput[index].resultUnit_2 = "mL";
-      dataSurfactantInput[index].resultgl_2 = ((double.parse(
-                      dataSurfactantInput[index].finalPoint_2) -
-                  double.parse(dataSurfactantInput[index].startPoint_2) -
-                  double.parse(dataSurfactantInput[index].blank_2)) /
-              (((factorC - double.parse(dataSurfactantInput[index].blank_2)) *
-                      10) /
-                  double.parse(dataSurfactantInput[index].dilution2)))
-          .toStringAsFixed(2);
-      dataSurfactantInput[index].resultglUnit_2 = "g/L";
+      if (factorC != 0.0) {
+        dataSurfactantInput[index].resultgl_2 = ((double.parse(
+                        dataSurfactantInput[index].finalPoint_2) -
+                    double.parse(dataSurfactantInput[index].startPoint_2) -
+                    double.parse(dataSurfactantInput[index].blank_2)) /
+                (((factorC - double.parse(dataSurfactantInput[index].blank_2)) *
+                        10) /
+                    double.parse(dataSurfactantInput[index].dilution2)))
+            .toStringAsFixed(2);
+        dataSurfactantInput[index].resultglUnit_2 = "g/L";
+      } else {
+        dataSurfactantInput[index].resultgl_2 = "";
+        dataSurfactantInput[index].resultglUnit_2 = "g/L";
+      }
+
       setState(() {});
     } on Exception catch (e) {
       // TODO
