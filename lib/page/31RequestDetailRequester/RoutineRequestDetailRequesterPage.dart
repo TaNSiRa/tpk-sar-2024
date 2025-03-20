@@ -2085,7 +2085,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                                               [indexItem]
                                                           .reqDate)
                                                   .isAfter(DateTime(
-                                                      2025, 3, 5))) ...[
+                                                      2025, 3, 24))) ...[
                                                 DataCell(
                                                   Text(
                                                     itemData[indexSample][indexItem]
@@ -2123,7 +2123,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                                               [indexItem]
                                                           .reqDate)
                                                   .isBefore(DateTime(
-                                                      2025, 3, 5))) ...[
+                                                      2025, 3, 24))) ...[
                                                 DataCell(
                                                   Text(
                                                     itemData[indexSample][indexItem]
