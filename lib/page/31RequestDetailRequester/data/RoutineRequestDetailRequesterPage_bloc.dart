@@ -100,29 +100,25 @@ Stream<int> searchRequestData() async* {
       //if (requestData[i].resultComplete == '') {
       try {
         // print(requestData[i].reqDate);
-        if (requestData[i].resultComplete != '' &&
-            requestData[i].resultComplete != null) {
-          requestData[i].resultComplete = requestData[i].resultComplete;
-        } else {
-          String approveValue = (requestData[i].reqDate != null &&
-                  DateTime.parse(requestData[i].reqDate)
-                      .isBefore(DateTime(2025, 3, 24)))
-              ? requestData[i].resultApprove
-              : (requestData[i].resultgLApprove?.isNotEmpty == true
-                  ? requestData[i].resultgLApprove
-                  : requestData[i].resultApprove);
-          buff = (double.parse(approveValue) +
-                  double.parse(requestData[i].std1) -
-                  double.parse(requestData[i].std2)) *
-              double.parse(requestData[i].std3) /
-              double.parse(requestData[i].std4);
-          buff = ((buff +
-                  double.parse(requestData[i].std5) -
-                  double.parse(requestData[i].std6)) *
-              double.parse(requestData[i].std7) /
-              double.parse(requestData[i].std8));
-          requestData[i].resultComplete = buff.toStringAsFixed(2);
-        }
+
+        String approveValue = (requestData[i].reqDate != null &&
+                DateTime.parse(requestData[i].reqDate)
+                    .isBefore(DateTime(2025, 3, 24)))
+            ? requestData[i].resultApprove
+            : (requestData[i].resultgLApprove?.isNotEmpty == true
+                ? requestData[i].resultgLApprove
+                : requestData[i].resultApprove);
+        buff = (double.parse(approveValue) +
+                double.parse(requestData[i].std1) -
+                double.parse(requestData[i].std2)) *
+            double.parse(requestData[i].std3) /
+            double.parse(requestData[i].std4);
+        buff = ((buff +
+                double.parse(requestData[i].std5) -
+                double.parse(requestData[i].std6)) *
+            double.parse(requestData[i].std7) /
+            double.parse(requestData[i].std8));
+        requestData[i].resultComplete = buff.toStringAsFixed(2);
       } on Exception catch (e) {
         requestData[i].resultComplete = requestData[i].resultApprove;
         //print(e);
