@@ -180,8 +180,8 @@ class _TableOverDueKPIState extends State<TableOverDueKPI>
                   style: styleDataColumn, textAlign: TextAlign.center),
               numeric: false,
               tooltip: 'SAMPLING DATE',
-              // onSort: (columnIndex, ascending) =>
-              //     sort<String>((d) => d.custFull, columnIndex, ascending),
+              onSort: (columnIndex, ascending) =>
+                  sort<String>((d) => d.samplingDate, columnIndex, ascending),
             ),
             DataColumn(
               label: Text('OVER DUE (DAYS)',
