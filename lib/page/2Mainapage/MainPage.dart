@@ -127,34 +127,38 @@ class MainPages extends StatelessWidget {
                 else
                   return Container();
               }),
-          // FutureBuilder(
-          //     future: fetchOverDueKPI(),
-          //     builder: (BuildContext context, AsyncSnapshot snapshot) {
-          //       if (snapshot.data == 1)
-          //         return Container(
-          //           height: 310,
-          //           margin: EdgeInsets.only(top: 10),
-          //           decoration: BoxDecoration(
-          //             color: CustomTheme.colorWhite,
-          //             border: Border.all(
-          //               color: Colors.black,
-          //               width: 1,
-          //             ),
-          //             borderRadius: BorderRadius.all(Radius.circular(5)),
-          //             boxShadow: [
-          //               BoxShadow(
-          //                   color: CustomTheme.colorShadowBgStrong,
-          //                   offset: Offset(0, 0),
-          //                   blurRadius: 10,
-          //                   spreadRadius: 0)
-          //             ],
-          //           ),
-          //           padding: EdgeInsets.all(0),
-          //           child: Container(child: TableOverDueKPI()),
-          //         );
-          //       else
-          //         return Container();
-          //     }),
+          if (userName == 'N.KRITTAPAT' ||
+              userName == 'K.WORACHAI' ||
+              userName == 'R.TRIMATE' ||
+              userName == 'P.RATCHANEE')
+            FutureBuilder(
+                future: fetchOverDueKPI(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.data == 1)
+                    return Container(
+                      height: 310,
+                      margin: EdgeInsets.only(top: 10),
+                      decoration: BoxDecoration(
+                        color: CustomTheme.colorWhite,
+                        border: Border.all(
+                          color: Colors.black,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        boxShadow: [
+                          BoxShadow(
+                              color: CustomTheme.colorShadowBgStrong,
+                              offset: Offset(0, 0),
+                              blurRadius: 10,
+                              spreadRadius: 0)
+                        ],
+                      ),
+                      padding: EdgeInsets.all(0),
+                      child: Container(child: TableOverDueKPI()),
+                    );
+                  else
+                    return Container();
+                }),
           if (userSection == 'TTC')
             FutureBuilder(
                 future: fetchItemJobdata(),

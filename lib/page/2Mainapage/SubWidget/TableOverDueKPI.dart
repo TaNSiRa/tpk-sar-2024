@@ -485,18 +485,34 @@ class TableOverDueKPIDataSource extends DataTableSource {
       dataBuff.listdropdownstage = listdropdownstage;
       dropdownStage = listdropdownstage.first.key;
     }
+    // if (dataBuff.reason.isNotEmpty) {
+    //   dataBuff.listdropdownreason = [
+    //     MapEntry(dataBuff.reason, dataBuff.reason)
+    //   ];
+    // } else if (dataBuff.reason.isEmpty) {
+    //   listdropdownreason =
+    //       stageMapping[listdropdownstage.first.key] ?? [MapEntry('-', '-')];
+    //   dataBuff.listdropdownreason = listdropdownreason;
+
+    //   // if (!listdropdownreason.any((entry) => entry.key == dataBuff.reason)) {
+    //   //   dataBuff.reason = listdropdownreason.first.key;
+    //   // }
+    // }
     if (dataBuff.reason.isNotEmpty) {
       dataBuff.listdropdownreason = [
         MapEntry(dataBuff.reason, dataBuff.reason)
       ];
     } else if (dataBuff.reason.isEmpty) {
-      listdropdownreason =
-          stageMapping[listdropdownstage.first.key] ?? [MapEntry('-', '-')];
-      dataBuff.listdropdownreason = listdropdownreason;
+      // หาค่า key ที่ตรงกับ dropdownStage ใน listdropdownstage
+      final selectedStageKey = dataBuff.listdropdownstage
+          .firstWhere((entry) => entry.value == dropdownStage,
+              orElse: () => MapEntry('-', '-'))
+          .key;
 
-      // if (!listdropdownreason.any((entry) => entry.key == dataBuff.reason)) {
-      //   dataBuff.reason = listdropdownreason.first.key;
-      // }
+      // ใช้ stageMapping เพื่อนำค่ามาใส่ listdropdownreason
+      listdropdownreason =
+          stageMapping[selectedStageKey] ?? [MapEntry('-', '-')];
+      dataBuff.listdropdownreason = listdropdownreason;
     }
 
     print('dropdownStage: $dropdownStage');

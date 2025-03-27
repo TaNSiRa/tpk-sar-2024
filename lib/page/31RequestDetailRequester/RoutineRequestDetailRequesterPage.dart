@@ -1083,6 +1083,10 @@ class _SampleDetailState extends State<SampleDetail> {
               userRoleId == 99) {
             userCheck = true;
           }
+          print('incharge: ' + requestData[0].incharge);
+          print('userName: ' + userName);
+          print(
+              'requestData[0].sentRepStatus: ' + requestData[0].sentRepStatus);
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
