@@ -68,12 +68,15 @@ class _TableOverDueKPIState extends State<TableOverDueKPI>
         _dataSource.sort<String>((d) => d.custFull, _sortAscending.value);
         break;
       case 2:
-        _dataSource.sort<String>((d) => d.repdays, _sortAscending.value);
+        _dataSource.sort<String>((d) => d.samplingDate, _sortAscending.value);
         break;
       case 3:
         _dataSource.sort<String>((d) => d.repdays, _sortAscending.value);
         break;
       case 4:
+        _dataSource.sort<String>((d) => d.repdays, _sortAscending.value);
+        break;
+      case 5:
         _dataSource.sort<String>((d) => d.reason, _sortAscending.value);
         break;
     }
@@ -169,6 +172,14 @@ class _TableOverDueKPIState extends State<TableOverDueKPI>
                   style: styleDataColumn, textAlign: TextAlign.center),
               numeric: false,
               tooltip: 'CUSTOMER NAME',
+              // onSort: (columnIndex, ascending) =>
+              //     sort<String>((d) => d.custFull, columnIndex, ascending),
+            ),
+            DataColumn(
+              label: Text('SAMPLING DATE',
+                  style: styleDataColumn, textAlign: TextAlign.center),
+              numeric: false,
+              tooltip: 'SAMPLING DATE',
               // onSort: (columnIndex, ascending) =>
               //     sort<String>((d) => d.custFull, columnIndex, ascending),
             ),
@@ -535,6 +546,9 @@ class TableOverDueKPIDataSource extends DataTableSource {
         DataCell(Container(
             child: Text(dataBuff.custFull,
                 style: styleDataRow, textAlign: TextAlign.start))),
+        DataCell(Container(
+            child: Text("      " + dataBuff.samplingDate,
+                style: styleDataRow, textAlign: TextAlign.center))),
         DataCell(Container(
             child: Text("              " + dataBuff.repdays,
                 style: styleDataRow, textAlign: TextAlign.start))),
