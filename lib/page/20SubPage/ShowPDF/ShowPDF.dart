@@ -9,6 +9,7 @@ import '../../../Global/global_var.dart';
 import '../../31RequestDetailRequester/data/RoutineRequestDetailRequesterPage_bloc.dart';
 
 void showPDF(String pdf64, BuildContext context) {
+  print(requestData[0].sentRepStatus.toString());
   showDialog(
       barrierDismissible: true,
       context: context,
@@ -53,8 +54,8 @@ void showPDF(String pdf64, BuildContext context) {
                           : requestData[0].sentRepStatus.toString(),
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: (requestData[0].sentRepStatus == null ||
-                                requestData[0].sentRepStatus == "")
+                        color: (requestData[0].sentRepStatus.toString() ==
+                                "NOT SENT YET")
                             ? Colors.red
                             : Colors.green,
                       ),
