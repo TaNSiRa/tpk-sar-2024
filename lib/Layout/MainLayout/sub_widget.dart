@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tpk_login_arsa_01/Layout/ChangePage/Data/BlocChagpage.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class menu_normal extends StatelessWidget {
   menu_normal({Key? key, this.name, this.icon, required this.page})
@@ -15,8 +16,12 @@ class menu_normal extends StatelessWidget {
 
     return InkWell(
       onTap: () {
-        Navigator.pop(context);
-        BlocProvider.of<SwPageCubit>(context).togglePage(page);
+        if (page == "MKTKPIPage") {
+          launchUrl(Uri.parse("http://172.23.10.51:7600/"));
+        } else {
+          Navigator.pop(context);
+          BlocProvider.of<SwPageCubit>(context).togglePage(page);
+        }
       },
       child: Container(
         //color: Colors.blue,

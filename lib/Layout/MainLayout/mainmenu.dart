@@ -116,11 +116,18 @@ class Data_Menu_mainmenu extends StatelessWidget {
             color: Color(0x4dffffff),
             height: 12,
           ),
-          if ((true) ||
-              userRoleId == 99)
+          if ((true) || userRoleId == 99)
             new menu_normal(
               name: "MASTER PATTERN",
               page: 'EditPatternLabPage',
+            ),
+          if (userName == 'N.KRITTAPAT' ||
+              userName == 'K.WORACHAI' ||
+              userName == 'R.TRIMATE' ||
+              userName == 'P.RATCHANEE')
+            new menu_normal(
+              name: "MKT KPI",
+              page: 'MKTKPIPage',
             ),
         ],
       ),

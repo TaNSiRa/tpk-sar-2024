@@ -61,24 +61,27 @@ class _TableOverDueKPIState extends State<TableOverDueKPI>
       initialized = true;
     }
     switch (_sortColumnIndex.value) {
-      case 0:
-        _dataSource.sort<String>((d) => d.reqNo, _sortAscending.value);
-        break;
-      case 1:
-        _dataSource.sort<String>((d) => d.custFull, _sortAscending.value);
-        break;
-      case 2:
-        _dataSource.sort<String>((d) => d.samplingDate, _sortAscending.value);
-        break;
-      case 3:
-        _dataSource.sort<String>((d) => d.repdays, _sortAscending.value);
-        break;
-      case 4:
-        _dataSource.sort<String>((d) => d.repdays, _sortAscending.value);
-        break;
-      case 5:
-        _dataSource.sort<String>((d) => d.reason, _sortAscending.value);
-        break;
+      // case 0:
+      //   _dataSource.sort<String>((d) => d.reqNo, _sortAscending.value);
+      //   break;
+      // case 1:
+      //   _dataSource.sort<String>((d) => d.custFull, _sortAscending.value);
+      //   break;
+      // case 2:
+      //   _dataSource.sort<DateTime>(
+      //     (d) => DateTime.parse(d.samplingDate),
+      //     false,
+      //   );
+      //   break;
+      // case 3:
+      //   _dataSource.sort<String>((d) => d.repdays, _sortAscending.value);
+      //   break;
+      // case 4:
+      //   _dataSource.sort<String>((d) => d.repdays, _sortAscending.value);
+      //   break;
+      // case 5:
+      //   _dataSource.sort<String>((d) => d.reason, _sortAscending.value);
+      //   break;
     }
     _dataSource.updateSelectedData(_dataSelections);
     _dataSource.addListener(_updateSelectedDataRowListener);
@@ -180,8 +183,8 @@ class _TableOverDueKPIState extends State<TableOverDueKPI>
                   style: styleDataColumn, textAlign: TextAlign.center),
               numeric: false,
               tooltip: 'SAMPLING DATE',
-              onSort: (columnIndex, ascending) =>
-                  sort<String>((d) => d.samplingDate, columnIndex, ascending),
+              // onSort: (columnIndex, ascending) =>
+              //     sort<String>((d) => d.samplingDate, columnIndex, ascending),
             ),
             DataColumn(
               label: Text('OVER DUE (DAYS)',
