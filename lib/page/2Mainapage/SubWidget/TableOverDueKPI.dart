@@ -483,7 +483,9 @@ class TableOverDueKPIDataSource extends DataTableSource {
         MapEntry('Other', 'Other'),
       ],
       'Send to customer': [
-        MapEntry('Forget', 'Forget'),
+        MapEntry('Forget to send to customer', 'Forget to send to customer'),
+        MapEntry(
+            'Forget to update status in SAR', 'Forget to update status in SAR'),
         MapEntry('Other', 'Other'),
       ],
     };
