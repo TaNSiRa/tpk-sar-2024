@@ -121,14 +121,14 @@ class Data_Menu_mainmenu extends StatelessWidget {
               name: "MASTER PATTERN",
               page: 'EditPatternLabPage',
             ),
-          if (userName == 'N.KRITTAPAT' ||
-              userName == 'K.WORACHAI' ||
-              userName == 'R.TRIMATE' ||
-              userName == 'P.RATCHANEE')
-            new menu_normal(
-              name: "MKT KPI",
-              page: 'MKTKPIPage',
-            ),
+          // if (userName == 'N.KRITTAPAT' ||
+          //     userName == 'K.WORACHAI' ||
+          //     userName == 'R.TRIMATE' ||
+          //     userName == 'P.RATCHANEE')
+          new menu_normal(
+            name: "MKT KPI",
+            page: 'MKTKPIPage',
+          ),
         ],
       ),
     );
