@@ -20,8 +20,7 @@ Future searchKACReportData(String reqNo) async {
   print("in searchKACReportData");
   try {
     final response = await http
-        .post(Uri.parse("$urlE/KACReportData_searchKACReportData"),
-            body: qParams)
+        .post(Uri.parse("$urlE/KACReportData_searchKACReportData"), body: qParams)
         .timeout(Duration(seconds: timeOut));
     if (response.statusCode == 200) {
       //print(response.body);
@@ -72,8 +71,7 @@ Future searchKACReportData(String reqNo) async {
                   double.parse(kACReportData[i].std8));
               kACReportData[i].result = buff.toStringAsFixed(2); */
             if (kACReportData[i].resultIn.toString() == 'DELIVERY ERROR' ||
-                kACReportData[i].resultIn.toString() ==
-                    'INSTRUMENT BREAKDOWN' ||
+                kACReportData[i].resultIn.toString() == 'INSTRUMENT BREAKDOWN' ||
                 kACReportData[i].resultIn.toString() == '' ||
                 kACReportData[i].resultIn.toString() == '-') {
               kACReportData[i].resultIn = "N/A";
@@ -117,8 +115,7 @@ Future searchKACReportData(String reqNo) async {
           List buffData = [];
           for (int j = i; j < kACReportData.length; j++) {
             if (j + 1 < kACReportData.length) {
-              if (kACReportData[j].reportOrder ==
-                  kACReportData[j + 1].reportOrder) {
+              if (kACReportData[j].reportOrder == kACReportData[j + 1].reportOrder) {
                 countSameOrder = countSameOrder + 1;
                 //print("countSameOrder : " + countSameOrder.toString());
                 if (j == i) {
@@ -154,8 +151,7 @@ Future searchKACReportData(String reqNo) async {
                 }
 
                 if (countSameOrder > 1) {
-                  kACReportData[i].resultIn =
-                      (buffMean / buffData.length).toStringAsFixed(2);
+                  kACReportData[i].resultIn = (buffMean / buffData.length).toStringAsFixed(2);
                   //print(kACReportData[i].resultIn);
                 }
                 //remove same report order
@@ -173,8 +169,7 @@ Future searchKACReportData(String reqNo) async {
                 buffMean = buffMean + (double.parse(buffData[k]));
               }
               if (countSameOrder > 1) {
-                kACReportData[i].resultIn =
-                    (buffMean / buffData.length).toStringAsFixed(2);
+                kACReportData[i].resultIn = (buffMean / buffData.length).toStringAsFixed(2);
               }
               //remove same report order
               for (int z = 1; z < countSameOrder; z++) {
@@ -196,28 +191,19 @@ Future searchKACReportData(String reqNo) async {
           kACReportData[i].createReportDate = (DateTime.now()).toString();
           try {
             if (kACReportData[i].itemReportName == 'S.G. (Nox rust)') {
-              kACReportData[i].resultIn =
-                  double.parse(kACReportData[i].resultIn).toStringAsFixed(2);
+              kACReportData[i].resultIn = double.parse(kACReportData[i].resultIn).toStringAsFixed(2);
               kACReportData[i].resultReport = kACReportData[i].resultIn;
             } else if (kACReportData[i].itemReportName == 'Calibration (%)') {
-              double ECvalue =
-                  double.tryParse(kACReportData[i - 3].resultIn.toString()) ??
-                      0;
-              double NVpercent =
-                  double.tryParse(kACReportData[i - 1].resultIn.toString()) ??
-                      0;
-              double calculationResult =
-                  (NVpercent / ((4.7159 * (ECvalue / 10)) - 4.1836)) * 100;
+              double ECvalue = double.tryParse(kACReportData[i - 3].resultIn.toString()) ?? 0;
+              double NVpercent = double.tryParse(kACReportData[i - 1].resultIn.toString()) ?? 0;
+              double calculationResult = (NVpercent / ((4.7159 * (ECvalue / 10)) - 4.1836)) * 100;
               kACReportData[i].resultIn = calculationResult.toStringAsFixed(1);
               kACReportData[i].resultReport = kACReportData[i].resultIn;
-            } else if (kACReportData[i].custFull ==
-                'THAI WIRE PRODUCTS PUBLIC COMPANY LIMITED') {
-              kACReportData[i].resultIn =
-                  double.parse(kACReportData[i].resultIn).toStringAsFixed(2);
+            } else if (kACReportData[i].custFull == 'THAI WIRE PRODUCTS PUBLIC COMPANY LIMITED') {
+              kACReportData[i].resultIn = double.parse(kACReportData[i].resultIn).toStringAsFixed(2);
               kACReportData[i].resultReport = kACReportData[i].resultIn;
             } else {
-              kACReportData[i].resultIn =
-                  double.parse(kACReportData[i].resultIn).toStringAsFixed(1);
+              kACReportData[i].resultIn = double.parse(kACReportData[i].resultIn).toStringAsFixed(1);
               kACReportData[i].resultReport = kACReportData[i].resultIn;
             }
           } catch (e) {
@@ -230,8 +216,7 @@ Future searchKACReportData(String reqNo) async {
           } else {
             try {
               if (double.parse(kACReportData[i].stdMin) is double) {
-                kACReportData[i].buffMin =
-                    double.parse(kACReportData[i].stdMin);
+                kACReportData[i].buffMin = double.parse(kACReportData[i].stdMin);
               }
             } on Exception catch (e) {
               kACReportData[i].buffMin = -99999;
@@ -244,8 +229,7 @@ Future searchKACReportData(String reqNo) async {
           } else {
             try {
               if (double.parse(kACReportData[i].stdMax) is double) {
-                kACReportData[i].buffMax =
-                    double.parse(kACReportData[i].stdMax);
+                kACReportData[i].buffMax = double.parse(kACReportData[i].stdMax);
               }
             } on Exception catch (e) {
               kACReportData[i].buffMax = 99999;
@@ -269,8 +253,7 @@ Future searchKACReportData(String reqNo) async {
             kACReportData[i].dgm = buffDgm;
             kACReportData[i].patternReport = buffPattern;
             //print("intry$i");
-            if (kACReportData[i].resultIn.toString() != null ||
-                kACReportData[i].resultIn.toString() != '') {
+            if (kACReportData[i].resultIn.toString() != null || kACReportData[i].resultIn.toString() != '') {
               /* print(
                   "Result:${kACReportData[i].result.toString()},Max:${kACReportData[i].buffMax.toString()},Min:${kACReportData[i].buffMin.toString()}");
                */
@@ -281,8 +264,7 @@ Future searchKACReportData(String reqNo) async {
                   kACReportData[i].buffMax.toString() +
                   ':' +
                   kACReportData[i].buffMin.toString());
-              if (kACReportData[i].controlRange.toString() ==
-                  kACReportData[i].resultIn.toString()) {
+              if (kACReportData[i].controlRange.toString() == kACReportData[i].resultIn.toString()) {
                 kACReportData[i].evaluation = 'PASS';
               } else if (kACReportData[i].processReportName == 'Part name' ||
                   kACReportData[i].processReportName == 'Part no.' ||
@@ -290,14 +272,11 @@ Future searchKACReportData(String reqNo) async {
                   kACReportData[i].processReportName == 'TP Lot no.' ||
                   kACReportData[i].processReportName == 'Quantity') {
                 kACReportData[i].evaluation = 'PASS';
-              } else if (double.parse(kACReportData[i].resultIn.toString()) >
-                  kACReportData[i].buffMax) {
+              } else if (double.parse(kACReportData[i].resultIn.toString()) > kACReportData[i].buffMax) {
                 kACReportData[i].evaluation = 'HIGH';
-              } else if (double.parse(kACReportData[i].resultIn.toString()) <
-                  kACReportData[i].buffMin) {
+              } else if (double.parse(kACReportData[i].resultIn.toString()) < kACReportData[i].buffMin) {
                 kACReportData[i].evaluation = 'LOW';
-              } else if (kACReportData[i].controlRange == '' ||
-                  kACReportData[i].controlRange == '-') {
+              } else if (kACReportData[i].controlRange == '' || kACReportData[i].controlRange == '-') {
                 kACReportData[i].evaluation = '-';
               } else {
                 kACReportData[i].evaluation = 'PASS';

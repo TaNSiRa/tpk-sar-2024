@@ -4,8 +4,7 @@ import 'ManageChartDataStructure.dart';
 
 List<HistoryChartModel> historyChartData = [];
 
-Future searchHistoryChartData(String itemID, String itemName, String section,
-    String max, String min) async {
+Future searchHistoryChartData(String itemID, String itemName, String section, String max, String min) async {
   Map<String, String> qParams = {
     'itemID': itemID,
     'itemName': itemName,
@@ -15,8 +14,7 @@ Future searchHistoryChartData(String itemID, String itemName, String section,
   print("in searchChartData");
   /*  print('max = $max min = $min');
   min = "1";  */
-  final response = await http
-      .post(Uri.parse("$url/Widget_SearcHistoryChartData2"), body: qParams);
+  final response = await http.post(Uri.parse("$url/Widget_SearcHistoryChartData2"), body: qParams);
   if (response.statusCode == 200) {
     //print("respone");
     List<HistoryChartModel> buffer = [];
@@ -32,8 +30,7 @@ Future searchHistoryChartData(String itemID, String itemName, String section,
             if (j + 1 < buffer.length) {
               if (buffer[j].samplingDate == buffer[j + 1].samplingDate) {
                 if (dataCount == 1) {
-                  dataSum = double.parse(buffer[j].resultApprove) +
-                      double.parse(buffer[j + 1].resultApprove);
+                  dataSum = double.parse(buffer[j].resultApprove) + double.parse(buffer[j + 1].resultApprove);
                 } else {
                   dataSum = dataSum + double.parse(buffer[j + 1].resultApprove);
                 }
@@ -43,8 +40,7 @@ Future searchHistoryChartData(String itemID, String itemName, String section,
                 /* print(("1 : " + dataSum.toString()));
                 print(("2: " + dataCount.toString()));
                 print("3 : " + (dataSum / dataCount).toString()); */
-                buffer[j].resultApprove =
-                    (dataSum / dataCount).toStringAsFixed(2);
+                buffer[j].resultApprove = (dataSum / dataCount).toStringAsFixed(2);
                 /* print("4 :" + buffer[j].resultApprove); */
                 i = j;
                 break;
@@ -54,8 +50,7 @@ Future searchHistoryChartData(String itemID, String itemName, String section,
               }
             } else {
               if (dataCount != 1) {
-                buffer[j].resultApprove =
-                    (dataSum / dataCount).toStringAsFixed(2);
+                buffer[j].resultApprove = (dataSum / dataCount).toStringAsFixed(2);
               }
               i = j;
               break;
@@ -90,11 +85,7 @@ Future searchHistoryChartData(String itemID, String itemName, String section,
         buff_max = "0";
       }
       historyChartData.add(HistoryChartModel(
-          samplingDate: "0",
-          resultApprove: "0",
-          resultApproveUnit: "0",
-          stdMax: buff_max,
-          stdMin: buff_min));
+          samplingDate: "0", resultApprove: "0", resultApproveUnit: "0", stdMax: buff_max, stdMin: buff_min));
     } else {
       for (int i = 0; i < historyChartData.length; i++) {
         try {

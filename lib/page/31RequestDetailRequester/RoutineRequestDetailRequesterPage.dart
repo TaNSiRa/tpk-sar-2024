@@ -48,8 +48,7 @@ class RoutineRequestDetailRequesterPage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<ManageDataRoutineRequestDetailRequesterPage>(
-          create: (BuildContext context) =>
-              ManageDataRoutineRequestDetailRequesterPage(),
+          create: (BuildContext context) => ManageDataRoutineRequestDetailRequesterPage(),
         ),
       ],
       child: SingleChildScrollView(
@@ -379,9 +378,7 @@ class _SampleDetailState extends State<SampleDetail> {
       widget: TextField(
         style: styleDataInTable,
         decoration: InputDecoration(
-            hintText: 'COMMENT',
-            contentPadding: EdgeInsets.all(10.0),
-            border: OutlineInputBorder()),
+            hintText: 'COMMENT', contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
         onChanged: (value) {
           buffComment = value.toString();
         },
@@ -453,9 +450,7 @@ class _SampleDetailState extends State<SampleDetail> {
       widget: TextField(
         style: styleDataInTable,
         decoration: InputDecoration(
-            hintText: 'REJECT COMMENT',
-            contentPadding: EdgeInsets.all(10.0),
-            border: OutlineInputBorder()),
+            hintText: 'REJECT COMMENT', contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
         onChanged: (value) {
           rejectReportData[0].reportRejectRemark = value.toString();
         },
@@ -544,8 +539,7 @@ class _SampleDetailState extends State<SampleDetail> {
 
   void showImage(int indexSample, int indexItem) {
     var outputAsUint8List;
-    outputAsUint8List =
-        base64.decode(itemData[indexSample][indexItem].resultApprove);
+    outputAsUint8List = base64.decode(itemData[indexSample][indexItem].resultApprove);
     /* if (result == 1) {
       outputAsUint8List =
           new Uint8List.fromList(itemData[indexSample][indexItem].result1.codeUnits);
@@ -738,8 +732,7 @@ class _SampleDetailState extends State<SampleDetail> {
                               DataColumn(
                                 label: Container(
                                   //width: 120,
-                                  child:
-                                      Text('REMARK', style: styleHeaderTable),
+                                  child: Text('REMARK', style: styleHeaderTable),
                                 ),
                               ),
                               if (historyReportData[0].reviseNo >= 1) ...[
@@ -747,16 +740,14 @@ class _SampleDetailState extends State<SampleDetail> {
                                 DataColumn(
                                   label: Container(
                                     //width: 120,
-                                    child: Text('TIME Rev1',
-                                        style: styleHeaderTable),
+                                    child: Text('TIME Rev1', style: styleHeaderTable),
                                   ),
                                 ),
                                 DataColumn(label: _verticalDivider),
                                 DataColumn(
                                   label: Container(
                                     //width: 120,
-                                    child: Text('REMARK Rev1',
-                                        style: styleHeaderTable),
+                                    child: Text('REMARK Rev1', style: styleHeaderTable),
                                   ),
                                 ),
                               ],
@@ -765,16 +756,14 @@ class _SampleDetailState extends State<SampleDetail> {
                                 DataColumn(
                                   label: Container(
                                     //width: 120,
-                                    child: Text('TIME Rev2',
-                                        style: styleHeaderTable),
+                                    child: Text('TIME Rev2', style: styleHeaderTable),
                                   ),
                                 ),
                                 DataColumn(label: _verticalDivider),
                                 DataColumn(
                                   label: Container(
                                     //width: 120,
-                                    child: Text('REMARK Rev2',
-                                        style: styleHeaderTable),
+                                    child: Text('REMARK Rev2', style: styleHeaderTable),
                                   ),
                                 ),
                               ],
@@ -783,16 +772,14 @@ class _SampleDetailState extends State<SampleDetail> {
                                 DataColumn(
                                   label: Container(
                                     //width: 120,
-                                    child: Text('TIME Rev3',
-                                        style: styleHeaderTable),
+                                    child: Text('TIME Rev3', style: styleHeaderTable),
                                   ),
                                 ),
                                 DataColumn(label: _verticalDivider),
                                 DataColumn(
                                   label: Container(
                                     //width: 120,
-                                    child: Text('REMARK Rev3',
-                                        style: styleHeaderTable),
+                                    child: Text('REMARK Rev3', style: styleHeaderTable),
                                   ),
                                 ),
                               ],
@@ -819,102 +806,68 @@ class _SampleDetailState extends State<SampleDetail> {
                                 (index) => DataRow(cells: [
                                       DataCell(
                                         Container(
-                                          child: Text(
-                                              historyReportData[index]
-                                                  .name
-                                                  .toString(),
+                                          child: Text(historyReportData[index].name.toString(),
                                               style: styleDataInTable),
                                         ),
                                       ),
                                       DataCell(_verticalDivider),
                                       DataCell(
                                         Container(
-                                          child: Text(
-                                              toDateTime(
-                                                  historyReportData[index]
-                                                      .time0
-                                                      .toString()),
+                                          child: Text(toDateTime(historyReportData[index].time0.toString()),
                                               style: styleDataInTable),
                                         ),
                                       ),
                                       DataCell(_verticalDivider),
                                       DataCell(
                                         Container(
-                                          child: Text(
-                                              historyReportData[index]
-                                                  .remark0
-                                                  .toString(),
+                                          child: Text(historyReportData[index].remark0.toString(),
                                               style: styleDataInTable),
                                         ),
                                       ),
-                                      if (historyReportData[0].reviseNo >=
-                                          1) ...[
+                                      if (historyReportData[0].reviseNo >= 1) ...[
                                         DataCell(_verticalDivider),
                                         DataCell(
                                           Container(
-                                            child: Text(
-                                                toDateTime(
-                                                    historyReportData[index]
-                                                        .time1
-                                                        .toString()),
+                                            child: Text(toDateTime(historyReportData[index].time1.toString()),
                                                 style: styleDataInTable),
                                           ),
                                         ),
                                         DataCell(_verticalDivider),
                                         DataCell(
                                           Container(
-                                            child: Text(
-                                                historyReportData[index]
-                                                    .remark1
-                                                    .toString(),
+                                            child: Text(historyReportData[index].remark1.toString(),
                                                 style: styleDataInTable),
                                           ),
                                         ),
                                       ],
-                                      if (historyReportData[0].reviseNo >=
-                                          2) ...[
+                                      if (historyReportData[0].reviseNo >= 2) ...[
                                         DataCell(_verticalDivider),
                                         DataCell(
                                           Container(
-                                            child: Text(
-                                                toDateTime(
-                                                    historyReportData[index]
-                                                        .time2
-                                                        .toString()),
+                                            child: Text(toDateTime(historyReportData[index].time2.toString()),
                                                 style: styleDataInTable),
                                           ),
                                         ),
                                         DataCell(_verticalDivider),
                                         DataCell(
                                           Container(
-                                            child: Text(
-                                                historyReportData[index]
-                                                    .remark2
-                                                    .toString(),
+                                            child: Text(historyReportData[index].remark2.toString(),
                                                 style: styleDataInTable),
                                           ),
                                         ),
                                       ],
-                                      if (historyReportData[0].reviseNo >=
-                                          3) ...[
+                                      if (historyReportData[0].reviseNo >= 3) ...[
                                         DataCell(_verticalDivider),
                                         DataCell(
                                           Container(
-                                            child: Text(
-                                                toDateTime(
-                                                    historyReportData[index]
-                                                        .time3
-                                                        .toString()),
+                                            child: Text(toDateTime(historyReportData[index].time3.toString()),
                                                 style: styleDataInTable),
                                           ),
                                         ),
                                         DataCell(_verticalDivider),
                                         DataCell(
                                           Container(
-                                            child: Text(
-                                                historyReportData[index]
-                                                    .remark3
-                                                    .toString(),
+                                            child: Text(historyReportData[index].remark3.toString(),
                                                 style: styleDataInTable),
                                           ),
                                         ),
@@ -1033,8 +986,7 @@ class _SampleDetailState extends State<SampleDetail> {
                       onPressed: () async {
                         Navigator.pop(context);
                         dataEditReportName.clear();
-                        dataEditReportName
-                            .add(itemData[indexSample][indexItem]);
+                        dataEditReportName.add(itemData[indexSample][indexItem]);
                         await submitEditReportName();
                       },
                     ),
@@ -1059,11 +1011,9 @@ class _SampleDetailState extends State<SampleDetail> {
   double widthsection1 = 130;
   double heightBox2 = 30;
   double widthsection2 = 130;
-  TextStyle stylesection =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle stylesection = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
   TextStyle styledata = TextStyle(fontSize: 13, fontFamily: 'Mitr');
-  TextStyle styleHeaderTable =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle styleHeaderTable = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
   TextStyle styleDataInTable = TextStyle(fontSize: 12, fontFamily: 'Mitr');
   bool userCheck = false;
   bool settingView = false;
@@ -1073,8 +1023,7 @@ class _SampleDetailState extends State<SampleDetail> {
     contextRoutineRequestDetail = context;
     return Form(
       key: _formKey,
-      child: BlocBuilder<ManageDataRoutineRequestDetailRequesterPage, int>(
-          builder: (context, state) {
+      child: BlocBuilder<ManageDataRoutineRequestDetailRequesterPage, int>(builder: (context, state) {
         print("rebuild state :$state");
         if (state == 1) {
           if (userName == requestData[0].incharge ||
@@ -1085,8 +1034,7 @@ class _SampleDetailState extends State<SampleDetail> {
           }
           print('incharge: ' + requestData[0].incharge);
           print('userName: ' + userName);
-          print(
-              'requestData[0].sentRepStatus: ' + requestData[0].sentRepStatus);
+          print('requestData[0].sentRepStatus: ' + requestData[0].sentRepStatus);
           return Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -1221,14 +1169,12 @@ class _SampleDetailState extends State<SampleDetail> {
                                     color: Colors.red,
                                   ),
                                   onPressed: () {
-                                    deleteActualLine(
-                                        requestData[0].reqNo.toString());
+                                    deleteActualLine(requestData[0].reqNo.toString());
                                   },
                                 ),
                               ),
                             Text(
-                              toDateTime(
-                                  requestData[0].inputDataDate.toString()),
+                              toDateTime(requestData[0].inputDataDate.toString()),
                             )
                           ],
                         ),
@@ -1243,8 +1189,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                 icon: Icon(Icons.article),
                                 onPressed: () {
                                   //alertLoading();
-                                  KACReportDataPopUp(
-                                      requestData[0].reqNo.toString());
+                                  KACReportDataPopUp(requestData[0].reqNo.toString());
                                 },
                               ),
                             ),
@@ -1257,14 +1202,12 @@ class _SampleDetailState extends State<SampleDetail> {
                                     color: Colors.red,
                                   ),
                                   onPressed: () {
-                                    deleteReport(
-                                        requestData[0].reqNo.toString());
+                                    deleteReport(requestData[0].reqNo.toString());
                                   },
                                 ),
                               ),
                             Text(
-                              toDateTime(
-                                  requestData[0].createReportDate.toString()),
+                              toDateTime(requestData[0].createReportDate.toString()),
                             ),
                             /* Container(
                               child: IconButton(
@@ -1282,8 +1225,7 @@ class _SampleDetailState extends State<SampleDetail> {
                         ),
                       ),
                       if (requestData[0].reportRejectRemark.toString() != "" &&
-                          requestData[0].reportRejectRemark.toString() !=
-                              "-") ...[
+                          requestData[0].reportRejectRemark.toString() != "-") ...[
                         rowData(
                             "REJECT REMARK",
                             Text(
@@ -1363,16 +1305,12 @@ class _SampleDetailState extends State<SampleDetail> {
                               ],
                               if (requestData[0].nextApprover == 'COMPLETE')
                                 Text(
-                                  '            ' +
-                                      toDateTime(requestData[0]
-                                          .reportCompleteDate
-                                          .toString()),
+                                  '            ' + toDateTime(requestData[0].reportCompleteDate.toString()),
                                 ),
                             ],
                           ),
                         ),
-                        if (requestData[0].reportRemark != '' &&
-                            requestData[0].reportRemark != '-') ...[
+                        if (requestData[0].reportRemark != '' && requestData[0].reportRemark != '-') ...[
                           SizedBox(
                             height: 5,
                           ),
@@ -1392,8 +1330,7 @@ class _SampleDetailState extends State<SampleDetail> {
                             child: Text(requestData[0].nextApprover.toString()),
                           ),
                         ),
-                        if (requestData[0].nextApprover.toString() ==
-                            "COMPLETE") ...[
+                        if (requestData[0].nextApprover.toString() == "COMPLETE") ...[
                           rowData(
                             "SEND TO CUSTOMER",
                             Row(
@@ -1403,16 +1340,13 @@ class _SampleDetailState extends State<SampleDetail> {
                                     (requestData[0].sentRepStatus == null ||
                                             requestData[0].sentRepStatus == "")
                                         ? "NOT SENT YET"
-                                        : requestData[0]
-                                            .sentRepStatus
-                                            .toString(),
+                                        : requestData[0].sentRepStatus.toString(),
                                   ),
                                 ),
                                 SizedBox(
                                   width: 10,
                                 ),
-                                if (requestData[0].sentRepStatus !=
-                                        'SENT COMPLETE' &&
+                                if (requestData[0].sentRepStatus != 'SENT COMPLETE' &&
                                     requestData[0].incharge == userName) ...[
                                   Container(
                                     child: IconButton(
@@ -1428,8 +1362,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                     ),
                                   ),
                                 ],
-                                if (requestData[0].sentRepStatus.toString() ==
-                                        "SENT COMPLETE" &&
+                                if (requestData[0].sentRepStatus.toString() == "SENT COMPLETE" &&
                                     requestData[0].incharge == userName) ...[
                                   Container(
                                     child: IconButton(
@@ -1439,17 +1372,14 @@ class _SampleDetailState extends State<SampleDetail> {
                                         color: Colors.red,
                                       ),
                                       onPressed: () {
-                                        cancelsendReport(
-                                            requestData[0].reqNo.toString());
+                                        cancelsendReport(requestData[0].reqNo.toString());
                                       },
                                     ),
                                   ),
                                 ],
-                                if (requestData[0].sentRep.toString() ==
-                                    "SENT COMPLETE") ...[
+                                if (requestData[0].sentRep.toString() == "SENT COMPLETE") ...[
                                   Text(
-                                    toDateTime(
-                                        requestData[0].sentRep.toString()),
+                                    toDateTime(requestData[0].sentRep.toString()),
                                   ),
                                 ],
                               ],
@@ -1544,8 +1474,7 @@ class _SampleDetailState extends State<SampleDetail> {
                           children: [
                             Center(
                               child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Center(
@@ -1555,20 +1484,16 @@ class _SampleDetailState extends State<SampleDetail> {
                                       ),
                                     ),
                                     Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             rowData(
                                               "SAMPLE GROUP",
                                               Container(
                                                 child: Text(
-                                                  sampleData[indexSample]
-                                                      .sampleGroup
-                                                      .toString(),
+                                                  sampleData[indexSample].sampleGroup.toString(),
                                                   style: styledata,
                                                 ),
                                               ),
@@ -1577,9 +1502,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                               "SAMPLE TYPE",
                                               Container(
                                                 child: Text(
-                                                  sampleData[indexSample]
-                                                      .sampleType
-                                                      .toString(),
+                                                  sampleData[indexSample].sampleType.toString(),
                                                   style: styledata,
                                                 ),
                                               ),
@@ -1588,9 +1511,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                               "SAMPLE TANK",
                                               Container(
                                                 child: Text(
-                                                  sampleData[indexSample]
-                                                      .sampleTank
-                                                      .toString(),
+                                                  sampleData[indexSample].sampleTank.toString(),
                                                   style: styledata,
                                                 ),
                                               ),
@@ -1599,9 +1520,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                               "SAMPLE NAME",
                                               Container(
                                                 child: Text(
-                                                  sampleData[indexSample]
-                                                      .sampleName
-                                                      .toString(),
+                                                  sampleData[indexSample].sampleName.toString(),
                                                   style: styledata,
                                                 ),
                                               ),
@@ -1610,9 +1529,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                               "SAMPLE AMOUNT",
                                               Container(
                                                 child: Text(
-                                                  sampleData[indexSample]
-                                                      .sampleAmount
-                                                      .toString(),
+                                                  sampleData[indexSample].sampleAmount.toString(),
                                                   style: styledata,
                                                 ),
                                               ),
@@ -1621,9 +1538,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                               "SAMPLE STATUS",
                                               Container(
                                                 child: statusSample(
-                                                  sampleData[indexSample]
-                                                      .sampleStatus
-                                                      .toString(),
+                                                  sampleData[indexSample].sampleStatus.toString(),
                                                 ),
                                               ),
                                             ),
@@ -1631,15 +1546,11 @@ class _SampleDetailState extends State<SampleDetail> {
                                               "SAMPLING DATE",
                                               Container(
                                                 child: Text(
-                                                  toDateOnly(sampleData[
-                                                              indexSample]
-                                                          .samplingDate
-                                                          .toString()) +
+                                                  toDateOnly(
+                                                          sampleData[indexSample].samplingDate.toString()) +
                                                       '    ( Send : ' +
-                                                      toDateTime(sampleData[
-                                                              indexSample]
-                                                          .sendDate
-                                                          .toString()) +
+                                                      toDateTime(
+                                                          sampleData[indexSample].sendDate.toString()) +
                                                       " )",
                                                   style: styledata,
                                                 ),
@@ -1648,21 +1559,16 @@ class _SampleDetailState extends State<SampleDetail> {
                                           ],
                                         ),
                                         Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             rowData(
                                               "RECEIVE BY",
                                               Container(
                                                 child: Text(
-                                                  sampleData[indexSample]
-                                                          .userReceive
-                                                          .toString() +
+                                                  sampleData[indexSample].userReceive.toString() +
                                                       "   " +
-                                                      toDateOnly(sampleData[
-                                                              indexSample]
-                                                          .receiveDate
-                                                          .toString()),
+                                                      toDateOnly(
+                                                          sampleData[indexSample].receiveDate.toString()),
                                                   style: styledata,
                                                 ),
                                               ),
@@ -1671,14 +1577,10 @@ class _SampleDetailState extends State<SampleDetail> {
                                               "REJECT BY",
                                               Container(
                                                 child: Text(
-                                                  sampleData[indexSample]
-                                                          .userReject
-                                                          .toString() +
+                                                  sampleData[indexSample].userReject.toString() +
                                                       "   " +
-                                                      toDateOnly(sampleData[
-                                                              indexSample]
-                                                          .rejectDate
-                                                          .toString()),
+                                                      toDateOnly(
+                                                          sampleData[indexSample].rejectDate.toString()),
                                                   style: styledata,
                                                 ),
                                               ),
@@ -1687,9 +1589,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                               "REJECT REMARK",
                                               Container(
                                                 child: Text(
-                                                  sampleData[indexSample]
-                                                      .remarkReject
-                                                      .toString(),
+                                                  sampleData[indexSample].remarkReject.toString(),
                                                   style: styledata,
                                                 ),
                                               ),
@@ -1698,9 +1598,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                               "SAMPLE ATTACH FILE",
                                               Container(
                                                 child: Text(
-                                                  sampleData[indexSample]
-                                                      .sampleAmount
-                                                      .toString(),
+                                                  sampleData[indexSample].sampleAmount.toString(),
                                                   style: styledata,
                                                 ),
                                               ),
@@ -1709,9 +1607,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                               "SAMPLE REMARK",
                                               Container(
                                                 child: Text(
-                                                  sampleData[indexSample]
-                                                      .sampleRemark
-                                                      .toString(),
+                                                  sampleData[indexSample].sampleRemark.toString(),
                                                   style: styledata,
                                                 ),
                                               ),
@@ -1739,8 +1635,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                                         color: Colors.red,
                                                       ),
                                                       onPressed: () {
-                                                        cancelSample(
-                                                            indexSample);
+                                                        cancelSample(indexSample);
                                                       },
                                                     );
                                                   else
@@ -1758,8 +1653,7 @@ class _SampleDetailState extends State<SampleDetail> {
                             Container(
                               decoration: BoxDecoration(
                                 color: CustomTheme.colorWhite,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5)),
+                                borderRadius: BorderRadius.all(Radius.circular(5)),
                                 boxShadow: [
                                   BoxShadow(
                                       color: CustomTheme.colorShadowBgStrong,
@@ -1779,8 +1673,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                       DataColumn(
                                         label: Container(
                                           width: 120,
-                                          child: Text('PROCESS',
-                                              style: styleHeaderTable),
+                                          child: Text('PROCESS', style: styleHeaderTable),
                                         ),
                                         tooltip: "PROCESS REPORT NAME",
                                       ),
@@ -1788,8 +1681,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                       DataColumn(
                                         label: Container(
                                           width: 120,
-                                          child: Text('ITEM',
-                                              style: styleHeaderTable),
+                                          child: Text('ITEM', style: styleHeaderTable),
                                         ),
                                         tooltip: "ITEM NAME",
                                       ),
@@ -1797,145 +1689,118 @@ class _SampleDetailState extends State<SampleDetail> {
                                       DataColumn(
                                         label: Container(
                                           width: 120,
-                                          child: Text('ITEM STATUS',
-                                              style: styleHeaderTable),
+                                          child: Text('ITEM STATUS', style: styleHeaderTable),
                                         ),
                                         tooltip: "STATUS ITEM",
                                       ),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                        label: Text('MAG',
-                                            style: styleHeaderTable),
+                                        label: Text('MAG', style: styleHeaderTable),
                                         tooltip: "MAGNIFICATION",
                                       ),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                        label: Text('POS',
-                                            style: styleHeaderTable),
+                                        label: Text('POS', style: styleHeaderTable),
                                         tooltip: "POSITION",
                                       ),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                        label: Text('TEMP',
-                                            style: styleHeaderTable),
+                                        label: Text('TEMP', style: styleHeaderTable),
                                       ),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                        label: Text('MAX',
-                                            style: styleHeaderTable),
+                                        label: Text('MAX', style: styleHeaderTable),
                                         tooltip: "CONTROL RANGE MAX",
                                       ),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                        label: Text('MIN',
-                                            style: styleHeaderTable),
+                                        label: Text('MIN', style: styleHeaderTable),
                                         tooltip: "CONTROL RANGE MIN",
                                       ),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                        label: Text('HISTORY',
-                                            style: styleHeaderTable),
+                                        label: Text('HISTORY', style: styleHeaderTable),
                                         tooltip: "HISTORY",
                                       ),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                        label: Text('RAW LAB RESULT',
-                                            style: styleHeaderTable),
+                                        label: Text('RAW LAB RESULT', style: styleHeaderTable),
                                       ),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                        label: Text('STD FACTOR',
-                                            style: styleHeaderTable),
+                                        label: Text('STD FACTOR', style: styleHeaderTable),
                                       ),
                                       if (settingView) ...[
                                         DataColumn(label: _verticalDivider),
                                         DataColumn(
-                                          label: Text('STD1(+)',
-                                              style: styleHeaderTable),
+                                          label: Text('STD1(+)', style: styleHeaderTable),
                                         ),
                                         DataColumn(label: _verticalDivider),
                                         DataColumn(
-                                          label: Text('STD2(-)',
-                                              style: styleHeaderTable),
+                                          label: Text('STD2(-)', style: styleHeaderTable),
                                         ),
                                         DataColumn(label: _verticalDivider),
                                         DataColumn(
-                                          label: Text('STD3(x)',
-                                              style: styleHeaderTable),
+                                          label: Text('STD3(x)', style: styleHeaderTable),
                                         ),
                                         DataColumn(label: _verticalDivider),
                                         DataColumn(
-                                          label: Text('STD4(/)',
-                                              style: styleHeaderTable),
+                                          label: Text('STD4(/)', style: styleHeaderTable),
                                         ),
                                         DataColumn(label: _verticalDivider),
                                         DataColumn(
-                                          label: Text('STD5(+)',
-                                              style: styleHeaderTable),
+                                          label: Text('STD5(+)', style: styleHeaderTable),
                                         ),
                                         DataColumn(label: _verticalDivider),
                                         DataColumn(
-                                          label: Text('STD6(-)',
-                                              style: styleHeaderTable),
+                                          label: Text('STD6(-)', style: styleHeaderTable),
                                         ),
                                         DataColumn(label: _verticalDivider),
                                         DataColumn(
-                                          label: Text('STD7(x)',
-                                              style: styleHeaderTable),
+                                          label: Text('STD7(x)', style: styleHeaderTable),
                                         ),
                                         DataColumn(label: _verticalDivider),
                                         DataColumn(
-                                          label: Text('STD8(/)',
-                                              style: styleHeaderTable),
+                                          label: Text('STD8(/)', style: styleHeaderTable),
                                         ),
                                         DataColumn(label: _verticalDivider),
                                         DataColumn(
-                                          label: Text('REPORT ORDER',
-                                              style: styleHeaderTable),
+                                          label: Text('REPORT ORDER', style: styleHeaderTable),
                                         ),
                                       ],
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                          label: Text('RESULT',
-                                              style: styleHeaderTable),
+                                          label: Text('RESULT', style: styleHeaderTable),
                                           tooltip: "RESULT ACTUAL"),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
                                           label: Container(
                                             width: 150,
-                                            child: Text('RESULT COMMENT',
-                                                style: styleHeaderTable),
+                                            child: Text('RESULT COMMENT', style: styleHeaderTable),
                                           ),
                                           tooltip: "RESULT COMMENT"),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                          label: Text('APPROVER',
-                                              style: styleHeaderTable),
+                                          label: Text('APPROVER', style: styleHeaderTable),
                                           tooltip: "APPROVE BY"),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                          label: Text('PATH',
-                                              style: styleHeaderTable),
-                                          tooltip: "SEM"),
+                                          label: Text('PATH', style: styleHeaderTable), tooltip: "SEM"),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                        label: Text('RECONFIRM REMARK',
-                                            style: styleHeaderTable),
+                                        label: Text('RECONFIRM REMARK', style: styleHeaderTable),
                                       ),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                        label: Text('RECONFIRM',
-                                            style: styleHeaderTable),
+                                        label: Text('RECONFIRM', style: styleHeaderTable),
                                       ),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                        label: Text('ACCEPT',
-                                            style: styleHeaderTable),
+                                        label: Text('ACCEPT', style: styleHeaderTable),
                                       ),
                                       DataColumn(label: _verticalDivider),
                                       DataColumn(
-                                        label: Text('CANCEL ITEM',
-                                            style: styleHeaderTable),
+                                        label: Text('CANCEL ITEM', style: styleHeaderTable),
                                       ),
                                     ],
                                     rows: List<DataRow>.generate(
@@ -1946,26 +1811,21 @@ class _SampleDetailState extends State<SampleDetail> {
                                                   children: [
                                                     Container(
                                                       child: Text(
-                                                          itemData[indexSample]
-                                                                  [indexItem]
+                                                          itemData[indexSample][indexItem]
                                                               .processReportName
                                                               .toString(),
-                                                          style:
-                                                              styleDataInTable),
+                                                          style: styleDataInTable),
                                                     ),
                                                     if (settingView)
                                                       Container(
                                                         child: IconButton(
-                                                          padding:
-                                                              EdgeInsets.zero,
+                                                          padding: EdgeInsets.zero,
                                                           icon: Icon(
                                                             Icons.settings,
                                                             color: Colors.red,
                                                           ),
                                                           onPressed: () {
-                                                            editReportName(
-                                                                indexSample,
-                                                                indexItem);
+                                                            editReportName(indexSample, indexItem);
                                                           },
                                                         ),
                                                       ),
@@ -1976,8 +1836,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                               DataCell(
                                                 Container(
                                                   child: Text(
-                                                      itemData[indexSample]
-                                                              [indexItem]
+                                                      itemData[indexSample][indexItem]
                                                           .itemReportName
                                                           .toString(),
                                                       style: styleDataInTable),
@@ -1993,46 +1852,26 @@ class _SampleDetailState extends State<SampleDetail> {
                                               }())), */
                                               DataCell(Center(
                                                 child: statusItem(
-                                                    itemData[indexSample]
-                                                            [indexItem]
-                                                        .itemStatus
-                                                        .toString(),
+                                                    itemData[indexSample][indexItem].itemStatus.toString(),
                                                     12),
                                               )),
                                               DataCell(_verticalDivider),
-                                              DataCell(Text(
-                                                  itemData[indexSample]
-                                                          [indexItem]
-                                                      .mag
-                                                      .toString(),
+                                              DataCell(Text(itemData[indexSample][indexItem].mag.toString(),
                                                   style: styleDataInTable)),
                                               DataCell(_verticalDivider),
                                               DataCell(Text(
-                                                  itemData[indexSample]
-                                                          [indexItem]
-                                                      .position
-                                                      .toString(),
+                                                  itemData[indexSample][indexItem].position.toString(),
+                                                  style: styleDataInTable)),
+                                              DataCell(_verticalDivider),
+                                              DataCell(Text(itemData[indexSample][indexItem].temp.toString(),
                                                   style: styleDataInTable)),
                                               DataCell(_verticalDivider),
                                               DataCell(Text(
-                                                  itemData[indexSample]
-                                                          [indexItem]
-                                                      .temp
-                                                      .toString(),
+                                                  itemData[indexSample][indexItem].stdMax.toString(),
                                                   style: styleDataInTable)),
                                               DataCell(_verticalDivider),
                                               DataCell(Text(
-                                                  itemData[indexSample]
-                                                          [indexItem]
-                                                      .stdMax
-                                                      .toString(),
-                                                  style: styleDataInTable)),
-                                              DataCell(_verticalDivider),
-                                              DataCell(Text(
-                                                  itemData[indexSample]
-                                                          [indexItem]
-                                                      .stdMin
-                                                      .toString(),
+                                                  itemData[indexSample][indexItem].stdMin.toString(),
                                                   style: styleDataInTable)),
                                               DataCell(_verticalDivider),
                                               DataCell(
@@ -2061,22 +1900,12 @@ class _SampleDetailState extends State<SampleDetail> {
                                                               .toString(),
                                                         ); */
                                                         showHistory(
-                                                          itemData[indexSample]
-                                                                  [indexItem]
-                                                              .id
-                                                              .toString(),
-                                                          itemData[indexSample]
-                                                                  [indexItem]
+                                                          itemData[indexSample][indexItem].id.toString(),
+                                                          itemData[indexSample][indexItem]
                                                               .itemName
                                                               .toString(),
-                                                          itemData[indexSample]
-                                                                  [indexItem]
-                                                              .stdMax
-                                                              .toString(),
-                                                          itemData[indexSample]
-                                                                  [indexItem]
-                                                              .stdMin
-                                                              .toString(),
+                                                          itemData[indexSample][indexItem].stdMax.toString(),
+                                                          itemData[indexSample][indexItem].stdMin.toString(),
                                                         );
                                                       });
                                                     },
@@ -2084,76 +1913,56 @@ class _SampleDetailState extends State<SampleDetail> {
                                                 ),
                                               ),
                                               DataCell(_verticalDivider),
-                                              if (DateTime.parse(
-                                                      itemData[indexSample]
-                                                              [indexItem]
-                                                          .reqDate)
-                                                  .isAfter(DateTime(
-                                                      2025, 3, 24))) ...[
+                                              if (DateTime.parse(itemData[indexSample][indexItem].reqDate)
+                                                  .isAfter(DateTime(2025, 3, 24))) ...[
                                                 DataCell(
                                                   Text(
-                                                    itemData[indexSample][indexItem]
-                                                                    .itemName ==
+                                                    itemData[indexSample][indexItem].itemName ==
                                                                 'Surfactant' &&
-                                                            itemData[indexSample]
-                                                                        [
-                                                                        indexItem]
+                                                            itemData[indexSample][indexItem]
                                                                     .resultgLApprove !=
                                                                 ''
-                                                        ? itemData[indexSample]
-                                                                    [indexItem]
+                                                        ? itemData[indexSample][indexItem]
                                                                 .resultgLApprove
                                                                 .toString() +
                                                             " " +
-                                                            itemData[indexSample]
-                                                                    [indexItem]
+                                                            itemData[indexSample][indexItem]
                                                                 .resultgLApproveUnit
                                                                 .toString()
-                                                        : itemData[indexSample]
-                                                                    [indexItem]
+                                                        : itemData[indexSample][indexItem]
                                                                 .resultApprove
                                                                 .toString() +
                                                             " " +
-                                                            itemData[indexSample]
-                                                                    [indexItem]
+                                                            itemData[indexSample][indexItem]
                                                                 .resultApproveUnit
                                                                 .toString(),
                                                     style: styleDataInTable,
                                                   ),
                                                 )
                                               ],
-                                              if (DateTime.parse(
-                                                      itemData[indexSample]
-                                                              [indexItem]
-                                                          .reqDate)
-                                                  .isBefore(DateTime(
-                                                      2025, 3, 24))) ...[
+                                              if (DateTime.parse(itemData[indexSample][indexItem].reqDate)
+                                                  .isBefore(DateTime(2025, 3, 24))) ...[
                                                 DataCell(
                                                   Text(
-                                                    itemData[indexSample][indexItem]
-                                                                    .itemName ==
+                                                    itemData[indexSample][indexItem].itemName ==
                                                                 'Surfactant' &&
                                                             itemData[indexSample][indexItem]
                                                                     .resultgLApprove !=
                                                                 ''
-                                                        ? itemData[indexSample]
-                                                                    [indexItem]
+                                                        ? itemData[indexSample][indexItem]
                                                                 .resultApprove
                                                                 .toString() +
                                                             " " +
-                                                            itemData[indexSample]
-                                                                    [indexItem]
+                                                            itemData[indexSample][indexItem]
                                                                 .resultApproveUnit
                                                                 .toString() +
                                                             " " +
                                                             "(" +
-                                                            itemData[indexSample]
-                                                                    [indexItem]
+                                                            itemData[indexSample][indexItem]
                                                                 .resultgLApprove
                                                                 .toString() +
                                                             " " +
-                                                            itemData[indexSample]
-                                                                    [indexItem]
+                                                            itemData[indexSample][indexItem]
                                                                 .resultgLApproveUnit
                                                                 .toString() +
                                                             ")"
@@ -2161,8 +1970,7 @@ class _SampleDetailState extends State<SampleDetail> {
                                                                 .resultApprove
                                                                 .toString() +
                                                             " " +
-                                                            itemData[indexSample]
-                                                                    [indexItem]
+                                                            itemData[indexSample][indexItem]
                                                                 .resultApproveUnit
                                                                 .toString(),
                                                     style: styleDataInTable,
@@ -2172,24 +1980,18 @@ class _SampleDetailState extends State<SampleDetail> {
                                               DataCell(_verticalDivider),
                                               DataCell(Row(
                                                 children: [
-                                                  Text(
-                                                      itemData[indexSample]
-                                                              [indexItem]
-                                                          .stdFactor
-                                                          .toString(),
+                                                  Text(itemData[indexSample][indexItem].stdFactor.toString(),
                                                       style: styleDataInTable),
                                                   if (settingView)
                                                     Container(
                                                       child: IconButton(
-                                                        padding:
-                                                            EdgeInsets.zero,
+                                                        padding: EdgeInsets.zero,
                                                         icon: Icon(
                                                           Icons.settings,
                                                           color: Colors.red,
                                                         ),
                                                         onPressed: () {
-                                                          editStd(indexSample,
-                                                              indexItem);
+                                                          editStd(indexSample, indexItem);
                                                         },
                                                       ),
                                                     ),
@@ -2198,149 +2000,92 @@ class _SampleDetailState extends State<SampleDetail> {
                                               if (settingView) ...[
                                                 DataCell(_verticalDivider),
                                                 DataCell(Text(
-                                                    itemData[indexSample]
-                                                            [indexItem]
-                                                        .std1
-                                                        .toString(),
+                                                    itemData[indexSample][indexItem].std1.toString(),
                                                     style: styleDataInTable)),
                                                 DataCell(_verticalDivider),
                                                 DataCell(Text(
-                                                    itemData[indexSample]
-                                                            [indexItem]
-                                                        .std2
-                                                        .toString(),
+                                                    itemData[indexSample][indexItem].std2.toString(),
                                                     style: styleDataInTable)),
                                                 DataCell(_verticalDivider),
                                                 DataCell(Text(
-                                                    itemData[indexSample]
-                                                            [indexItem]
-                                                        .std3
-                                                        .toString(),
+                                                    itemData[indexSample][indexItem].std3.toString(),
                                                     style: styleDataInTable)),
                                                 DataCell(_verticalDivider),
                                                 DataCell(Text(
-                                                    itemData[indexSample]
-                                                            [indexItem]
-                                                        .std4
-                                                        .toString(),
+                                                    itemData[indexSample][indexItem].std4.toString(),
                                                     style: styleDataInTable)),
                                                 DataCell(_verticalDivider),
                                                 DataCell(Text(
-                                                    itemData[indexSample]
-                                                            [indexItem]
-                                                        .std5
-                                                        .toString(),
+                                                    itemData[indexSample][indexItem].std5.toString(),
                                                     style: styleDataInTable)),
                                                 DataCell(_verticalDivider),
                                                 DataCell(Text(
-                                                    itemData[indexSample]
-                                                            [indexItem]
-                                                        .std6
-                                                        .toString(),
+                                                    itemData[indexSample][indexItem].std6.toString(),
                                                     style: styleDataInTable)),
                                                 DataCell(_verticalDivider),
                                                 DataCell(Text(
-                                                    itemData[indexSample]
-                                                            [indexItem]
-                                                        .std7
-                                                        .toString(),
+                                                    itemData[indexSample][indexItem].std7.toString(),
                                                     style: styleDataInTable)),
                                                 DataCell(_verticalDivider),
                                                 DataCell(Text(
-                                                    itemData[indexSample]
-                                                            [indexItem]
-                                                        .std8
-                                                        .toString(),
+                                                    itemData[indexSample][indexItem].std8.toString(),
                                                     style: styleDataInTable)),
                                                 DataCell(_verticalDivider),
                                                 DataCell(Text(
-                                                    itemData[indexSample]
-                                                            [indexItem]
-                                                        .reportOrder
-                                                        .toString(),
+                                                    itemData[indexSample][indexItem].reportOrder.toString(),
                                                     style: styleDataInTable)),
                                               ],
                                               DataCell(_verticalDivider),
                                               DataCell(Row(
                                                 children: [
-                                                  if (itemData[indexSample]
-                                                                  [indexItem]
-                                                              .itemStatus ==
+                                                  if (itemData[indexSample][indexItem].itemStatus ==
                                                           'APPROVE' ||
-                                                      itemData[indexSample]
-                                                                  [indexItem]
-                                                              .itemStatus ==
+                                                      itemData[indexSample][indexItem].itemStatus ==
                                                           'COMPLETE')
-                                                    if (itemData[indexSample]
-                                                            [indexItem]
+                                                    if (itemData[indexSample][indexItem]
                                                         .resultComplete
                                                         .contains('pic_'))
                                                       Container(
                                                         child: IconButton(
-                                                          padding:
-                                                              EdgeInsets.zero,
-                                                          icon:
-                                                              Icon(Icons.image),
+                                                          padding: EdgeInsets.zero,
+                                                          icon: Icon(Icons.image),
                                                           onPressed: () {
                                                             showPicture(
-                                                                itemData[indexSample]
-                                                                        [
-                                                                        indexItem]
+                                                                itemData[indexSample][indexItem]
                                                                     .resultComplete,
                                                                 context);
                                                           },
                                                         ),
                                                       ),
-                                                  if (itemData[indexSample]
-                                                                  [indexItem]
-                                                              .itemStatus ==
+                                                  if (itemData[indexSample][indexItem].itemStatus ==
                                                           'APPROVE' ||
-                                                      itemData[indexSample]
-                                                                  [indexItem]
-                                                              .itemStatus ==
+                                                      itemData[indexSample][indexItem].itemStatus ==
                                                           'COMPLETE')
-                                                    if (itemData[indexSample]
-                                                                [indexItem]
+                                                    if (itemData[indexSample][indexItem]
                                                             .resultComplete
                                                             .contains('pic_') ==
                                                         false)
                                                       Text(
-                                                          itemData[indexSample][
-                                                                      indexItem]
+                                                          itemData[indexSample][indexItem]
                                                                   .resultCompleteSymbol
                                                                   .toString() +
-                                                              itemData[indexSample]
-                                                                      [
-                                                                      indexItem]
+                                                              itemData[indexSample][indexItem]
                                                                   .resultComplete
                                                                   .toString(),
                                                           style: styleDataInTable),
-                                                  if (itemData[indexSample]
-                                                                  [indexItem]
-                                                              .itemStatus ==
+                                                  if (itemData[indexSample][indexItem].itemStatus ==
                                                           'APPROVE' ||
-                                                      itemData[indexSample]
-                                                                  [indexItem]
-                                                              .itemStatus ==
+                                                      itemData[indexSample][indexItem].itemStatus ==
                                                           'COMPLETE')
-                                                    if (itemData[indexSample]
-                                                                    [indexItem]
-                                                                .itemStatus ==
+                                                    if (itemData[indexSample][indexItem].itemStatus ==
                                                             "APPROVE" &&
                                                         (userCheck))
                                                       Checkbox(
-                                                        value: itemData[
-                                                                    indexSample]
-                                                                [indexItem]
-                                                            .selected,
+                                                        value: itemData[indexSample][indexItem].selected,
                                                         onChanged: (value) {
                                                           setState(() {
-                                                            itemData[indexSample]
-                                                                    [indexItem]
-                                                                .selected = !itemData[
-                                                                        indexSample]
-                                                                    [indexItem]
-                                                                .selected;
+                                                            itemData[indexSample][indexItem].selected =
+                                                                !itemData[indexSample][indexItem].selected;
                                                           });
                                                         },
                                                       ),
@@ -2348,29 +2093,21 @@ class _SampleDetailState extends State<SampleDetail> {
                                               )),
                                               DataCell(_verticalDivider),
                                               DataCell(
-                                                Text(
-                                                    itemData[indexSample]
-                                                            [indexItem]
-                                                        .resultApproveRemark,
+                                                Text(itemData[indexSample][indexItem].resultApproveRemark,
                                                     style: styleDataInTable),
                                               ),
                                               DataCell(_verticalDivider),
                                               DataCell(
                                                 Text(
-                                                    itemData[indexSample]
-                                                                [indexItem]
-                                                            .userApprove +
+                                                    itemData[indexSample][indexItem].userApprove +
                                                         "  " +
-                                                        toDateTime(itemData[
-                                                                    indexSample]
-                                                                [indexItem]
+                                                        toDateTime(itemData[indexSample][indexItem]
                                                             .resultApproveDate
                                                             .toString()),
                                                     style: styleDataInTable),
                                               ),
                                               DataCell(_verticalDivider),
-                                              DataCell(Text("PATH",
-                                                  style: styleDataInTable)),
+                                              DataCell(Text("PATH", style: styleDataInTable)),
                                               DataCell(_verticalDivider),
                                               DataCell(
                                                 Column(children: [
@@ -2382,26 +2119,17 @@ class _SampleDetailState extends State<SampleDetail> {
                                                   if ((userCheck))
                                                     Container(
                                                       width: 150,
-                                                      child:
-                                                          FormBuilderTextField(
+                                                      child: FormBuilderTextField(
                                                         style: styleDataInTable,
                                                         decoration: InputDecoration(
-                                                            contentPadding:
-                                                                EdgeInsets.all(
-                                                                    10.0),
-                                                            border:
-                                                                OutlineInputBorder()),
-                                                        name:
-                                                            'remark$indexSample$indexItem',
-                                                        initialValue: itemData[
-                                                                    indexSample]
-                                                                [indexItem]
+                                                            contentPadding: EdgeInsets.all(10.0),
+                                                            border: OutlineInputBorder()),
+                                                        name: 'remark$indexSample$indexItem',
+                                                        initialValue: itemData[indexSample][indexItem]
                                                             .requestReconfirmRemark,
                                                         onChanged: (value) {
-                                                          itemData[indexSample][
-                                                                      indexItem]
-                                                                  .requestReconfirmRemark =
-                                                              value.toString();
+                                                          itemData[indexSample][indexItem]
+                                                              .requestReconfirmRemark = value.toString();
                                                         },
                                                       ),
                                                     ),
@@ -2422,18 +2150,14 @@ class _SampleDetailState extends State<SampleDetail> {
                                                         color: Colors.red,
                                                       ),
                                                       onPressed: () {
-                                                        reconfirmResult(
-                                                            indexSample,
-                                                            indexItem);
+                                                        reconfirmResult(indexSample, indexItem);
                                                       },
                                                     ),
                                                   ),
                                               ])),
                                               DataCell(_verticalDivider),
                                               DataCell(Column(children: [
-                                                if (itemData[indexSample]
-                                                                [indexItem]
-                                                            .itemStatus ==
+                                                if (itemData[indexSample][indexItem].itemStatus ==
                                                         "APPROVE" &&
                                                     (userCheck))
                                                   Center(
@@ -2443,35 +2167,27 @@ class _SampleDetailState extends State<SampleDetail> {
                                                         color: Colors.green,
                                                       ),
                                                       onPressed: () {
-                                                        completeResult(
-                                                            indexSample,
-                                                            indexItem);
+                                                        completeResult(indexSample, indexItem);
                                                       },
                                                     ),
                                                   ),
                                               ])),
                                               DataCell(_verticalDivider),
                                               DataCell(Column(
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
+                                                  mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
-                                                    if (itemData[indexSample]
-                                                                    [indexItem]
-                                                                .itemStatus !=
+                                                    if (itemData[indexSample][indexItem].itemStatus !=
                                                             "COMPLETE" &&
                                                         (userCheck))
                                                       Center(
                                                         child: IconButton(
-                                                          padding:
-                                                              EdgeInsets.zero,
+                                                          padding: EdgeInsets.zero,
                                                           icon: Icon(
                                                             Icons.cancel,
                                                             color: Colors.red,
                                                           ),
                                                           onPressed: () {
-                                                            cancelItem(
-                                                                indexSample,
-                                                                indexItem);
+                                                            cancelItem(indexSample, indexItem);
                                                           },
                                                         ),
                                                       ),
@@ -2484,8 +2200,7 @@ class _SampleDetailState extends State<SampleDetail> {
                       );
                     },
                   )),
-              if (((userCheck) && itemData[0][0].requestStatus != "COMPLETE") ||
-                  userRoleId == 99) ...[
+              if (((userCheck) && itemData[0][0].requestStatus != "COMPLETE") || userRoleId == 99) ...[
                 SizedBox(
                   height: 20,
                 ),
@@ -2525,8 +2240,7 @@ class _SampleDetailState extends State<SampleDetail> {
 Container rowData(String sectionName, Widget data) {
   double heightBox1 = 25;
   double widthsection1 = 160;
-  TextStyle stylesection =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle stylesection = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
 
   return Container(
     height: heightBox1,
@@ -2553,8 +2267,7 @@ Container rowData(String sectionName, Widget data) {
 Container rowData2(String sectionName, Widget data) {
   double heightBox1 = 25;
   double widthsection1 = 160;
-  TextStyle stylesection =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle stylesection = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
 
   return Container(
     height: heightBox1,
@@ -2601,10 +2314,7 @@ class _HistoryDataState extends State<HistoryData> {
         borderRadius: BorderRadius.all(Radius.circular(0)),
         boxShadow: [
           BoxShadow(
-              color: CustomTheme.colorShadowBgStrong,
-              offset: Offset(0, 0),
-              blurRadius: 10,
-              spreadRadius: 0)
+              color: CustomTheme.colorShadowBgStrong, offset: Offset(0, 0), blurRadius: 10, spreadRadius: 0)
         ],
       ),
       child: Container(), //TableResultApprove(),
@@ -2615,8 +2325,7 @@ class _HistoryDataState extends State<HistoryData> {
 class EditStdFactor extends StatefulWidget {
   int indexSample = 0;
   int indexItem = 0;
-  EditStdFactor({required this.indexSample, required this.indexItem, Key? key})
-      : super(key: key);
+  EditStdFactor({required this.indexSample, required this.indexItem, Key? key}) : super(key: key);
 
   @override
   State<EditStdFactor> createState() => _EditStdFactorState();
@@ -2628,33 +2337,25 @@ class _EditStdFactorState extends State<EditStdFactor> {
   double widthsection1 = 130;
   double heightBox2 = 30;
   double widthsection2 = 130;
-  TextStyle stylesection =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle stylesection = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
   TextStyle styledata = TextStyle(fontSize: 13, fontFamily: 'Mitr');
-  TextStyle styleHeaderTable =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle styleHeaderTable = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
   TextStyle styleDataInTable = TextStyle(fontSize: 12, fontFamily: 'Mitr');
 
   void calculate() {
     try {
       double buff = 0;
-      buff = (double.parse(itemData[widget.indexSample][widget.indexItem]
-                  .resultApprove) +
-              double.parse(
-                  itemData[widget.indexSample][widget.indexItem].std1) -
-              double.parse(
-                  itemData[widget.indexSample][widget.indexItem].std2)) *
+      buff = (double.parse(itemData[widget.indexSample][widget.indexItem].resultApprove) +
+              double.parse(itemData[widget.indexSample][widget.indexItem].std1) -
+              double.parse(itemData[widget.indexSample][widget.indexItem].std2)) *
           double.parse(itemData[widget.indexSample][widget.indexItem].std3) /
           double.parse(itemData[widget.indexSample][widget.indexItem].std4);
       buff = ((buff +
-              double.parse(
-                  itemData[widget.indexSample][widget.indexItem].std5) -
-              double.parse(
-                  itemData[widget.indexSample][widget.indexItem].std6)) *
+              double.parse(itemData[widget.indexSample][widget.indexItem].std5) -
+              double.parse(itemData[widget.indexSample][widget.indexItem].std6)) *
           double.parse(itemData[widget.indexSample][widget.indexItem].std7) /
           double.parse(itemData[widget.indexSample][widget.indexItem].std8));
-      itemData[widget.indexSample][widget.indexItem].resultComplete =
-          buff.toStringAsFixed(2);
+      itemData[widget.indexSample][widget.indexItem].resultComplete = buff.toStringAsFixed(2);
       calculateMin();
       calculateMax();
       setState(() {
@@ -2688,24 +2389,18 @@ class _EditStdFactorState extends State<EditStdFactor> {
       itemData[widget.indexSample][widget.indexItem].stdMinL =
           buff.toStringAsFixed(2);
       print(itemData[widget.indexSample][widget.indexItem].stdMinL); */
-      buff = (double.parse(
-                  itemData[widget.indexSample][widget.indexItem].stdMin) *
-              double.parse(
-                  itemData[widget.indexSample][widget.indexItem].std8) /
-              double.parse(
-                  itemData[widget.indexSample][widget.indexItem].std7)) +
+      buff = (double.parse(itemData[widget.indexSample][widget.indexItem].stdMin) *
+              double.parse(itemData[widget.indexSample][widget.indexItem].std8) /
+              double.parse(itemData[widget.indexSample][widget.indexItem].std7)) +
           double.parse(itemData[widget.indexSample][widget.indexItem].std6) -
           double.parse(itemData[widget.indexSample][widget.indexItem].std5);
       buff = ((buff *
-              double.parse(
-                  itemData[widget.indexSample][widget.indexItem].std4) /
-              double.parse(
-                  itemData[widget.indexSample][widget.indexItem].std3)) +
+              double.parse(itemData[widget.indexSample][widget.indexItem].std4) /
+              double.parse(itemData[widget.indexSample][widget.indexItem].std3)) +
           double.parse(itemData[widget.indexSample][widget.indexItem].std2) -
           double.parse(itemData[widget.indexSample][widget.indexItem].std1));
 
-      itemData[widget.indexSample][widget.indexItem].stdMinL =
-          buff.toStringAsFixed(2);
+      itemData[widget.indexSample][widget.indexItem].stdMinL = buff.toStringAsFixed(2);
       print(itemData[widget.indexSample][widget.indexItem].stdMinL);
     } on Exception catch (e) {
       // TODO
@@ -2734,24 +2429,18 @@ class _EditStdFactorState extends State<EditStdFactor> {
 
       itemData[widget.indexSample][widget.indexItem].stdMaxL =
           buff.toStringAsFixed(2); */
-      buff = (double.parse(
-                  itemData[widget.indexSample][widget.indexItem].stdMax) *
-              double.parse(
-                  itemData[widget.indexSample][widget.indexItem].std8) /
-              double.parse(
-                  itemData[widget.indexSample][widget.indexItem].std7)) +
+      buff = (double.parse(itemData[widget.indexSample][widget.indexItem].stdMax) *
+              double.parse(itemData[widget.indexSample][widget.indexItem].std8) /
+              double.parse(itemData[widget.indexSample][widget.indexItem].std7)) +
           double.parse(itemData[widget.indexSample][widget.indexItem].std6) -
           double.parse(itemData[widget.indexSample][widget.indexItem].std5);
       buff = ((buff *
-              double.parse(
-                  itemData[widget.indexSample][widget.indexItem].std4) /
-              double.parse(
-                  itemData[widget.indexSample][widget.indexItem].std3)) +
+              double.parse(itemData[widget.indexSample][widget.indexItem].std4) /
+              double.parse(itemData[widget.indexSample][widget.indexItem].std3)) +
           double.parse(itemData[widget.indexSample][widget.indexItem].std2) -
           double.parse(itemData[widget.indexSample][widget.indexItem].std1));
 
-      itemData[widget.indexSample][widget.indexItem].stdMaxL =
-          buff.toStringAsFixed(2);
+      itemData[widget.indexSample][widget.indexItem].stdMaxL = buff.toStringAsFixed(2);
       print(itemData[widget.indexSample][widget.indexItem].stdMaxL);
     } on Exception catch (e) {
       // TODO
@@ -2776,16 +2465,11 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'resultBuff',
-                      initialValue: itemData[indexSample][indexItem]
-                              .resultApprove
-                              .toString() +
-                          itemData[indexSample][indexItem]
-                              .resultApproveUnit
-                              .toString(),
+                      initialValue: itemData[indexSample][indexItem].resultApprove.toString() +
+                          itemData[indexSample][indexItem].resultApproveUnit.toString(),
                       enabled: false,
                     ),
                   ),
@@ -2798,12 +2482,10 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'mag',
-                      initialValue:
-                          itemData[indexSample][indexItem].mag.toString(),
+                      initialValue: itemData[indexSample][indexItem].mag.toString(),
                       enabled: true,
                       onChanged: (value) {
                         itemData[indexSample][indexItem].mag = value.toString();
@@ -2819,16 +2501,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'pos',
-                      initialValue:
-                          itemData[indexSample][indexItem].position.toString(),
+                      initialValue: itemData[indexSample][indexItem].position.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].position =
-                            value.toString();
+                        itemData[indexSample][indexItem].position = value.toString();
                       },
                     ),
                   ),
@@ -2841,16 +2520,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'TEMP',
-                      initialValue:
-                          itemData[indexSample][indexItem].temp.toString(),
+                      initialValue: itemData[indexSample][indexItem].temp.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].temp =
-                            value.toString();
+                        itemData[indexSample][indexItem].temp = value.toString();
                       },
                     ),
                   ),
@@ -2863,16 +2539,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'STDFACTOR',
-                      initialValue:
-                          itemData[indexSample][indexItem].stdFactor.toString(),
+                      initialValue: itemData[indexSample][indexItem].stdFactor.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].stdFactor =
-                            value.toString();
+                        itemData[indexSample][indexItem].stdFactor = value.toString();
                       },
                     ),
                   ),
@@ -2885,16 +2558,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'std1',
-                      initialValue:
-                          itemData[indexSample][indexItem].std1.toString(),
+                      initialValue: itemData[indexSample][indexItem].std1.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].std1 =
-                            value.toString();
+                        itemData[indexSample][indexItem].std1 = value.toString();
                         calculate();
                       },
                     ),
@@ -2908,16 +2578,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'std2',
-                      initialValue:
-                          itemData[indexSample][indexItem].std2.toString(),
+                      initialValue: itemData[indexSample][indexItem].std2.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].std2 =
-                            value.toString();
+                        itemData[indexSample][indexItem].std2 = value.toString();
                         calculate();
                       },
                     ),
@@ -2931,16 +2598,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'std3',
-                      initialValue:
-                          itemData[indexSample][indexItem].std3.toString(),
+                      initialValue: itemData[indexSample][indexItem].std3.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].std3 =
-                            value.toString();
+                        itemData[indexSample][indexItem].std3 = value.toString();
                         calculate();
                       },
                     ),
@@ -2954,16 +2618,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'std4',
-                      initialValue:
-                          itemData[indexSample][indexItem].std4.toString(),
+                      initialValue: itemData[indexSample][indexItem].std4.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].std4 =
-                            value.toString();
+                        itemData[indexSample][indexItem].std4 = value.toString();
                         calculate();
                       },
                     ),
@@ -2977,16 +2638,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'std5',
-                      initialValue:
-                          itemData[indexSample][indexItem].std5.toString(),
+                      initialValue: itemData[indexSample][indexItem].std5.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].std5 =
-                            value.toString();
+                        itemData[indexSample][indexItem].std5 = value.toString();
                         calculate();
                       },
                     ),
@@ -3000,16 +2658,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'std6',
-                      initialValue:
-                          itemData[indexSample][indexItem].std6.toString(),
+                      initialValue: itemData[indexSample][indexItem].std6.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].std6 =
-                            value.toString();
+                        itemData[indexSample][indexItem].std6 = value.toString();
                         calculate();
                       },
                     ),
@@ -3023,16 +2678,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'std7',
-                      initialValue:
-                          itemData[indexSample][indexItem].std7.toString(),
+                      initialValue: itemData[indexSample][indexItem].std7.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].std7 =
-                            value.toString();
+                        itemData[indexSample][indexItem].std7 = value.toString();
                         calculate();
                       },
                     ),
@@ -3046,16 +2698,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'std8',
-                      initialValue:
-                          itemData[indexSample][indexItem].std8.toString(),
+                      initialValue: itemData[indexSample][indexItem].std8.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].std8 =
-                            value.toString();
+                        itemData[indexSample][indexItem].std8 = value.toString();
                         calculate();
                       },
                     ),
@@ -3070,16 +2719,11 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     child: FormBuilderTextField(
                       style: styleDataInTable,
                       name: 'resultcomplete',
-                      key: Key(itemData[indexSample][indexItem]
-                          .resultComplete
-                          .toString()),
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      key: Key(itemData[indexSample][indexItem].resultComplete.toString()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       //name: 'resultApprove',
-                      initialValue: itemData[indexSample][indexItem]
-                          .resultComplete
-                          .toString(),
+                      initialValue: itemData[indexSample][indexItem].resultComplete.toString(),
                       enabled: false,
                     ),
                   ),
@@ -3092,16 +2736,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'stdMin',
-                      initialValue:
-                          itemData[indexSample][indexItem].stdMin.toString(),
+                      initialValue: itemData[indexSample][indexItem].stdMin.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].stdMin =
-                            value.toString();
+                        itemData[indexSample][indexItem].stdMin = value.toString();
                         calculateMin();
                       },
                     ),
@@ -3115,16 +2756,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'stdMax',
-                      initialValue:
-                          itemData[indexSample][indexItem].stdMax.toString(),
+                      initialValue: itemData[indexSample][indexItem].stdMax.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].stdMax =
-                            value.toString();
+                        itemData[indexSample][indexItem].stdMax = value.toString();
                         calculateMax();
                       },
                     ),
@@ -3143,17 +2781,13 @@ class _EditStdFactorState extends State<EditStdFactor> {
                       /* decoration: InputDecoration(
                           contentPadding: EdgeInsets.all(10.0),
                           border: OutlineInputBorder()), */
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'ctrl',
-                      initialValue: itemData[indexSample][indexItem]
-                          .controlRange
-                          .toString(),
+                      initialValue: itemData[indexSample][indexItem].controlRange.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].controlRange =
-                            value.toString();
+                        itemData[indexSample][indexItem].controlRange = value.toString();
                       },
                     ),
                   ),
@@ -3168,8 +2802,7 @@ class _EditStdFactorState extends State<EditStdFactor> {
 class EditReportName extends StatefulWidget {
   int indexSample = 0;
   int indexItem = 0;
-  EditReportName({required this.indexSample, required this.indexItem, Key? key})
-      : super(key: key);
+  EditReportName({required this.indexSample, required this.indexItem, Key? key}) : super(key: key);
 
   @override
   State<EditReportName> createState() => _EditReportNameState();
@@ -3181,11 +2814,9 @@ class _EditReportNameState extends State<EditReportName> {
   double widthsection1 = 130;
   double heightBox2 = 30;
   double widthsection2 = 130;
-  TextStyle stylesection =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle stylesection = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
   TextStyle styledata = TextStyle(fontSize: 13, fontFamily: 'Mitr');
-  TextStyle styleHeaderTable =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle styleHeaderTable = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
   TextStyle styleDataInTable = TextStyle(fontSize: 12, fontFamily: 'Mitr');
 
   @override
@@ -3204,18 +2835,15 @@ class _EditReportNameState extends State<EditReportName> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
                       name: 'reportname',
-                      initialValue:
-                          itemData[indexSample][indexItem].processReportName,
+                      initialValue: itemData[indexSample][indexItem].processReportName,
                       enabled: true,
                       onChanged: (val) {
-                        itemData[indexSample][indexItem].processReportName =
-                            val.toString();
+                        itemData[indexSample][indexItem].processReportName = val.toString();
                       },
                     ),
                   ),
@@ -3228,18 +2856,15 @@ class _EditReportNameState extends State<EditReportName> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       keyboardType: TextInputType.multiline,
                       maxLines: null,
                       name: 'item',
-                      initialValue:
-                          itemData[indexSample][indexItem].itemReportName,
+                      initialValue: itemData[indexSample][indexItem].itemReportName,
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].itemReportName =
-                            value.toString();
+                        itemData[indexSample][indexItem].itemReportName = value.toString();
                       },
                     ),
                   ),
@@ -3252,17 +2877,13 @@ class _EditReportNameState extends State<EditReportName> {
                     width: 150,
                     child: FormBuilderTextField(
                       style: styleDataInTable,
-                      decoration: InputDecoration(
-                          contentPadding: EdgeInsets.all(10.0),
-                          border: OutlineInputBorder()),
+                      decoration:
+                          InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                       name: 'order',
-                      initialValue: itemData[indexSample][indexItem]
-                          .reportOrder
-                          .toString(),
+                      initialValue: itemData[indexSample][indexItem].reportOrder.toString(),
                       enabled: true,
                       onChanged: (value) {
-                        itemData[indexSample][indexItem].reportOrder =
-                            value.toString();
+                        itemData[indexSample][indexItem].reportOrder = value.toString();
                       },
                     ),
                   ),
@@ -3277,8 +2898,7 @@ class _EditReportNameState extends State<EditReportName> {
 Container rowData3(String sectionName, Widget data) {
   double heightBox1 = 25;
   double widthsection1 = 160;
-  TextStyle stylesection =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle stylesection = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
 
   return Container(
     //height: heightBox1,
@@ -3305,15 +2925,12 @@ Container rowData3(String sectionName, Widget data) {
 Future<String> captureToback(GlobalKey<State<StatefulWidget>> globalKey) async {
   try {
     // FreeLoading(contextin);
-    RenderRepaintBoundary? boundary =
-        globalKey.currentContext?.findRenderObject() as RenderRepaintBoundary?;
+    RenderRepaintBoundary? boundary = globalKey.currentContext?.findRenderObject() as RenderRepaintBoundary?;
 
     final image = await boundary!.toImage(pixelRatio: 2);
 
-    final ByteData? bytes =
-        await image.toByteData(format: dart_ui.ImageByteFormat.png);
-    Uint8List dataImage =
-        bytes!.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
+    final ByteData? bytes = await image.toByteData(format: dart_ui.ImageByteFormat.png);
+    Uint8List dataImage = bytes!.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
 
     // final imageEncoded = base64.encode(dataImage);
 

@@ -4,8 +4,7 @@ import 'package:tpk_login_arsa_01/Layout/ChangePage/Data/BlocChagpage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class menu_normal extends StatelessWidget {
-  menu_normal({Key? key, this.name, this.icon, required this.page})
-      : super(key: key);
+  menu_normal({Key? key, this.name, this.icon, required this.page}) : super(key: key);
   String? name;
   String page;
   String? icon;
