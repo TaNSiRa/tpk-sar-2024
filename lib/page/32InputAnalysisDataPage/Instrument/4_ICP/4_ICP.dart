@@ -11,8 +11,7 @@ import 'package:tpk_login_arsa_01/page/32InputAnalysisDataPage/Instrument/4_ICP/
 class Instrument_ICP extends StatelessWidget {
   double headHeight = 0;
   double dataHeight = 0;
-  Instrument_ICP({Key? key, required this.headHeight, required this.dataHeight})
-      : super(key: key);
+  Instrument_ICP({Key? key, required this.headHeight, required this.dataHeight}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +29,7 @@ class Instrument_ICP extends StatelessWidget {
 class ICP extends StatefulWidget {
   double headHeight = 0;
   double dataHeight = 0;
-  ICP({Key? key, required this.headHeight, required this.dataHeight})
-      : super(key: key);
+  ICP({Key? key, required this.headHeight, required this.dataHeight}) : super(key: key);
 
   @override
   _ICPState createState() => _ICPState();
@@ -90,11 +88,9 @@ class _ICPState extends State<ICP> {
   void calculate(int index) {
     double buffCurve = 0;
     try {
-      if (dataICPInput[index].sampleName == "CN- salt" &&
-          setCNsalt1.contains(dataICPInput[index].itemName)) {
+      if (dataICPInput[index].sampleName == "CN- salt" && setCNsalt1.contains(dataICPInput[index].itemName)) {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].rawData_1) *
-                        double.parse(dataICPInput[index].volume_1)) /
+            ((double.parse(dataICPInput[index].rawData_1) * double.parse(dataICPInput[index].volume_1)) /
                     double.parse(dataICPInput[index].w_1))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "mg/kg";
@@ -102,12 +98,10 @@ class _ICPState extends State<ICP> {
         if (double.parse(dataICPInput[index].rawData_1) < 0.1) {
           dataICPInput[index].result_1 = "< 10";
         }
-      } else if (dataICPInput[index].custFull ==
-              'BESTEX (THAILAND)  CO.,LTD.' &&
+      } else if (dataICPInput[index].custFull == 'BESTEX (THAILAND)  CO.,LTD.' &&
           dataICPInput[index].itemName == "Cr") {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].rawData_1) *
-                        double.parse(dataICPInput[index].volume_1)) /
+            ((double.parse(dataICPInput[index].rawData_1) * double.parse(dataICPInput[index].volume_1)) /
                     double.parse(dataICPInput[index].w_1))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "ppm";
@@ -117,35 +111,30 @@ class _ICPState extends State<ICP> {
         }
       } else if (dataICPInput[index].sampleName == "CN- salt" &&
           setCNsalt2.contains(dataICPInput[index].itemName)) {
-        dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].volume_1) *
-                        double.parse(dataICPInput[index].dilutionTime_1) *
-                        double.parse(dataICPInput[index].rawData_1)) /
-                    (double.parse(dataICPInput[index].w_1) * 1000))
-                .toStringAsFixed(2);
+        dataICPInput[index].result_1 = ((double.parse(dataICPInput[index].volume_1) *
+                    double.parse(dataICPInput[index].dilutionTime_1) *
+                    double.parse(dataICPInput[index].rawData_1)) /
+                (double.parse(dataICPInput[index].w_1) * 1000))
+            .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "g/kg";
         //buffCurve = 1 * double.parse(dataICPInput[index].dilutionTime_1);
         if (double.parse(dataICPInput[index].rawData_1) < 1.0) {
           dataICPInput[index].result_1 = "< 25";
         }
-      } else if (dataICPInput[index].sampleName == "CL-342" &&
-          dataICPInput[index].itemName == "Fe") {
-        dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].volume_1) *
-                        double.parse(dataICPInput[index].rawData_1) *
-                        100) /
-                    (double.parse(dataICPInput[index].w_1) * 1000000))
-                .toStringAsFixed(5);
+      } else if (dataICPInput[index].sampleName == "CL-342" && dataICPInput[index].itemName == "Fe") {
+        dataICPInput[index].result_1 = ((double.parse(dataICPInput[index].volume_1) *
+                    double.parse(dataICPInput[index].rawData_1) *
+                    100) /
+                (double.parse(dataICPInput[index].w_1) * 1000000))
+            .toStringAsFixed(5);
         dataICPInput[index].resultUnit_1 = "%";
         //buffCurve = 0.2 * double.parse(dataICPInput[index].dilutionTime_1);
         if (double.parse(dataICPInput[index].rawData_1) < 0.2) {
           dataICPInput[index].result_1 = "< 0.0004";
         }
-      } else if (setSE1.contains(dataICPInput[index].sampleName) &&
-          dataICPInput[index].itemName == "Pb") {
+      } else if (setSE1.contains(dataICPInput[index].sampleName) && dataICPInput[index].itemName == "Pb") {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].volume_1) *
-                        double.parse(dataICPInput[index].rawData_1)) /
+            ((double.parse(dataICPInput[index].volume_1) * double.parse(dataICPInput[index].rawData_1)) /
                     double.parse(dataICPInput[index].w_1))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "mg/kg";
@@ -156,8 +145,7 @@ class _ICPState extends State<ICP> {
       } else if (dataICPInput[index].sampleName == "AB-300R" &&
           setAB2.contains(dataICPInput[index].itemName)) {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].tW_1) *
-                        double.parse(dataICPInput[index].rawData_1)) /
+            ((double.parse(dataICPInput[index].tW_1) * double.parse(dataICPInput[index].rawData_1)) /
                     double.parse(dataICPInput[index].w_1))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "ppm";
@@ -165,11 +153,9 @@ class _ICPState extends State<ICP> {
         if (double.parse(dataICPInput[index].rawData_1) < 10) {
           dataICPInput[index].result_1 = "< 10";
         }
-      } else if (dataICPInput[index].sampleName == "AB-300R" &&
-          dataICPInput[index].itemName == "V") {
+      } else if (dataICPInput[index].sampleName == "AB-300R" && dataICPInput[index].itemName == "V") {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].tW_1) *
-                        double.parse(dataICPInput[index].rawData_1)) /
+            ((double.parse(dataICPInput[index].tW_1) * double.parse(dataICPInput[index].rawData_1)) /
                     double.parse(dataICPInput[index].w_1))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "ppm";
@@ -181,8 +167,7 @@ class _ICPState extends State<ICP> {
           setAB1.contains(dataICPInput[index].itemName)) {
         print("in");
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].tW_1) *
-                        double.parse(dataICPInput[index].rawData_1)) /
+            ((double.parse(dataICPInput[index].tW_1) * double.parse(dataICPInput[index].rawData_1)) /
                     double.parse(dataICPInput[index].w_1))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "ppm";
@@ -190,11 +175,9 @@ class _ICPState extends State<ICP> {
         if (double.parse(dataICPInput[index].rawData_1) < 10) {
           dataICPInput[index].result_1 = "< 10";
         }
-      } else if (dataICPInput[index].sampleName == "AB-300M" &&
-          dataICPInput[index].itemName == "V") {
+      } else if (dataICPInput[index].sampleName == "AB-300M" && dataICPInput[index].itemName == "V") {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].tW_1) *
-                        double.parse(dataICPInput[index].rawData_1)) /
+            ((double.parse(dataICPInput[index].tW_1) * double.parse(dataICPInput[index].rawData_1)) /
                     double.parse(dataICPInput[index].w_1))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "ppm";
@@ -202,11 +185,9 @@ class _ICPState extends State<ICP> {
         if (double.parse(dataICPInput[index].rawData_1) < 50) {
           dataICPInput[index].result_1 = "< 50";
         }
-      } else if (dataICPInput[index].sampleName == "AB-200M" &&
-          dataICPInput[index].itemName == "Al") {
+      } else if (dataICPInput[index].sampleName == "AB-200M" && dataICPInput[index].itemName == "Al") {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].tW_1) *
-                        double.parse(dataICPInput[index].rawData_1)) /
+            ((double.parse(dataICPInput[index].tW_1) * double.parse(dataICPInput[index].rawData_1)) /
                     double.parse(dataICPInput[index].w_1))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "ppm";
@@ -214,11 +195,9 @@ class _ICPState extends State<ICP> {
         if (double.parse(dataICPInput[index].rawData_1) < 10) {
           dataICPInput[index].result_1 = "< 10";
         }
-      } else if (dataICPInput[index].sampleName == "ZnO" &&
-          setZnO.contains(dataICPInput[index].itemName)) {
+      } else if (dataICPInput[index].sampleName == "ZnO" && setZnO.contains(dataICPInput[index].itemName)) {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].dilutionTime_1) *
-                    double.parse(dataICPInput[index].rawData_1)))
+            ((double.parse(dataICPInput[index].dilutionTime_1) * double.parse(dataICPInput[index].rawData_1)))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "ppm";
         buffCurve = 1 * double.parse(dataICPInput[index].dilutionTime_1);
@@ -228,8 +207,7 @@ class _ICPState extends State<ICP> {
       } else if (dataICPInput[index].sampleName == "L-Treatment" &&
           setLTrea.contains(dataICPInput[index].itemName)) {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].dilutionTime_1) *
-                    double.parse(dataICPInput[index].rawData_1)))
+            ((double.parse(dataICPInput[index].dilutionTime_1) * double.parse(dataICPInput[index].rawData_1)))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "ppm";
         buffCurve = 0.2 * double.parse(dataICPInput[index].dilutionTime_1);
@@ -239,8 +217,7 @@ class _ICPState extends State<ICP> {
       } else if (dataICPInput[index].sampleName == "L-Treatment" &&
           setLTrea2.contains(dataICPInput[index].itemName)) {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].dilutionTime_1) *
-                    double.parse(dataICPInput[index].rawData_1)))
+            ((double.parse(dataICPInput[index].dilutionTime_1) * double.parse(dataICPInput[index].rawData_1)))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "ppm";
         buffCurve = 1 * double.parse(dataICPInput[index].dilutionTime_1);
@@ -250,29 +227,46 @@ class _ICPState extends State<ICP> {
       } else if (dataICPInput[index].itemName == "Fe" &&
           dataICPInput[index].dilutionTime_1.toString() == "1") {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].dilutionTime_1) *
-                    double.parse(dataICPInput[index].rawData_1)))
+            ((double.parse(dataICPInput[index].dilutionTime_1) * double.parse(dataICPInput[index].rawData_1)))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "ppm";
         buffCurve = 0.2 * double.parse(dataICPInput[index].dilutionTime_1);
         if (double.parse(dataICPInput[index].result_1) < buffCurve) {
           dataICPInput[index].result_1 = "< " + buffCurve.toString();
         }
-      } else if (dataICPInput[index].itemName == "Ca" ||
-          dataICPInput[index].itemName == "Mg") {
+      } else if (dataICPInput[index].itemName == "Ca" || dataICPInput[index].itemName == "Mg") {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].dilutionTime_1) *
-                    double.parse(dataICPInput[index].rawData_1)))
+            ((double.parse(dataICPInput[index].dilutionTime_1) * double.parse(dataICPInput[index].rawData_1)))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "ppm";
         buffCurve = 0.5 * double.parse(dataICPInput[index].dilutionTime_1);
         if (double.parse(dataICPInput[index].result_1) < buffCurve) {
           dataICPInput[index].result_1 = "< " + buffCurve.toString();
         }
+      } else if (dataICPInput[index].itemName == "SO4") {
+        dataICPInput[index].result_1 = ((double.parse(dataICPInput[index].dilutionTime_1) *
+                    double.parse(dataICPInput[index].rawData_1)) *
+                3)
+            .toStringAsFixed(2);
+        dataICPInput[index].resultUnit_1 = "ppm";
+        buffCurve = (1 * double.parse(dataICPInput[index].dilutionTime_1) * 3);
+        if (double.parse(dataICPInput[index].result_1) < buffCurve) {
+          dataICPInput[index].result_1 = "< " + buffCurve.toString();
+        }
+      } else if (dataICPInput[index].itemName == "PO4") {
+        dataICPInput[index].result_1 = ((double.parse(dataICPInput[index].dilutionTime_1) *
+                    double.parse(dataICPInput[index].rawData_1)) *
+                3.06452)
+            .toStringAsFixed(2);
+        dataICPInput[index].resultUnit_1 = "ppm";
+        buffCurve = (1 * double.parse(dataICPInput[index].dilutionTime_1) * 3.06452);
+        int buffCurveInt = buffCurve.floor();
+        if (double.parse(dataICPInput[index].result_1) < buffCurve) {
+          dataICPInput[index].result_1 = "< " + buffCurveInt.toString();
+        }
       } else {
         dataICPInput[index].result_1 =
-            ((double.parse(dataICPInput[index].dilutionTime_1) *
-                    double.parse(dataICPInput[index].rawData_1)))
+            ((double.parse(dataICPInput[index].dilutionTime_1) * double.parse(dataICPInput[index].rawData_1)))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_1 = "ppm";
         buffCurve = 1 * double.parse(dataICPInput[index].dilutionTime_1);
@@ -308,11 +302,9 @@ class _ICPState extends State<ICP> {
   void calculate2(int index) {
     double buffCurve = 0;
     try {
-      if (dataICPInput[index].sampleName == "CN- salt" &&
-          setCNsalt1.contains(dataICPInput[index].itemName)) {
+      if (dataICPInput[index].sampleName == "CN- salt" && setCNsalt1.contains(dataICPInput[index].itemName)) {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].rawData_2) *
-                        double.parse(dataICPInput[index].volume_2)) /
+            ((double.parse(dataICPInput[index].rawData_2) * double.parse(dataICPInput[index].volume_2)) /
                     double.parse(dataICPInput[index].w_2))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "mg/kg";
@@ -320,12 +312,10 @@ class _ICPState extends State<ICP> {
         if (double.parse(dataICPInput[index].rawData_2) < 0.1) {
           dataICPInput[index].result_2 = "< 10";
         }
-      } else if (dataICPInput[index].custFull ==
-              'BESTEX (THAILAND)  CO.,LTD.' &&
+      } else if (dataICPInput[index].custFull == 'BESTEX (THAILAND)  CO.,LTD.' &&
           dataICPInput[index].itemName == "Cr") {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].rawData_2) *
-                        double.parse(dataICPInput[index].volume_2)) /
+            ((double.parse(dataICPInput[index].rawData_2) * double.parse(dataICPInput[index].volume_2)) /
                     double.parse(dataICPInput[index].w_2))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "ppm";
@@ -335,35 +325,30 @@ class _ICPState extends State<ICP> {
         }
       } else if (dataICPInput[index].sampleName == "CN- salt" &&
           setCNsalt2.contains(dataICPInput[index].itemName)) {
-        dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].volume_2) *
-                        double.parse(dataICPInput[index].dilutionTime_2) *
-                        double.parse(dataICPInput[index].rawData_2)) /
-                    (double.parse(dataICPInput[index].w_2) * 1000))
-                .toStringAsFixed(2);
+        dataICPInput[index].result_2 = ((double.parse(dataICPInput[index].volume_2) *
+                    double.parse(dataICPInput[index].dilutionTime_2) *
+                    double.parse(dataICPInput[index].rawData_2)) /
+                (double.parse(dataICPInput[index].w_2) * 1000))
+            .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "g/kg";
         //buffCurve = 1 * double.parse(dataICPInput[index].dilutionTime_2);
         if (double.parse(dataICPInput[index].rawData_2) < 1.0) {
           dataICPInput[index].result_2 = "< 25";
         }
-      } else if (dataICPInput[index].sampleName == "CL-342" &&
-          dataICPInput[index].itemName == "Fe") {
-        dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].volume_2) *
-                        double.parse(dataICPInput[index].rawData_2) *
-                        100) /
-                    (double.parse(dataICPInput[index].w_2) * 1000000))
-                .toStringAsFixed(5);
+      } else if (dataICPInput[index].sampleName == "CL-342" && dataICPInput[index].itemName == "Fe") {
+        dataICPInput[index].result_2 = ((double.parse(dataICPInput[index].volume_2) *
+                    double.parse(dataICPInput[index].rawData_2) *
+                    100) /
+                (double.parse(dataICPInput[index].w_2) * 1000000))
+            .toStringAsFixed(5);
         dataICPInput[index].resultUnit_2 = "%";
         //buffCurve = 0.2 * double.parse(dataICPInput[index].dilutionTime_2);
         if (double.parse(dataICPInput[index].rawData_2) < 0.2) {
           dataICPInput[index].result_2 = "< 0.0004";
         }
-      } else if (setSE1.contains(dataICPInput[index].sampleName) &&
-          dataICPInput[index].itemName == "Pb") {
+      } else if (setSE1.contains(dataICPInput[index].sampleName) && dataICPInput[index].itemName == "Pb") {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].volume_2) *
-                        double.parse(dataICPInput[index].rawData_2)) /
+            ((double.parse(dataICPInput[index].volume_2) * double.parse(dataICPInput[index].rawData_2)) /
                     double.parse(dataICPInput[index].w_2))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "mg/kg";
@@ -374,8 +359,7 @@ class _ICPState extends State<ICP> {
       } else if (dataICPInput[index].sampleName == "AB-300R" &&
           setAB2.contains(dataICPInput[index].itemName)) {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].tW_2) *
-                        double.parse(dataICPInput[index].rawData_2)) /
+            ((double.parse(dataICPInput[index].tW_2) * double.parse(dataICPInput[index].rawData_2)) /
                     double.parse(dataICPInput[index].w_2))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "ppm";
@@ -383,11 +367,9 @@ class _ICPState extends State<ICP> {
         if (double.parse(dataICPInput[index].rawData_2) < 10) {
           dataICPInput[index].result_2 = "< 10";
         }
-      } else if (dataICPInput[index].sampleName == "AB-300R" &&
-          dataICPInput[index].itemName == "V") {
+      } else if (dataICPInput[index].sampleName == "AB-300R" && dataICPInput[index].itemName == "V") {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].tW_2) *
-                        double.parse(dataICPInput[index].rawData_2)) /
+            ((double.parse(dataICPInput[index].tW_2) * double.parse(dataICPInput[index].rawData_2)) /
                     double.parse(dataICPInput[index].w_2))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "ppm";
@@ -399,8 +381,7 @@ class _ICPState extends State<ICP> {
           setAB1.contains(dataICPInput[index].itemName)) {
         print("in");
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].tW_2) *
-                        double.parse(dataICPInput[index].rawData_2)) /
+            ((double.parse(dataICPInput[index].tW_2) * double.parse(dataICPInput[index].rawData_2)) /
                     double.parse(dataICPInput[index].w_2))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "ppm";
@@ -408,11 +389,9 @@ class _ICPState extends State<ICP> {
         if (double.parse(dataICPInput[index].rawData_2) < 10) {
           dataICPInput[index].result_2 = "< 10";
         }
-      } else if (dataICPInput[index].sampleName == "AB-300M" &&
-          dataICPInput[index].itemName == "V") {
+      } else if (dataICPInput[index].sampleName == "AB-300M" && dataICPInput[index].itemName == "V") {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].tW_2) *
-                        double.parse(dataICPInput[index].rawData_2)) /
+            ((double.parse(dataICPInput[index].tW_2) * double.parse(dataICPInput[index].rawData_2)) /
                     double.parse(dataICPInput[index].w_2))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "ppm";
@@ -420,11 +399,9 @@ class _ICPState extends State<ICP> {
         if (double.parse(dataICPInput[index].rawData_2) < 50) {
           dataICPInput[index].result_2 = "< 50";
         }
-      } else if (dataICPInput[index].sampleName == "AB-200M" &&
-          dataICPInput[index].itemName == "Al") {
+      } else if (dataICPInput[index].sampleName == "AB-200M" && dataICPInput[index].itemName == "Al") {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].tW_2) *
-                        double.parse(dataICPInput[index].rawData_2)) /
+            ((double.parse(dataICPInput[index].tW_2) * double.parse(dataICPInput[index].rawData_2)) /
                     double.parse(dataICPInput[index].w_2))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "ppm";
@@ -432,11 +409,9 @@ class _ICPState extends State<ICP> {
         if (double.parse(dataICPInput[index].rawData_2) < 10) {
           dataICPInput[index].result_2 = "< 10";
         }
-      } else if (dataICPInput[index].sampleName == "ZnO" &&
-          setZnO.contains(dataICPInput[index].itemName)) {
+      } else if (dataICPInput[index].sampleName == "ZnO" && setZnO.contains(dataICPInput[index].itemName)) {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].dilutionTime_2) *
-                    double.parse(dataICPInput[index].rawData_2)))
+            ((double.parse(dataICPInput[index].dilutionTime_2) * double.parse(dataICPInput[index].rawData_2)))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "ppm";
         buffCurve = 1 * double.parse(dataICPInput[index].dilutionTime_2);
@@ -446,8 +421,7 @@ class _ICPState extends State<ICP> {
       } else if (dataICPInput[index].sampleName == "L-Treatment" &&
           setLTrea.contains(dataICPInput[index].itemName)) {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].dilutionTime_2) *
-                    double.parse(dataICPInput[index].rawData_2)))
+            ((double.parse(dataICPInput[index].dilutionTime_2) * double.parse(dataICPInput[index].rawData_2)))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "ppm";
         buffCurve = 0.2 * double.parse(dataICPInput[index].dilutionTime_2);
@@ -457,8 +431,7 @@ class _ICPState extends State<ICP> {
       } else if (dataICPInput[index].sampleName == "L-Treatment" &&
           setLTrea2.contains(dataICPInput[index].itemName)) {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].dilutionTime_2) *
-                    double.parse(dataICPInput[index].rawData_2)))
+            ((double.parse(dataICPInput[index].dilutionTime_2) * double.parse(dataICPInput[index].rawData_2)))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "ppm";
         buffCurve = 0.2 * double.parse(dataICPInput[index].dilutionTime_2);
@@ -468,29 +441,46 @@ class _ICPState extends State<ICP> {
       } else if (dataICPInput[index].itemName == "Fe" &&
           dataICPInput[index].dilutionTime_2.toString() == "1") {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].dilutionTime_2) *
-                    double.parse(dataICPInput[index].rawData_2)))
+            ((double.parse(dataICPInput[index].dilutionTime_2) * double.parse(dataICPInput[index].rawData_2)))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "ppm";
         buffCurve = 0.2 * double.parse(dataICPInput[index].dilutionTime_2);
         if (double.parse(dataICPInput[index].result_2) < buffCurve) {
           dataICPInput[index].result_2 = "< " + buffCurve.toString();
         }
-      } else if (dataICPInput[index].itemName == "Ca" ||
-          dataICPInput[index].itemName == "Mg") {
+      } else if (dataICPInput[index].itemName == "Ca" || dataICPInput[index].itemName == "Mg") {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].dilutionTime_2) *
-                    double.parse(dataICPInput[index].rawData_2)))
+            ((double.parse(dataICPInput[index].dilutionTime_2) * double.parse(dataICPInput[index].rawData_2)))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "ppm";
         buffCurve = 0.5 * double.parse(dataICPInput[index].dilutionTime_2);
         if (double.parse(dataICPInput[index].result_2) < buffCurve) {
           dataICPInput[index].result_2 = "< " + buffCurve.toString();
         }
+      } else if (dataICPInput[index].itemName == "SO4") {
+        dataICPInput[index].result_2 = ((double.parse(dataICPInput[index].dilutionTime_2) *
+                    double.parse(dataICPInput[index].rawData_2)) *
+                3)
+            .toStringAsFixed(2);
+        dataICPInput[index].resultUnit_2 = "ppm";
+        buffCurve = (1 * double.parse(dataICPInput[index].dilutionTime_2) * 3);
+        if (double.parse(dataICPInput[index].result_2) < buffCurve) {
+          dataICPInput[index].result_2 = "< " + buffCurve.toString();
+        }
+      } else if (dataICPInput[index].itemName == "PO4") {
+        dataICPInput[index].result_2 = ((double.parse(dataICPInput[index].dilutionTime_2) *
+                    double.parse(dataICPInput[index].rawData_2)) *
+                3.06452)
+            .toStringAsFixed(2);
+        dataICPInput[index].resultUnit_2 = "ppm";
+        buffCurve = (1 * double.parse(dataICPInput[index].dilutionTime_2) * 3.06452);
+        int buffCurveInt = buffCurve.floor();
+        if (double.parse(dataICPInput[index].result_2) < buffCurve) {
+          dataICPInput[index].result_2 = "< " + buffCurveInt.toString();
+        }
       } else {
         dataICPInput[index].result_2 =
-            ((double.parse(dataICPInput[index].dilutionTime_2) *
-                    double.parse(dataICPInput[index].rawData_2)))
+            ((double.parse(dataICPInput[index].dilutionTime_2) * double.parse(dataICPInput[index].rawData_2)))
                 .toStringAsFixed(2);
         dataICPInput[index].resultUnit_2 = "ppm";
         buffCurve = 1 * double.parse(dataICPInput[index].dilutionTime_2);
@@ -528,16 +518,11 @@ class _ICPState extends State<ICP> {
             ((() {
               if (dataICPInput[index].result_2.toString() != "") {
                 try {
-                  if (double.parse(dataICPInput[index].result_1) >
-                          double.parse(dataICPInput[index].stdMax) ||
-                      double.parse(dataICPInput[index].result_1) <
-                          double.parse(dataICPInput[index].stdMin) ||
-                      double.parse(dataICPInput[index].result_2) >
-                          double.parse(dataICPInput[index].stdMax) ||
-                      double.parse(dataICPInput[index].result_2) <
-                          double.parse(dataICPInput[index].stdMin)) {
-                    return Text('RESULT OUT OF RANGE',
-                        style: TextStyle(color: Colors.red));
+                  if (double.parse(dataICPInput[index].result_1) > double.parse(dataICPInput[index].stdMax) ||
+                      double.parse(dataICPInput[index].result_1) < double.parse(dataICPInput[index].stdMin) ||
+                      double.parse(dataICPInput[index].result_2) > double.parse(dataICPInput[index].stdMax) ||
+                      double.parse(dataICPInput[index].result_2) < double.parse(dataICPInput[index].stdMin)) {
+                    return Text('RESULT OUT OF RANGE', style: TextStyle(color: Colors.red));
                   } else
                     return Text('CONFIRM SAVE RESULT');
                 } on Exception catch (e) {
@@ -547,12 +532,9 @@ class _ICPState extends State<ICP> {
                 }
               } else {
                 try {
-                  if (double.parse(dataICPInput[index].result_1) >
-                          double.parse(dataICPInput[index].stdMax) ||
-                      double.parse(dataICPInput[index].result_1) <
-                          double.parse(dataICPInput[index].stdMin)) {
-                    return Text('RESULT OUT OF RANGE',
-                        style: TextStyle(color: Colors.red));
+                  if (double.parse(dataICPInput[index].result_1) > double.parse(dataICPInput[index].stdMax) ||
+                      double.parse(dataICPInput[index].result_1) < double.parse(dataICPInput[index].stdMin)) {
+                    return Text('RESULT OUT OF RANGE', style: TextStyle(color: Colors.red));
                   } else
                     return Text('CONFIRM SAVE RESULT');
                 } on Exception catch (e) {
@@ -601,13 +583,9 @@ class _ICPState extends State<ICP> {
   double widthC15 = 40;
   double fieldHeight = 30;
 
-  TextStyle styleDataInTable =
-      TextStyle(fontSize: 9, fontFamily: 'Mitr', color: Colors.black);
-  TextStyle styleHeaderTable = TextStyle(
-      fontSize: 10,
-      fontWeight: FontWeight.bold,
-      fontFamily: 'Mitr',
-      color: Colors.black);
+  TextStyle styleDataInTable = TextStyle(fontSize: 9, fontFamily: 'Mitr', color: Colors.black);
+  TextStyle styleHeaderTable =
+      TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Mitr', color: Colors.black);
 
   final _formKey = GlobalKey<FormBuilderState>();
 
@@ -653,8 +631,7 @@ class _ICPState extends State<ICP> {
                   DataColumn(label: _verticalDivider),
                   headerColumn('WEIGHT(g)', 'WEIGHT(g)', widthC3),
                   DataColumn(label: _verticalDivider),
-                  headerColumn(
-                      'TRAGET\nWEIGHT(g)', 'TRAGET WEIGHT(g)', widthC3),
+                  headerColumn('TRAGET\nWEIGHT(g)', 'TRAGET WEIGHT(g)', widthC3),
                   DataColumn(label: _verticalDivider),
                   headerColumn('VOLUME\n(mL)', 'VOLUME(mL)', widthC3),
                   DataColumn(label: _verticalDivider),
@@ -710,13 +687,11 @@ class _ICPState extends State<ICP> {
                   DataColumn(label: _verticalDivider),
                   headerColumn('WEIGHT(g)(2)', 'WEIGHT(g)', widthC3),
                   DataColumn(label: _verticalDivider),
-                  headerColumn(
-                      'TRAGET\nWEIGHT(g)(2)', 'TRAGET WEIGHT(g)', widthC3),
+                  headerColumn('TRAGET\nWEIGHT(g)(2)', 'TRAGET WEIGHT(g)', widthC3),
                   DataColumn(label: _verticalDivider),
                   headerColumn('VOLUME\n(mL)(2)', 'VOLUME(mL)', widthC3),
                   DataColumn(label: _verticalDivider),
-                  headerColumn(
-                      'DILUTION \n TIMES', 'DILUTION TIMES(2)', widthC8),
+                  headerColumn('DILUTION \n TIMES', 'DILUTION TIMES(2)', widthC8),
                   DataColumn(label: _verticalDivider),
                   headerColumn(
                     'RAW DATA \n (ppm)(2)',
@@ -773,12 +748,8 @@ class _ICPState extends State<ICP> {
                                   onPressed: () {
                                     setState(() {
                                       showHistory(
-                                          dataICPInput[index]
-                                              .requestSampleId
-                                              .toString(),
-                                          dataICPInput[index]
-                                              .itemName
-                                              .toString(),
+                                          dataICPInput[index].requestSampleId.toString(),
+                                          dataICPInput[index].itemName.toString(),
                                           "TTC",
                                           dataICPInput[index].stdMax.toString(),
                                           dataICPInput[index].stdMin.toString(),
@@ -806,18 +777,12 @@ class _ICPState extends State<ICP> {
                                       'http://172.23.10.34:2500/printsubtag_ICP',
                                       data: {
                                         "reqNo": dataICPInput[index].sampleCode,
-                                        "itemName":
-                                            dataICPInput[index].itemName,
-                                        "dilutionTime": dataICPInput[index]
-                                            .dilutionTime_1
-                                            .toString(),
+                                        "itemName": dataICPInput[index].itemName,
+                                        "dilutionTime": dataICPInput[index].dilutionTime_1.toString(),
                                         "R": "R1",
-                                        "custFull":
-                                            dataICPInput[index].custFull,
-                                        "custShort":
-                                            dataICPInput[index].custShort,
-                                        "sampleType":
-                                            dataICPInput[index].sampleType,
+                                        "custFull": dataICPInput[index].custFull,
+                                        "custShort": dataICPInput[index].custShort,
+                                        "sampleType": dataICPInput[index].sampleType,
                                         "plant": userBranch,
                                       },
                                     ).then((value) {});
@@ -836,8 +801,7 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_1',
-                                initialValue:
-                                    dataICPInput[index].w_1.toString(),
+                                initialValue: dataICPInput[index].w_1.toString(),
                                 onChanged: (value) {
                                   dataICPInput[index].w_1 = value.toString();
                                 },
@@ -857,8 +821,7 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_1',
-                                initialValue:
-                                    dataICPInput[index].tW_1.toString(),
+                                initialValue: dataICPInput[index].tW_1.toString(),
                                 onChanged: (value) {
                                   dataICPInput[index].tW_1 = value.toString();
                                 },
@@ -878,11 +841,9 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_1',
-                                initialValue:
-                                    dataICPInput[index].volume_1.toString(),
+                                initialValue: dataICPInput[index].volume_1.toString(),
                                 onChanged: (value) {
-                                  dataICPInput[index].volume_1 =
-                                      value.toString();
+                                  dataICPInput[index].volume_1 = value.toString();
                                 },
                                 onSubmitted: (value) {
                                   calculate(index);
@@ -900,12 +861,9 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_1',
-                                initialValue: dataICPInput[index]
-                                    .dilutionTime_1
-                                    .toString(),
+                                initialValue: dataICPInput[index].dilutionTime_1.toString(),
                                 onChanged: (value) {
-                                  dataICPInput[index].dilutionTime_1 =
-                                      value.toString();
+                                  dataICPInput[index].dilutionTime_1 = value.toString();
                                 },
                                 onSubmitted: (value) {
                                   calculate(index);
@@ -923,11 +881,9 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_2',
-                                initialValue:
-                                    dataICPInput[index].rawData_1.toString(),
+                                initialValue: dataICPInput[index].rawData_1.toString(),
                                 onChanged: (value) {
-                                  dataICPInput[index].rawData_1 =
-                                      value.toString();
+                                  dataICPInput[index].rawData_1 = value.toString();
                                 },
                                 onSubmitted: (value) {
                                   calculate(index);
@@ -947,13 +903,10 @@ class _ICPState extends State<ICP> {
 
                                 name: '${index}_3',
                                 //enabled: false,
-                                key: Key(
-                                    dataICPInput[index].result_1.toString()),
-                                initialValue:
-                                    dataICPInput[index].result_1.toString(),
+                                key: Key(dataICPInput[index].result_1.toString()),
+                                initialValue: dataICPInput[index].result_1.toString(),
                                 onChanged: (value) {
-                                  dataICPInput[index].result_1 =
-                                      value.toString();
+                                  dataICPInput[index].result_1 = value.toString();
                                 },
                               ),
                               //Text(dataICPInput[index].result_1),
@@ -967,14 +920,10 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_3',
-                                key: Key(dataICPInput[index]
-                                    .resultUnit_1
-                                    .toString()),
-                                initialValue:
-                                    dataICPInput[index].resultUnit_1.toString(),
+                                key: Key(dataICPInput[index].resultUnit_1.toString()),
+                                initialValue: dataICPInput[index].resultUnit_1.toString(),
                                 onChanged: (value) {
-                                  dataICPInput[index].resultUnit_1 =
-                                      value.toString();
+                                  dataICPInput[index].resultUnit_1 = value.toString();
                                 },
                               ),
                             ),
@@ -993,8 +942,7 @@ class _ICPState extends State<ICP> {
                                     .toList(),
                                 style: styleDataInTable,
                                 decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.all(10.0),
-                                    border: OutlineInputBorder()),
+                                    contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                                 name: '${index}_4',
                                 onChanged: (value) {
                                   dataICPInput[index].result_1 = value;
@@ -1014,12 +962,9 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_5',
-                                initialValue: dataICPInput[index]
-                                    .resultRemark_1
-                                    .toString(),
+                                initialValue: dataICPInput[index].resultRemark_1.toString(),
                                 onChanged: (value) {
-                                  dataICPInput[index].resultRemark_1 =
-                                      value.toString();
+                                  dataICPInput[index].resultRemark_1 = value.toString();
                                 },
                               ),
                             ),
@@ -1074,18 +1019,12 @@ class _ICPState extends State<ICP> {
                                       'http://172.23.10.34:2500/printsubtag_ICP',
                                       data: {
                                         "reqNo": dataICPInput[index].sampleCode,
-                                        "itemName":
-                                            dataICPInput[index].itemName,
-                                        "dilutionTime": dataICPInput[index]
-                                            .dilutionTime_2
-                                            .toString(),
+                                        "itemName": dataICPInput[index].itemName,
+                                        "dilutionTime": dataICPInput[index].dilutionTime_2.toString(),
                                         "R": "R2",
-                                        "custFull":
-                                            dataICPInput[index].custFull,
-                                        "custShort":
-                                            dataICPInput[index].custShort,
-                                        "sampleType":
-                                            dataICPInput[index].sampleType,
+                                        "custFull": dataICPInput[index].custFull,
+                                        "custShort": dataICPInput[index].custShort,
+                                        "sampleType": dataICPInput[index].sampleType,
                                         "plant": userBranch,
                                       },
                                     ).then((value) {});
@@ -1104,8 +1043,7 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_1',
-                                initialValue:
-                                    dataICPInput[index].w_2.toString(),
+                                initialValue: dataICPInput[index].w_2.toString(),
                                 onChanged: (value) {
                                   dataICPInput[index].w_2 = value.toString();
                                 },
@@ -1126,8 +1064,7 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_1',
-                                initialValue:
-                                    dataICPInput[index].tW_2.toString(),
+                                initialValue: dataICPInput[index].tW_2.toString(),
                                 onChanged: (value) {
                                   dataICPInput[index].tW_2 = value.toString();
                                 },
@@ -1148,11 +1085,9 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_1',
-                                initialValue:
-                                    dataICPInput[index].volume_2.toString(),
+                                initialValue: dataICPInput[index].volume_2.toString(),
                                 onChanged: (value) {
-                                  dataICPInput[index].volume_2 =
-                                      value.toString();
+                                  dataICPInput[index].volume_2 = value.toString();
                                 },
                                 onSubmitted: (value) {
                                   calculate2(index);
@@ -1170,12 +1105,9 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_6',
-                                initialValue: dataICPInput[index]
-                                    .dilutionTime_2
-                                    .toString(),
+                                initialValue: dataICPInput[index].dilutionTime_2.toString(),
                                 onChanged: (value) {
-                                  dataICPInput[index].dilutionTime_2 =
-                                      value.toString();
+                                  dataICPInput[index].dilutionTime_2 = value.toString();
                                 },
                                 onSubmitted: (value) {
                                   calculate2(index);
@@ -1193,11 +1125,9 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_7',
-                                initialValue:
-                                    dataICPInput[index].rawData_2.toString(),
+                                initialValue: dataICPInput[index].rawData_2.toString(),
                                 onChanged: (value) {
-                                  dataICPInput[index].rawData_2 =
-                                      value.toString();
+                                  dataICPInput[index].rawData_2 = value.toString();
                                 },
                                 onSubmitted: (value) {
                                   calculate2(index);
@@ -1218,13 +1148,10 @@ class _ICPState extends State<ICP> {
 
                                 name: '${index}_8',
                                 //enabled: false,
-                                key: Key(
-                                    dataICPInput[index].result_2.toString()),
-                                initialValue:
-                                    dataICPInput[index].result_2.toString(),
+                                key: Key(dataICPInput[index].result_2.toString()),
+                                initialValue: dataICPInput[index].result_2.toString(),
                                 onChanged: (value) {
-                                  dataICPInput[index].result_2 =
-                                      value.toString();
+                                  dataICPInput[index].result_2 = value.toString();
                                 },
                               ),
                               //Text(dataICPInput[index].result_1),
@@ -1239,14 +1166,10 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_3',
-                                key: Key(dataICPInput[index]
-                                    .resultUnit_2
-                                    .toString()),
-                                initialValue:
-                                    dataICPInput[index].resultUnit_2.toString(),
+                                key: Key(dataICPInput[index].resultUnit_2.toString()),
+                                initialValue: dataICPInput[index].resultUnit_2.toString(),
                                 onChanged: (value) {
-                                  dataICPInput[index].resultUnit_2 =
-                                      value.toString();
+                                  dataICPInput[index].resultUnit_2 = value.toString();
                                 },
                               ),
                             ),
@@ -1261,12 +1184,9 @@ class _ICPState extends State<ICP> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_9',
-                                initialValue: dataICPInput[index]
-                                    .resultRemark_2
-                                    .toString(),
+                                initialValue: dataICPInput[index].resultRemark_2.toString(),
                                 onChanged: (value) {
-                                  dataICPInput[index].resultRemark_2 =
-                                      value.toString();
+                                  dataICPInput[index].resultRemark_2 = value.toString();
                                 },
                               ),
                             ),
@@ -1333,17 +1253,12 @@ headerColumn(
   String tooltipIn,
   double widthData,
 ) {
-  TextStyle styleHeaderTable = TextStyle(
-      fontSize: 10,
-      fontWeight: FontWeight.bold,
-      fontFamily: 'Mitr',
-      color: Colors.black);
+  TextStyle styleHeaderTable =
+      TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Mitr', color: Colors.black);
   return DataColumn(
     label: Container(
         width: widthData,
-        child: Center(
-            child: Text(textIn,
-                style: styleHeaderTable, textAlign: TextAlign.center))),
+        child: Center(child: Text(textIn, style: styleHeaderTable, textAlign: TextAlign.center))),
     tooltip: tooltipIn,
   );
 }
