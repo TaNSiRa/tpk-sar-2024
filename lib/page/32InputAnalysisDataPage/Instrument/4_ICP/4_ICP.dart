@@ -263,6 +263,8 @@ class _ICPState extends State<ICP> {
         int buffCurveInt = buffCurve.floor();
         if (double.parse(dataICPInput[index].result_1) < buffCurve) {
           dataICPInput[index].result_1 = "< " + buffCurveInt.toString();
+        } else {
+          dataICPInput[index].result_1 = double.parse(dataICPInput[index].result_1).toStringAsFixed(2);
         }
       } else {
         dataICPInput[index].result_1 =
@@ -477,6 +479,8 @@ class _ICPState extends State<ICP> {
         int buffCurveInt = buffCurve.floor();
         if (double.parse(dataICPInput[index].result_2) < buffCurve) {
           dataICPInput[index].result_2 = "< " + buffCurveInt.toString();
+        } else {
+          dataICPInput[index].result_2 = double.parse(dataICPInput[index].result_2).toStringAsFixed(2);
         }
       } else {
         dataICPInput[index].result_2 =
