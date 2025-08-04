@@ -257,7 +257,7 @@ class _ICPState extends State<ICP> {
         dataICPInput[index].result_1 = ((double.parse(dataICPInput[index].dilutionTime_1) *
                     double.parse(dataICPInput[index].rawData_1)) *
                 3.06452)
-            .toStringAsFixed(2);
+            .toString();
         dataICPInput[index].resultUnit_1 = "ppm";
         buffCurve = (1 * double.parse(dataICPInput[index].dilutionTime_1) * 3.06452);
         int buffCurveInt = buffCurve.floor();
@@ -471,7 +471,7 @@ class _ICPState extends State<ICP> {
         dataICPInput[index].result_2 = ((double.parse(dataICPInput[index].dilutionTime_2) *
                     double.parse(dataICPInput[index].rawData_2)) *
                 3.06452)
-            .toStringAsFixed(2);
+            .toString();
         dataICPInput[index].resultUnit_2 = "ppm";
         buffCurve = (1 * double.parse(dataICPInput[index].dilutionTime_2) * 3.06452);
         int buffCurveInt = buffCurve.floor();
