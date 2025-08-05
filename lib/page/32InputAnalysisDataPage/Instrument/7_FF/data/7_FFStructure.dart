@@ -3,8 +3,7 @@ import 'dart:convert';
 List<ModelFF> modelFFFromJson(String str) =>
     List<ModelFF>.from(json.decode(str).map((x) => ModelFF.fromJson(x)));
 
-String modelFFToJson(List<ModelFF> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String modelFFToJson(List<ModelFF> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class ModelFF {
   ModelFF({
@@ -40,12 +39,16 @@ class ModelFF {
     this.analysisDate,
     this.temp_1,
     this.resultSymbol_1,
+    this.rawData_1,
+    this.dilutionTime_1,
     this.result_1,
     this.resultUnit_1,
     this.resultRemark_1,
     this.resultFile_1,
     this.temp_2,
     this.resultSymbol_2,
+    this.rawData_2,
+    this.dilutionTime_2,
     this.result_2,
     this.resultUnit_2,
     this.resultRemark_2,
@@ -85,12 +88,16 @@ class ModelFF {
   dynamic analysisDate;
   dynamic temp_1;
   dynamic resultSymbol_1;
+  dynamic rawData_1;
+  dynamic dilutionTime_1;
   dynamic result_1;
   dynamic resultUnit_1;
   dynamic resultRemark_1;
   dynamic resultFile_1;
   dynamic temp_2;
   dynamic resultSymbol_2;
+  dynamic rawData_2;
+  dynamic dilutionTime_2;
   dynamic result_2;
   dynamic resultUnit_2;
   dynamic resultRemark_2;
@@ -130,13 +137,16 @@ class ModelFF {
         analysisDate: json["AnalysisDate"] ?? "",
         temp_1: json["Temp_1"] ?? "",
         resultSymbol_1: json["ResultSymbol_1"] ?? "",
+        rawData_1: json["RawData_1"] ?? "",
+        dilutionTime_1: json["DilutionTime_1"] ?? "",
         result_1: json["Result_1"] ?? "",
         resultUnit_1: json["ResultUnit_1"] ?? "",
         resultRemark_1: json["ResultRemark_1"] ?? "",
         resultFile_1: json["ResultFile_1"] ?? "",
         temp_2: json["Temp_2"] ?? "",
-
         resultSymbol_2: json["ResultSymbol_2"] ?? "",
+        rawData_2: json["RawData_2"] ?? "",
+        dilutionTime_2: json["DilutionTime_2"] ?? "",
         result_2: json["Result_2"] ?? "",
         resultUnit_2: json["ResultUnit_2"] ?? "",
         resultRemark_2: json["ResultRemark_2"] ?? "",
@@ -175,15 +185,17 @@ class ModelFF {
         "UserAnalysis": userAnalysis ?? "",
         "UserAnalysisBranch": userAnalysisBranch ?? "",
         "Temp_1": temp_1 ?? "",
-       
         "ResultSymbol_1": resultSymbol_1 ?? "",
+        "RawData_1": rawData_1 ?? "",
+        "DilutionTime_1": dilutionTime_1 ?? "",
         "Result_1": result_1 ?? "",
         "ResultUnit_1": resultUnit_1 ?? "",
         "ResultRemark_1": resultRemark_1 ?? "",
         "ResultFile_1": resultFile_1 ?? "",
         "Temp_2": temp_2 ?? "",
-
         "ResultSymbol_2": resultSymbol_2 ?? "",
+        "RawData_2": rawData_2 ?? "",
+        "DilutionTime_2": dilutionTime_2 ?? "",
         "Result_2": result_2 ?? "",
         "ResultUnit_2": resultUnit_2 ?? "",
         "ResultRemark_2": resultRemark_2 ?? "",

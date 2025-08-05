@@ -12,8 +12,7 @@ import 'package:tpk_login_arsa_01/page/32InputAnalysisDataPage/Instrument/7_FF/d
 class Instrument_FF extends StatelessWidget {
   double headHeight = 0;
   double dataHeight = 0;
-  Instrument_FF({Key? key, required this.headHeight, required this.dataHeight})
-      : super(key: key);
+  Instrument_FF({Key? key, required this.headHeight, required this.dataHeight}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,8 +30,7 @@ class Instrument_FF extends StatelessWidget {
 class FF extends StatefulWidget {
   double headHeight = 0;
   double dataHeight = 0;
-  FF({Key? key, required this.headHeight, required this.dataHeight})
-      : super(key: key);
+  FF({Key? key, required this.headHeight, required this.dataHeight}) : super(key: key);
 
   @override
   _FFState createState() => _FFState();
@@ -79,11 +77,19 @@ class _FFState extends State<FF> {
   void calculate(int index) {
     print("incal");
     print(dataFFInput[index].result_1);
+    double buffCurve = 0;
     try {
-      if (dataFFInput[index].custFull ==
-          'BANGKOK CAN MANUFACTURING CO.,LTD. LINE 1') {
+      if (dataFFInput[index].custFull == 'BANGKOK CAN MANUFACTURING CO.,LTD. LINE 1') {
         if (double.parse(dataFFInput[index].result_1) < 1) {
           dataFFInput[index].result_1 = '< 1';
+        }
+      } else if (dataFFInput[index].itemName == "TF(WWT)") {
+        dataFFInput[index].result_1 =
+            ((double.parse(dataFFInput[index].dilutionTime_1) * double.parse(dataFFInput[index].rawData_1)))
+                .toStringAsFixed(2);
+        buffCurve = 1 * double.parse(dataFFInput[index].dilutionTime_1);
+        if (double.parse(dataFFInput[index].result_1) < buffCurve) {
+          dataFFInput[index].result_1 = "< " + buffCurve.toString();
         }
       } else if (userBranch == "BANGPOO") {
         if (dataFFInput[index].sampleType == 'P/H') {
@@ -128,11 +134,19 @@ class _FFState extends State<FF> {
   }
 
   void calculate2(int index) {
+    double buffCurve = 0;
     try {
-      if (dataFFInput[index].custFull ==
-          'BANGKOK CAN MANUFACTURING CO.,LTD. LINE 1') {
+      if (dataFFInput[index].custFull == 'BANGKOK CAN MANUFACTURING CO.,LTD. LINE 1') {
         if (double.parse(dataFFInput[index].result_2) < 1) {
           dataFFInput[index].result_2 = '< 1';
+        }
+      } else if (dataFFInput[index].itemName == "TF(WWT)") {
+        dataFFInput[index].result_2 =
+            ((double.parse(dataFFInput[index].dilutionTime_2) * double.parse(dataFFInput[index].rawData_2)))
+                .toStringAsFixed(2);
+        buffCurve = 1 * double.parse(dataFFInput[index].dilutionTime_2);
+        if (double.parse(dataFFInput[index].result_2) < buffCurve) {
+          dataFFInput[index].result_2 = "< " + buffCurve.toString();
         }
       } else if (userBranch == "BANGPOO") {
         if (double.parse(dataFFInput[index].result_2) < 1) {
@@ -142,8 +156,17 @@ class _FFState extends State<FF> {
         if (double.parse(dataFFInput[index].result_2) < 5) {
           dataFFInput[index].result_2 = '< 5';
         }
+      } else if (dataFFInput[index].itemName == "TF(WWT)") {
+        dataFFInput[index].result_1 =
+            ((double.parse(dataFFInput[index].dilutionTime_1) * double.parse(dataFFInput[index].rawData_1)))
+                .toStringAsFixed(2);
+        dataFFInput[index].resultUnit_1 = "ppm";
+        buffCurve = 1 * double.parse(dataFFInput[index].dilutionTime_1);
+        int buffCurveInt = buffCurve.floor();
+        if (double.parse(dataFFInput[index].result_1) < buffCurve) {
+          dataFFInput[index].result_1 = "< " + buffCurveInt.toString();
+        }
       }
-
       dataFFInput[index].resultUnit_2 = "ppm";
       setState(() {});
     } on Exception catch (e) {
@@ -176,16 +199,11 @@ class _FFState extends State<FF> {
             ((() {
               if (dataFFInput[index].result_2.toString() != "") {
                 try {
-                  if (double.parse(dataFFInput[index].result_1) >
-                          double.parse(dataFFInput[index].stdMax) ||
-                      double.parse(dataFFInput[index].result_1) <
-                          double.parse(dataFFInput[index].stdMin) ||
-                      double.parse(dataFFInput[index].result_2) >
-                          double.parse(dataFFInput[index].stdMax) ||
-                      double.parse(dataFFInput[index].result_2) <
-                          double.parse(dataFFInput[index].stdMin)) {
-                    return Text('RESULT OUT OF RANGE',
-                        style: TextStyle(color: Colors.red));
+                  if (double.parse(dataFFInput[index].result_1) > double.parse(dataFFInput[index].stdMax) ||
+                      double.parse(dataFFInput[index].result_1) < double.parse(dataFFInput[index].stdMin) ||
+                      double.parse(dataFFInput[index].result_2) > double.parse(dataFFInput[index].stdMax) ||
+                      double.parse(dataFFInput[index].result_2) < double.parse(dataFFInput[index].stdMin)) {
+                    return Text('RESULT OUT OF RANGE', style: TextStyle(color: Colors.red));
                   } else
                     return Text('CONFIRM SAVE RESULT');
                 } on Exception catch (e) {
@@ -195,12 +213,9 @@ class _FFState extends State<FF> {
                 }
               } else {
                 try {
-                  if (double.parse(dataFFInput[index].result_1) >
-                          double.parse(dataFFInput[index].stdMax) ||
-                      double.parse(dataFFInput[index].result_1) <
-                          double.parse(dataFFInput[index].stdMin)) {
-                    return Text('RESULT OUT OF RANGE',
-                        style: TextStyle(color: Colors.red));
+                  if (double.parse(dataFFInput[index].result_1) > double.parse(dataFFInput[index].stdMax) ||
+                      double.parse(dataFFInput[index].result_1) < double.parse(dataFFInput[index].stdMin)) {
+                    return Text('RESULT OUT OF RANGE', style: TextStyle(color: Colors.red));
                   } else
                     return Text('CONFIRM SAVE RESULT');
                 } on Exception catch (e) {
@@ -251,13 +266,9 @@ class _FFState extends State<FF> {
   double widthC17 = 40;
   double fieldHeight = 30;
 
-  TextStyle styleDataInTable =
-      TextStyle(fontSize: 9, fontFamily: 'Mitr', color: Colors.black);
-  TextStyle styleHeaderTable = TextStyle(
-      fontSize: 10,
-      fontWeight: FontWeight.bold,
-      fontFamily: 'Mitr',
-      color: Colors.black);
+  TextStyle styleDataInTable = TextStyle(fontSize: 9, fontFamily: 'Mitr', color: Colors.black);
+  TextStyle styleHeaderTable =
+      TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Mitr', color: Colors.black);
 
   final _formKey2 = GlobalKey<FormBuilderState>();
 
@@ -297,6 +308,14 @@ class _FFState extends State<FF> {
                   DataColumn(label: _verticalDivider2),
                   headerColumn('TEMP\n(°C)', 'TEMP (°C)', widthC3),
                   DataColumn(label: _verticalDivider),
+                  headerColumn('DILUTION \n TIMES', 'DILUTION TIMES', widthC3),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'RAW DATA \n (ppm)',
+                    'RAW DATA',
+                    widthC4,
+                  ),
+                  DataColumn(label: _verticalDivider),
                   headerColumn(
                     'RESULT\n(ppm)',
                     'RESULT (ppm)',
@@ -328,6 +347,14 @@ class _FFState extends State<FF> {
                   ),
                   DataColumn(label: _verticalDivider2),
                   headerColumn('TEMP\n(°C)(2)', 'TEMP (°C)', widthC7),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn('DILUTION \n TIMES', 'DILUTION TIMES(2)', widthC8),
+                  DataColumn(label: _verticalDivider),
+                  headerColumn(
+                    'RAW DATA \n (ppm)(2)',
+                    'RAW DATA',
+                    widthC9,
+                  ),
                   DataColumn(label: _verticalDivider),
                   headerColumn(
                     'RESULT\n(ppm)(2)',
@@ -372,12 +399,8 @@ class _FFState extends State<FF> {
                                   onPressed: () {
                                     setState(() {
                                       showHistory(
-                                          dataFFInput[index]
-                                              .requestSampleId
-                                              .toString(),
-                                          dataFFInput[index]
-                                              .itemName
-                                              .toString(),
+                                          dataFFInput[index].requestSampleId.toString(),
+                                          dataFFInput[index].itemName.toString(),
                                           "TTC",
                                           dataFFInput[index].stdMax.toString(),
                                           dataFFInput[index].stdMin.toString(),
@@ -398,8 +421,7 @@ class _FFState extends State<FF> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_3',
-                                initialValue:
-                                    dataFFInput[index].temp_1.toString(),
+                                initialValue: dataFFInput[index].temp_1.toString(),
                                 onChanged: (value) {
                                   dataFFInput[index].temp_1 = value.toString();
                                 },
@@ -409,29 +431,86 @@ class _FFState extends State<FF> {
                           DataCell(_verticalDivider),
                           DataCell(
                             Container(
-                              width: widthC4,
+                              width: widthC3,
+                              //height: fieldHeight,
                               child: FormBuilderTextField(
+                                textInputAction: TextInputAction.next,
                                 style: styleDataInTable,
-                                textInputAction: TextInputAction.done,
                                 decoration: formField(),
-                                name: '${index}_4',
-                                key:
-                                    Key(dataFFInput[index].result_1.toString()),
-                                initialValue:
-                                    dataFFInput[index].result_1.toString(),
+                                name: '${index}_1',
+                                initialValue: dataFFInput[index].dilutionTime_1.toString(),
                                 onChanged: (value) {
-                                  dataFFInput[index].result_1 =
-                                      value.toString();
-                                  dataFFInput[index].resultUnit_1 = "ppm";
+                                  dataFFInput[index].dilutionTime_1 = value.toString();
                                 },
                                 onSubmitted: (value) {
-                                  dataFFInput[index].result_1 =
-                                      value.toString();
                                   calculate(index);
                                 },
                               ),
                             ),
                           ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC4,
+                              //height: fieldHeight,
+                              child: FormBuilderTextField(
+                                textInputAction: TextInputAction.done,
+                                style: styleDataInTable,
+                                decoration: formField(),
+                                name: '${index}_2',
+                                initialValue: dataFFInput[index].rawData_1.toString(),
+                                onChanged: (value) {
+                                  dataFFInput[index].rawData_1 = value.toString();
+                                },
+                                onSubmitted: (value) {
+                                  calculate(index);
+                                },
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC5,
+                              //height: fieldHeight,
+                              child: FormBuilderTextField(
+                                //textInputAction: TextInputAction.next,
+                                style: styleDataInTable,
+                                decoration: formField(),
+
+                                name: '${index}_3',
+                                //enabled: false,
+                                key: Key(dataFFInput[index].result_1.toString()),
+                                initialValue: dataFFInput[index].result_1.toString(),
+                                onChanged: (value) {
+                                  dataFFInput[index].result_1 = value.toString();
+                                },
+                              ),
+                              //Text(dataFFInput[index].result_1),
+                            ),
+                          ),
+                          // DataCell(_verticalDivider),
+                          // DataCell(
+                          //   Container(
+                          //     width: widthC4,
+                          //     child: FormBuilderTextField(
+                          //       style: styleDataInTable,
+                          //       textInputAction: TextInputAction.done,
+                          //       decoration: formField(),
+                          //       name: '${index}_4',
+                          //       key: Key(dataFFInput[index].result_1.toString()),
+                          //       initialValue: dataFFInput[index].result_1.toString(),
+                          //       onChanged: (value) {
+                          //         dataFFInput[index].result_1 = value.toString();
+                          //         dataFFInput[index].resultUnit_1 = "ppm";
+                          //       },
+                          //       onSubmitted: (value) {
+                          //         dataFFInput[index].result_1 = value.toString();
+                          //         calculate(index);
+                          //       },
+                          //     ),
+                          //   ),
+                          // ),
                           DataCell(_verticalDivider),
                           DataCell(
                             Container(
@@ -446,8 +525,7 @@ class _FFState extends State<FF> {
                                     .toList(),
                                 style: styleDataInTable,
                                 decoration: InputDecoration(
-                                    contentPadding: EdgeInsets.all(10.0),
-                                    border: OutlineInputBorder()),
+                                    contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder()),
                                 name: '${index}_5',
                                 onChanged: (value) {
                                   dataFFInput[index].result_1 = value;
@@ -467,12 +545,9 @@ class _FFState extends State<FF> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_6',
-                                initialValue: dataFFInput[index]
-                                    .resultRemark_1
-                                    .toString(),
+                                initialValue: dataFFInput[index].resultRemark_1.toString(),
                                 onChanged: (value) {
-                                  dataFFInput[index].resultRemark_1 =
-                                      value.toString();
+                                  dataFFInput[index].resultRemark_1 = value.toString();
                                 },
                               ),
                             ),
@@ -521,8 +596,7 @@ class _FFState extends State<FF> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_7',
-                                initialValue:
-                                    dataFFInput[index].temp_2.toString(),
+                                initialValue: dataFFInput[index].temp_2.toString(),
                                 onChanged: (value) {
                                   dataFFInput[index].temp_2 = value.toString();
                                 },
@@ -532,30 +606,88 @@ class _FFState extends State<FF> {
                           DataCell(_verticalDivider),
                           DataCell(
                             Container(
-                              width: widthC8,
+                              width: widthC9,
+                              //height: fieldHeight,
                               child: FormBuilderTextField(
+                                textInputAction: TextInputAction.next,
                                 style: styleDataInTable,
                                 decoration: formField(),
-                                textInputAction: TextInputAction.done,
-                                name: '${index}_8',
-                                key:
-                                    Key(dataFFInput[index].result_2.toString()),
-                                initialValue:
-                                    dataFFInput[index].result_2.toString(),
+                                name: '${index}_6',
+                                initialValue: dataFFInput[index].dilutionTime_2.toString(),
                                 onChanged: (value) {
-                                  dataFFInput[index].result_2 =
-                                      value.toString();
-                                  dataFFInput[index].resultUnit_2 = "ppm";
+                                  dataFFInput[index].dilutionTime_2 = value.toString();
                                 },
                                 onSubmitted: (value) {
-                                  dataFFInput[index].result_2 =
-                                      value.toString();
                                   calculate2(index);
+                                },
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC10,
+                              //height: fieldHeight,
+                              child: FormBuilderTextField(
+                                textInputAction: TextInputAction.done,
+                                style: styleDataInTable,
+                                decoration: formField(),
+                                name: '${index}_7',
+                                initialValue: dataFFInput[index].rawData_2.toString(),
+                                onChanged: (value) {
+                                  dataFFInput[index].rawData_2 = value.toString();
+                                },
+                                onSubmitted: (value) {
+                                  calculate2(index);
+                                },
+                              ),
+                            ),
+                          ),
+                          DataCell(_verticalDivider),
+                          DataCell(
+                            Container(
+                              width: widthC10,
+                              //height: fieldHeight,
+                              child: FormBuilderTextField(
+                                enabled: true,
+                                //textInputAction: TextInputAction.next,
+                                style: styleDataInTable,
+                                decoration: formField(),
+
+                                name: '${index}_8',
+                                //enabled: false,
+                                key: Key(dataFFInput[index].result_2.toString()),
+                                initialValue: dataFFInput[index].result_2.toString(),
+                                onChanged: (value) {
+                                  dataFFInput[index].result_2 = value.toString();
                                 },
                               ),
                               //Text(dataFFInput[index].result_1),
                             ),
                           ),
+                          // DataCell(_verticalDivider),
+                          // DataCell(
+                          //   Container(
+                          //     width: widthC8,
+                          //     child: FormBuilderTextField(
+                          //       style: styleDataInTable,
+                          //       decoration: formField(),
+                          //       textInputAction: TextInputAction.done,
+                          //       name: '${index}_8',
+                          //       key: Key(dataFFInput[index].result_2.toString()),
+                          //       initialValue: dataFFInput[index].result_2.toString(),
+                          //       onChanged: (value) {
+                          //         dataFFInput[index].result_2 = value.toString();
+                          //         dataFFInput[index].resultUnit_2 = "ppm";
+                          //       },
+                          //       onSubmitted: (value) {
+                          //         dataFFInput[index].result_2 = value.toString();
+                          //         calculate2(index);
+                          //       },
+                          //     ),
+                          //     //Text(dataFFInput[index].result_1),
+                          //   ),
+                          // ),
                           DataCell(_verticalDivider),
                           DataCell(
                             Container(
@@ -566,12 +698,9 @@ class _FFState extends State<FF> {
                                 style: styleDataInTable,
                                 decoration: formField(),
                                 name: '${index}_9',
-                                initialValue: dataFFInput[index]
-                                    .resultRemark_2
-                                    .toString(),
+                                initialValue: dataFFInput[index].resultRemark_2.toString(),
                                 onChanged: (value) {
-                                  dataFFInput[index].resultRemark_2 =
-                                      value.toString();
+                                  dataFFInput[index].resultRemark_2 = value.toString();
                                 },
                               ),
                             ),
@@ -638,17 +767,12 @@ headerColumn(
   String tooltipIn,
   double widthData,
 ) {
-  TextStyle styleHeaderTable = TextStyle(
-      fontSize: 10,
-      fontWeight: FontWeight.bold,
-      fontFamily: 'Mitr',
-      color: Colors.black);
+  TextStyle styleHeaderTable =
+      TextStyle(fontSize: 10, fontWeight: FontWeight.bold, fontFamily: 'Mitr', color: Colors.black);
   return DataColumn(
     label: Container(
         width: widthData,
-        child: Center(
-            child: Text(textIn,
-                style: styleHeaderTable, textAlign: TextAlign.center))),
+        child: Center(child: Text(textIn, style: styleHeaderTable, textAlign: TextAlign.center))),
     tooltip: tooltipIn,
   );
 }
