@@ -485,6 +485,10 @@ class _FFState extends State<FF> {
                                 onChanged: (value) {
                                   dataFFInput[index].result_1 = value.toString();
                                 },
+                                onSubmitted: (value) {
+                                  dataFFInput[index].result_1 = value.toString();
+                                  calculate(index);
+                                },
                               ),
                               //Text(dataFFInput[index].result_1),
                             ),
@@ -660,6 +664,10 @@ class _FFState extends State<FF> {
                                 initialValue: dataFFInput[index].result_2.toString(),
                                 onChanged: (value) {
                                   dataFFInput[index].result_2 = value.toString();
+                                },
+                                onSubmitted: (value) {
+                                  dataFFInput[index].result_2 = value.toString();
+                                  calculate2(index);
                                 },
                               ),
                               //Text(dataFFInput[index].result_1),
