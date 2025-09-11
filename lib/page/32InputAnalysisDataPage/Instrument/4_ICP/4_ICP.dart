@@ -67,6 +67,7 @@ class _ICPState extends State<ICP> {
     "SK-100-1G",
     "SEC-93-0T",
     "SEC-93-2T",
+    "SEC-93-1T",
   ];
   List setCNsalt1 = ["Cu", "Fe", "Mo", "Zn"];
   List setCNsalt2 = ["Na", "K"];
