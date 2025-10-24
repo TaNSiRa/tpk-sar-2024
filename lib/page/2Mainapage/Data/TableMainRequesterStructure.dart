@@ -5,8 +5,7 @@ List<ModelTableMainRequester> mainRequesterData = [];
 //
 //     final modelTableMainRequester = modelTableMainRequesterFromJson(jsonString);
 List<ModelTableMainRequester> modelTableMainRequesterFromJson(String str) =>
-    List<ModelTableMainRequester>.from(
-        json.decode(str).map((x) => ModelTableMainRequester.fromJson(x)));
+    List<ModelTableMainRequester>.from(json.decode(str).map((x) => ModelTableMainRequester.fromJson(x)));
 
 String modelTableMainRequesterToJson(List<ModelTableMainRequester> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
@@ -43,6 +42,7 @@ class ModelTableMainRequester {
     this.reportStatus,
     this.reportDueDate,
     this.nextApprover,
+    this.sentRep,
     this.samplingDate,
   });
 
@@ -77,42 +77,42 @@ class ModelTableMainRequester {
   dynamic reportDueDate;
   dynamic nextApprover;
   dynamic selected;
+  dynamic sentRep;
   dynamic samplingDate;
 
-  factory ModelTableMainRequester.fromJson(Map<String, dynamic> json) =>
-      ModelTableMainRequester(
-        reqNo: json["reqNo"] ?? "",
-        jobType: json["jobType"] ?? "",
-        reqDate: json["reqDate"] ?? "",
-        custFull: json["custFull"] ?? "",
-        requestRound: json["requestRound"] ?? "",
-        requestStatus: json["requestStatus"] ?? "",
-        sampleName1: json["sampleName1"] ?? "",
-        sampleName2: json["sampleName2"] ?? "",
-        sampleName3: json["sampleName3"] ?? "",
-        sampleName4: json["sampleName4"] ?? "",
-        sampleName5: json["sampleName5"] ?? "",
-        sampleName6: json["sampleName6"] ?? "",
-        sampleName7: json["sampleName7"] ?? "",
-        sampleName8: json["sampleName8"] ?? "",
-        sampleName9: json["sampleName9"] ?? "",
-        sampleName10: json["sampleName10"] ?? "",
-        sampleStatus1: json["sampleStatus1"] ?? "",
-        sampleStatus2: json["sampleStatus2"] ?? "",
-        sampleStatus3: json["sampleStatus3"] ?? "",
-        sampleStatus4: json["sampleStatus4"] ?? "",
-        sampleStatus5: json["sampleStatus5"] ?? "",
-        sampleStatus6: json["sampleStatus6"] ?? "",
-        sampleStatus7: json["sampleStatus7"] ?? "",
-        sampleStatus8: json["sampleStatus8"] ?? "",
-        sampleStatus9: json["sampleStatus9"] ?? "",
-        sampleStatus10: json["sampleStatus10"] ?? "",
-        manualDataStatus: json["manualDataStatus"] ?? "",
-        reportStatus: json["reportStatus"] ?? "",
-        reportDueDate: json["reportDueDate"] ?? "",
-        nextApprover: json["nextApprover"] ?? "",
-        samplingDate: json["samplingDate"] ??""
-      );
+  factory ModelTableMainRequester.fromJson(Map<String, dynamic> json) => ModelTableMainRequester(
+      reqNo: json["reqNo"] ?? "",
+      jobType: json["jobType"] ?? "",
+      reqDate: json["reqDate"] ?? "",
+      custFull: json["custFull"] ?? "",
+      requestRound: json["requestRound"] ?? "",
+      requestStatus: json["requestStatus"] ?? "",
+      sampleName1: json["sampleName1"] ?? "",
+      sampleName2: json["sampleName2"] ?? "",
+      sampleName3: json["sampleName3"] ?? "",
+      sampleName4: json["sampleName4"] ?? "",
+      sampleName5: json["sampleName5"] ?? "",
+      sampleName6: json["sampleName6"] ?? "",
+      sampleName7: json["sampleName7"] ?? "",
+      sampleName8: json["sampleName8"] ?? "",
+      sampleName9: json["sampleName9"] ?? "",
+      sampleName10: json["sampleName10"] ?? "",
+      sampleStatus1: json["sampleStatus1"] ?? "",
+      sampleStatus2: json["sampleStatus2"] ?? "",
+      sampleStatus3: json["sampleStatus3"] ?? "",
+      sampleStatus4: json["sampleStatus4"] ?? "",
+      sampleStatus5: json["sampleStatus5"] ?? "",
+      sampleStatus6: json["sampleStatus6"] ?? "",
+      sampleStatus7: json["sampleStatus7"] ?? "",
+      sampleStatus8: json["sampleStatus8"] ?? "",
+      sampleStatus9: json["sampleStatus9"] ?? "",
+      sampleStatus10: json["sampleStatus10"] ?? "",
+      manualDataStatus: json["manualDataStatus"] ?? "",
+      reportStatus: json["reportStatus"] ?? "",
+      reportDueDate: json["reportDueDate"] ?? "",
+      nextApprover: json["nextApprover"] ?? "",
+      sentRep: json["sentRep"] ?? "",
+      samplingDate: json["samplingDate"] ?? "");
 
   Map<String, dynamic> toJson() => {
         "reqNo": reqNo,
@@ -145,6 +145,7 @@ class ModelTableMainRequester {
         "reportStatus": reportStatus,
         "reportDueDate": reportDueDate,
         "nextApprover": nextApprover,
-        "samplingDate" : samplingDate,
+        "sentRep": sentRep,
+        "samplingDate": samplingDate,
       };
 }

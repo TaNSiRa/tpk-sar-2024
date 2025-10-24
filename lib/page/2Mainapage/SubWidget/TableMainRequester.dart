@@ -24,11 +24,9 @@ class TableMainRequest extends StatefulWidget {
   _TableMainRequestState createState() => _TableMainRequestState();
 }
 
-class _TableMainRequestState extends State<TableMainRequest>
-    with RestorationMixin {
+class _TableMainRequestState extends State<TableMainRequest> with RestorationMixin {
   //edit
-  final RestorableDataSelections _dataSelections =
-      RestorableDataSelections(); //
+  final RestorableDataSelections _dataSelections = RestorableDataSelections(); //
   final RestorableInt _rowIndex = RestorableInt(0);
   final RestorableInt _rowsPerPage = RestorableInt(10);
   /* RestorableInt(PaginatedDataTable.defaultRowsPerPage); */
@@ -140,10 +138,7 @@ class _TableMainRequestState extends State<TableMainRequest>
           header: Center(
             child: Text(
               'USER REQUEST LIST',
-              style: TextStyle(
-                  fontFamily: 'Mitr',
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
+              style: TextStyle(fontFamily: 'Mitr', fontWeight: FontWeight.bold, color: Colors.black),
             ),
           ),
           //actions: [InkWell(child: Text("AAA"),onTap:()=> print("aaaaa"),)],
@@ -172,56 +167,48 @@ class _TableMainRequestState extends State<TableMainRequest>
           source: _dataSource,
           columns: [
             DataColumn(
-              label: Text('REQUEST NO',
-                  style: styleDataColumn, textAlign: TextAlign.center),
+              label: Text('REQUEST NO', style: styleDataColumn, textAlign: TextAlign.center),
               numeric: false,
-              onSort: (columnIndex, ascending) =>
-                  sort<String>((d) => d.reqNo, columnIndex, ascending),
+              onSort: (columnIndex, ascending) => sort<String>((d) => d.reqNo, columnIndex, ascending),
             ),
             DataColumn(
-              label: Text('CUSTOMER NAME',
-                  style: styleDataColumn, textAlign: TextAlign.center),
+              label: Text('CUSTOMER NAME', style: styleDataColumn, textAlign: TextAlign.center),
               numeric: false,
               tooltip: 'CUSTOMER NAME',
-              onSort: (columnIndex, ascending) =>
-                  sort<String>((d) => d.custFull, columnIndex, ascending),
+              onSort: (columnIndex, ascending) => sort<String>((d) => d.custFull, columnIndex, ascending),
             ),
             DataColumn(
-              label: Text('REQ. DATE',
-                  style: styleDataColumn, textAlign: TextAlign.center),
-              numeric:
-                  false, // Deliberately set to false to avoid right alignment.
+              label: Text('REQ. DATE', style: styleDataColumn, textAlign: TextAlign.center),
+              numeric: false, // Deliberately set to false to avoid right alignment.
               tooltip: 'DATE REQUEST CREATE',
-              onSort: (columnIndex, ascending) =>
-                  sort<String>((d) => d.reqDate, columnIndex, ascending),
+              onSort: (columnIndex, ascending) => sort<String>((d) => d.reqDate, columnIndex, ascending),
             ),
             DataColumn(
-              label: Text('SAMP. DATE',
-                  style: styleDataColumn, textAlign: TextAlign.center),
-              numeric:
-                  false, // Deliberately set to false to avoid right alignment.
+              label: Text('SAMP. DATE', style: styleDataColumn, textAlign: TextAlign.center),
+              numeric: false, // Deliberately set to false to avoid right alignment.
               tooltip: 'SAMPLING DATE',
-              onSort: (columnIndex, ascending) =>
-                  sort<String>((d) => d.samplingDate, columnIndex, ascending),
+              onSort: (columnIndex, ascending) => sort<String>((d) => d.samplingDate, columnIndex, ascending),
             ),
             DataColumn(
-              label: Text('REQ.STATUS',
-                  style: styleDataColumn, textAlign: TextAlign.center),
+              label: Text('REQ.STATUS', style: styleDataColumn, textAlign: TextAlign.center),
               numeric: false,
             ),
             DataColumn(
-              label: Text('SAMPLE STATUS',
-                  style: styleDataColumn, textAlign: TextAlign.center),
+              label: Text('SAMPLE STATUS', style: styleDataColumn, textAlign: TextAlign.center),
               numeric: false,
               tooltip: "SAMPLE STATUS",
             ),
             DataColumn(
-              label: Text('NEXT APPROVER',
-                  style: styleDataColumn, textAlign: TextAlign.center),
+              label: Text('NEXT APPROVER', style: styleDataColumn, textAlign: TextAlign.center),
               numeric: false,
               tooltip: 'N.APPROVER',
-              onSort: (columnIndex, ascending) =>
-                  sort<String>((d) => d.nextApprover, columnIndex, ascending),
+              onSort: (columnIndex, ascending) => sort<String>((d) => d.nextApprover, columnIndex, ascending),
+            ),
+            DataColumn(
+              label: Text('SENT REPORT', style: styleDataColumn, textAlign: TextAlign.center),
+              numeric: false,
+              tooltip: 'SENT REPORT',
+              onSort: (columnIndex, ascending) => sort<String>((d) => d.sentRep, columnIndex, ascending),
             ),
           ],
         ),
@@ -231,8 +218,7 @@ class _TableMainRequestState extends State<TableMainRequest>
 }
 
 TextStyle styleDataRow = TextStyle(fontSize: 12, fontFamily: 'Mitr');
-TextStyle styleDataColumn =
-    TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+TextStyle styleDataColumn = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
 
 class TableMainRequesterDataSource extends DataTableSource {
   final BuildContext context;
@@ -246,14 +232,11 @@ class TableMainRequesterDataSource extends DataTableSource {
     dataSource = mainRequesterData;
   }
 
-  void sort<T>(Comparable<T> Function(ModelTableMainRequester d) getField,
-      bool ascending) {
+  void sort<T>(Comparable<T> Function(ModelTableMainRequester d) getField, bool ascending) {
     dataSource.sort((a, b) {
       final aValue = getField(a);
       final bValue = getField(b);
-      return ascending
-          ? Comparable.compare(aValue, bValue)
-          : Comparable.compare(bValue, aValue);
+      return ascending ? Comparable.compare(aValue, bValue) : Comparable.compare(bValue, aValue);
     });
     notifyListeners();
   }
@@ -372,19 +355,13 @@ class TableMainRequesterDataSource extends DataTableSource {
       selected: dataBuff.selected,
       onSelectChanged: (value) async {
         final SharedPreferences prefs = await _prefs;
-        await prefs.setString(
-            'RoutineRequestDetailRequesterPage_reqNo', dataBuff.reqNo);
+        await prefs.setString('RoutineRequestDetailRequesterPage_reqNo', dataBuff.reqNo);
         BlocProvider.of<SwPageCubit>(context).togglePage("RefreshPage");
-        BlocProvider.of<SwPageCubit>(context)
-            .togglePage("RoutineRequestDetailRequesterPage");
+        BlocProvider.of<SwPageCubit>(context).togglePage("RoutineRequestDetailRequesterPage");
       },
       cells: [
-        DataCell(Container(
-            child: Text(dataBuff.reqNo,
-                style: styleDataRow, textAlign: TextAlign.start))),
-        DataCell(Container(
-            child: Text(dataBuff.custFull,
-                style: styleDataRow, textAlign: TextAlign.start))),
+        DataCell(Container(child: Text(dataBuff.reqNo, style: styleDataRow, textAlign: TextAlign.start))),
+        DataCell(Container(child: Text(dataBuff.custFull, style: styleDataRow, textAlign: TextAlign.start))),
         DataCell(Container(
             child: Text(toDateOnly(dataBuff.reqDate.toString()),
                 style: styleDataRow, textAlign: TextAlign.start))),
@@ -394,50 +371,41 @@ class TableMainRequesterDataSource extends DataTableSource {
         DataCell(Container(
             child: Text(toDateOnly(dataBuff.samplingDate.toString()),
                 style: styleDataRow, textAlign: TextAlign.start))),
-        DataCell(Container(
-            child: Text(dataBuff.requestStatus,
-                style: styleDataRow, textAlign: TextAlign.start))),
+        DataCell(
+            Container(child: Text(dataBuff.requestStatus, style: styleDataRow, textAlign: TextAlign.start))),
         DataCell(
           Container(
             width: 110,
             child: Wrap(
               children: [
                 if (dataBuff.sampleName1 != "")
-                  statusSampleLamp(
-                      dataBuff.sampleName1, dataBuff.sampleStatus1),
+                  statusSampleLamp(dataBuff.sampleName1, dataBuff.sampleStatus1),
                 if (dataBuff.sampleName2 != "")
-                  statusSampleLamp(
-                      dataBuff.sampleName2, dataBuff.sampleStatus2),
+                  statusSampleLamp(dataBuff.sampleName2, dataBuff.sampleStatus2),
                 if (dataBuff.sampleName3 != "")
-                  statusSampleLamp(
-                      dataBuff.sampleName3, dataBuff.sampleStatus3),
+                  statusSampleLamp(dataBuff.sampleName3, dataBuff.sampleStatus3),
                 if (dataBuff.sampleName4 != "")
-                  statusSampleLamp(
-                      dataBuff.sampleName4, dataBuff.sampleStatus4),
+                  statusSampleLamp(dataBuff.sampleName4, dataBuff.sampleStatus4),
                 if (dataBuff.sampleName5 != "")
-                  statusSampleLamp(
-                      dataBuff.sampleName5, dataBuff.sampleStatus5),
+                  statusSampleLamp(dataBuff.sampleName5, dataBuff.sampleStatus5),
                 if (dataBuff.sampleName6 != "")
-                  statusSampleLamp(
-                      dataBuff.sampleName6, dataBuff.sampleStatus6),
+                  statusSampleLamp(dataBuff.sampleName6, dataBuff.sampleStatus6),
                 if (dataBuff.sampleName7 != "")
-                  statusSampleLamp(
-                      dataBuff.sampleName7, dataBuff.sampleStatus7),
+                  statusSampleLamp(dataBuff.sampleName7, dataBuff.sampleStatus7),
                 if (dataBuff.sampleName8 != "")
-                  statusSampleLamp(
-                      dataBuff.sampleName8, dataBuff.sampleStatus8),
+                  statusSampleLamp(dataBuff.sampleName8, dataBuff.sampleStatus8),
                 if (dataBuff.sampleName9 != "")
-                  statusSampleLamp(
-                      dataBuff.sampleName9, dataBuff.sampleStatus9),
+                  statusSampleLamp(dataBuff.sampleName9, dataBuff.sampleStatus9),
                 if (dataBuff.sampleName10 != "")
-                  statusSampleLamp(
-                      dataBuff.sampleName10, dataBuff.sampleStatus10),
+                  statusSampleLamp(dataBuff.sampleName10, dataBuff.sampleStatus10),
               ],
             ),
           ),
         ),
+        DataCell(
+            Container(child: Text(dataBuff.nextApprover, style: styleDataRow, textAlign: TextAlign.start))),
         DataCell(Container(
-            child: Text(dataBuff.nextApprover,
+            child: Text(toDateOnly(dataBuff.sentRep.toString()),
                 style: styleDataRow, textAlign: TextAlign.start))),
       ],
     );
