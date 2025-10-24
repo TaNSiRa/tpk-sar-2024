@@ -25,9 +25,8 @@ class RoutineRequestPage extends StatelessWidget {
         splashColor: Colors.yellow,
       ),
       child: SingleChildScrollView(
-        child: Container(
-            margin: EdgeInsets.only(left: 50, right: 50, top: 20),
-            child: RoutineCreateRequest()),
+        child:
+            Container(margin: EdgeInsets.only(left: 50, right: 50, top: 20), child: RoutineCreateRequest()),
       ),
     );
   }
@@ -43,9 +42,7 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
     print("InINITIAL");
     Closeline = false;
     FullItem = false;
-    context
-        .read<ManageDataRoutineRequest>()
-        .add(EventRoutineRequestPage.fetchMasterCustomerRoutine);
+    context.read<ManageDataRoutineRequest>().add(EventRoutineRequestPage.fetchMasterCustomerRoutine);
     super.initState();
   }
 
@@ -113,9 +110,7 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
             actions: <Widget>[
               TextButton(
                   onPressed: () {
-                    context
-                        .read<ManageDataRoutineRequest>()
-                        .add(EventRoutineRequestPage.createRequest);
+                    context.read<ManageDataRoutineRequest>().add(EventRoutineRequestPage.createRequest);
                     _dismissDialog();
                   },
                   child: Text('YES')),
@@ -149,8 +144,7 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
                           jobType: requestData[sampleNo][0].jobType,
                           reqUser: requestData[sampleNo][0].reqUser,
                           branch: requestData[sampleNo][0].branch,
-                          requestSection:
-                              requestData[sampleNo][0].requestSection,
+                          requestSection: requestData[sampleNo][0].requestSection,
                           reqDate: requestData[sampleNo][0].reqDate,
                           custId: requestData[sampleNo][0].custId,
                           custFull: requestData[sampleNo][0].custFull,
@@ -165,16 +159,13 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
                           sampleType: requestData[sampleNo][0].sampleType,
                           sampleTank: requestData[sampleNo][0].sampleTank,
                           sampleName: requestData[sampleNo][0].sampleName,
-                          processReportName:
-                              requestData[sampleNo][0].processReportName,
+                          processReportName: requestData[sampleNo][0].processReportName,
                           sampleAmount: requestData[sampleNo][0].sampleAmount,
                           samplingDate: requestData[sampleNo][0].samplingDate,
                           sampleRemark: requestData[sampleNo][0].sampleRemark,
-                          sampleAttachFile:
-                              requestData[sampleNo][0].sampleAttachFile,
+                          sampleAttachFile: requestData[sampleNo][0].sampleAttachFile,
                           itemNo: requestData[sampleNo][0].itemNo + 1,
-                          instrumentName:
-                              requestData[sampleNo][0].instrumentName,
+                          instrumentName: requestData[sampleNo][0].instrumentName,
                           itemName: requestData[sampleNo][0].itemName,
                           itemStatus: requestData[sampleNo][0].itemStatus,
                           position: requestData[sampleNo][0].position,
@@ -196,19 +187,19 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
                           std9: '-',
                           reportOrder: 0));
 
-                      requestData[sampleNo][requestData[sampleNo].length - 1]
-                          .instrumentName = selectedItemAdd[0].instrumentName;
-                      requestData[sampleNo][requestData[sampleNo].length - 1]
-                          .itemName = selectedItemAdd[0].itemName;
+                      requestData[sampleNo][requestData[sampleNo].length - 1].instrumentName =
+                          selectedItemAdd[0].instrumentName;
+                      requestData[sampleNo][requestData[sampleNo].length - 1].itemName =
+                          selectedItemAdd[0].itemName;
                       //item > 100 = Add item
-                      requestData[sampleNo][requestData[sampleNo].length - 1]
-                          .itemNo = requestData[sampleNo].length + 100;
-                      requestData[sampleNo][requestData[sampleNo].length - 1]
-                          .temp = selectedItemAdd[0].temp ?? "-";
-                      requestData[sampleNo][requestData[sampleNo].length - 1]
-                          .position = selectedItemAdd[0].pos ?? "-";
-                      requestData[sampleNo][requestData[sampleNo].length - 1]
-                          .mag = selectedItemAdd[0].mag ?? "-";
+                      requestData[sampleNo][requestData[sampleNo].length - 1].itemNo =
+                          requestData[sampleNo].length + 100;
+                      requestData[sampleNo][requestData[sampleNo].length - 1].temp =
+                          selectedItemAdd[0].temp ?? "-";
+                      requestData[sampleNo][requestData[sampleNo].length - 1].position =
+                          selectedItemAdd[0].pos ?? "-";
+                      requestData[sampleNo][requestData[sampleNo].length - 1].mag =
+                          selectedItemAdd[0].mag ?? "-";
                     });
                     _dismissDialog();
                   },
@@ -238,8 +229,7 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
         requestData[i][j].sampleRemark = requestData[i][0].sampleRemark;
         requestData[i][j].itemStatus = requestData[i][0].itemStatus;
         requestData[i][j].sampleName = requestData[i][0].sampleName;
-        requestData[i][j].processReportName =
-            requestData[i][0].processReportName;
+        requestData[i][j].processReportName = requestData[i][0].processReportName;
       }
     }
 /*     for (int i = 0; i < requestData.length; i++) {
@@ -291,22 +281,16 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
   List<MasterInstrument> addItem4 = [];
   List<MasterInstrument> addItem5 = [];
   String item1 = "", item2 = "", item3 = "", item4 = "", item5 = "";
-  double amountSample1 = 1,
-      amountSample2 = 1,
-      amountSample3 = 1,
-      amountSample4 = 1,
-      amountSample5 = 1;
+  double amountSample1 = 1, amountSample2 = 1, amountSample3 = 1, amountSample4 = 1, amountSample5 = 1;
 
   double heightBox1 = 30;
   double widthsection1 = 130;
   double heightBox2 = 30;
   double widthsection2 = 130;
 
-  TextStyle stylesection =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle stylesection = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
   TextStyle styledata = TextStyle(fontSize: 13, fontFamily: 'Mitr');
-  TextStyle styleHeaderTable =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle styleHeaderTable = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
   TextStyle styleDataInTable = TextStyle(fontSize: 12, fontFamily: 'Mitr');
 
   final _formKey = GlobalKey<FormBuilderState>();
@@ -319,119 +303,98 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
           builder: (context, state) {
             step = state;
             if (state > 0) {
-              return Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Center(
-                      child: Container(
-                        padding: EdgeInsets.only(
-                            left: 25, right: 25, top: 15, bottom: 15),
-                        width: 600,
-                        //height: 280,
-                        decoration: BoxDecoration(
-                          color: CustomTheme.colorWhite,
-                          borderRadius: BorderRadius.all(Radius.circular(0)),
-                          boxShadow: [
-                            BoxShadow(
-                                color: CustomTheme.colorShadowBgStrong,
-                                offset: Offset(0, 0),
-                                blurRadius: 10,
-                                spreadRadius: 0)
+              return Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Center(
+                  child: Container(
+                    padding: EdgeInsets.only(left: 25, right: 25, top: 15, bottom: 15),
+                    width: 600,
+                    //height: 280,
+                    decoration: BoxDecoration(
+                      color: CustomTheme.colorWhite,
+                      borderRadius: BorderRadius.all(Radius.circular(0)),
+                      boxShadow: [
+                        BoxShadow(
+                            color: CustomTheme.colorShadowBgStrong,
+                            offset: Offset(0, 0),
+                            blurRadius: 10,
+                            spreadRadius: 0)
+                      ],
+                    ),
+                    child: Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
+                      Container(
+                        height: heightBox1,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Container(
+                              width: widthsection1,
+                              child: Text(
+                                "SAMPLING DATE",
+                                style: stylesection,
+                              ),
+                            ),
+                            Expanded(
+                              child: FormBuilderDateTimePicker(
+                                format: DateFormat("dd-MM-yyyy"),
+                                style: styledata,
+                                decoration: input(),
+                                initialValue: samplingDate,
+                                inputType: InputType.date,
+                                name: 'samplingDate',
+                                onChanged: (value) {
+                                  samplingDate = value;
+                                },
+                              ),
+                            ),
                           ],
                         ),
-                        child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      ),
+                      Container(
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
+                              Container(width: widthsection1, child: Text("CUSTOMER", style: stylesection)),
                               Container(
-                                height: heightBox1,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      width: widthsection1,
-                                      child: Text(
-                                        "SAMPLING DATE",
-                                        style: stylesection,
-                                      ),
+                                child: Expanded(
+                                  child: CustomSearchableDropDown(
+                                    primaryColor: Colors.black,
+                                    menuMode: true,
+                                    //labelStyle: styledata,
+                                    labelStyle: TextStyle(fontSize: 13, fontFamily: 'Mitr'),
+                                    dropdownItemStyle: TextStyle(fontSize: 10, fontFamily: 'Mitr'),
+                                    items: masterCustormerRoutine,
+                                    label: 'SELECT CUSTOMER',
+                                    prefixIcon: Padding(
+                                      padding: const EdgeInsets.all(0.0),
+                                      child: Icon(Icons.search),
                                     ),
-                                    Expanded(
-                                      child: FormBuilderDateTimePicker(
-                                        format: DateFormat("dd-MM-yyyy"),
-                                        style: styledata,
-                                        decoration: input(),
-                                        initialValue: samplingDate,
-                                        inputType: InputType.date,
-                                        name: 'samplingDate',
-                                        onChanged: (value) {
-                                          samplingDate = value;
-                                        },
-                                      ),
-                                    ),
-                                  ],
+                                    dropDownMenuItems: masterCustormerRoutine.map((item) {
+                                      return item.custSearch;
+                                    }).toList(),
+                                    onChanged: (value) {
+                                      if (value != null) {
+                                        Closeline = false;
+                                        FullItem = false;
+                                        /*  setState(() { */
+                                        routineCusmerName = value.custShort.toString();
+                                        clearData();
+                                        context
+                                            .read<ManageDataRoutineRequest>()
+                                            .add(EventRoutineRequestPage.reselectCustomer);
+                                        context
+                                            .read<ManageDataRoutineRequest>()
+                                            .add(EventRoutineRequestPage.findCustomerData);
+                                      }
+                                    },
+                                  ),
                                 ),
                               ),
-                              Container(
-                                child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                          width: widthsection1,
-                                          child: Text("CUSTOMER",
-                                              style: stylesection)),
-                                      Container(
-                                        child: Expanded(
-                                          child: CustomSearchableDropDown(
-                                            primaryColor: Colors.black,
-                                            menuMode: true,
-                                            //labelStyle: styledata,
-                                            labelStyle: TextStyle(
-                                                fontSize: 13,
-                                                fontFamily: 'Mitr'),
-                                            dropdownItemStyle: TextStyle(
-                                                fontSize: 10,
-                                                fontFamily: 'Mitr'),
-                                            items: masterCustormerRoutine,
-                                            label: 'SELECT CUSTOMER',
-                                            prefixIcon: Padding(
-                                              padding:
-                                                  const EdgeInsets.all(0.0),
-                                              child: Icon(Icons.search),
-                                            ),
-                                            dropDownMenuItems:
-                                                masterCustormerRoutine
-                                                    .map((item) {
-                                              return item.custSearch;
-                                            }).toList(),
-                                            onChanged: (value) {
-                                              if (value != null) {
-                                                Closeline = false;
-                                                FullItem = false;
-                                                /*  setState(() { */
-                                                routineCusmerName =
-                                                    value.custShort.toString();
-                                                clearData();
-                                                context
-                                                    .read<
-                                                        ManageDataRoutineRequest>()
-                                                    .add(EventRoutineRequestPage
-                                                        .reselectCustomer);
-                                                context
-                                                    .read<
-                                                        ManageDataRoutineRequest>()
-                                                    .add(EventRoutineRequestPage
-                                                        .findCustomerData);
-                                              }
-                                            },
-                                          ),
-                                        ),
-                                      ),
-                                    ]),
-                              ),
-                              if (state == 2) ...[
-                                /* Container(
+                            ]),
+                      ),
+                      if (state == 2) ...[
+                        /* Container(
                                   height: heightBox1,
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -462,700 +425,554 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
                                     ],
                                   ),
                                 ), */
-                                Container(
-                                  height: heightBox1,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: widthsection1,
-                                        child: Text(
-                                          "ROUND COUNT",
-                                          style: stylesection,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                          requestData[0][0].requestRound,
-                                          style: styledata,
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                        Container(
+                          height: heightBox1,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: widthsection1,
+                                child: Text(
+                                  "ROUND COUNT",
+                                  style: stylesection,
                                 ),
-                                Container(
-                                  height: heightBox1,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: widthsection1,
-                                        child: Text(
-                                          "CLOSE LINE",
-                                          style: stylesection,
-                                        ),
-                                      ),
-                                      Container(
-                                        child: Switch(
-                                          value: Closeline,
-                                          onChanged: (bool value) {
-                                            setState(() {
-                                              Closeline = value;
-                                              for (int i = 0;
-                                                  i < requestData.length;
-                                                  i++) {
-                                                for (int j = 0;
-                                                    j < requestData[i].length;
-                                                    j++) {
-                                                  if (Closeline) {
-                                                    requestData[i][j]
-                                                            .requestStatus =
-                                                        "CLOSE LINE";
-                                                    requestData[i][j]
-                                                            .itemStatus =
-                                                        "CLOSE LINE";
-                                                    requestData[i][j]
-                                                            .sampleStatus =
-                                                        "CLOSE LINE";
-                                                  } else {
-                                                    requestData[i][j]
-                                                            .requestStatus =
-                                                        "WAIT SAMPLE";
-                                                    requestData[i][j]
-                                                            .itemStatus =
-                                                        "WAIT SAMPLE";
-                                                    requestData[i][j]
-                                                            .sampleStatus =
-                                                        "WAIT SAMPLE";
-                                                  }
-                                                }
-                                              }
-                                            });
-                                          },
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  requestData[0][0].requestRound,
+                                  style: styledata,
                                 ),
-                                Container(
-                                  height: heightBox1,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: widthsection1,
-                                        child: Text(
-                                          "FULL ITEM",
-                                          style: stylesection,
-                                        ),
-                                      ),
-                                      Container(
-                                        child: Switch(
-                                          value: FullItem,
-                                          onChanged: (bool value) {
-                                            setState(() {
-                                              FullItem = value;
-                                              context
-                                                  .read<
-                                                      ManageDataRoutineRequest>()
-                                                  .add(EventRoutineRequestPage
-                                                      .reselectCustomer);
-                                              context
-                                                  .read<
-                                                      ManageDataRoutineRequest>()
-                                                  .add(EventRoutineRequestPage
-                                                      .findCustomerData);
-                                            });
-                                          },
-                                        ),
-                                      )
-                                    ],
-                                  ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: heightBox1,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: widthsection1,
+                                child: Text(
+                                  "CLOSE LINE",
+                                  style: stylesection,
                                 ),
-                                Container(
-                                  height: heightBox1,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: widthsection1,
-                                        child: Text(
-                                          "ATTACH FILE",
-                                          style: stylesection,
-                                        ),
-                                      ),
-                                      Container(
-                                        padding: EdgeInsets.only(bottom: 30),
-                                        child: IconButton(
-                                          icon: Icon(
-                                            Icons.upload_file,
-                                            color: Colors.green,
-                                            size: 20,
-                                          ),
-                                          onPressed: () {},
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                              ),
+                              Container(
+                                child: Switch(
+                                  value: Closeline,
+                                  onChanged: (bool value) {
+                                    setState(() {
+                                      Closeline = value;
+                                      for (int i = 0; i < requestData.length; i++) {
+                                        for (int j = 0; j < requestData[i].length; j++) {
+                                          if (Closeline) {
+                                            requestData[i][j].requestStatus = "CLOSE LINE";
+                                            requestData[i][j].itemStatus = "CLOSE LINE";
+                                            requestData[i][j].sampleStatus = "CLOSE LINE";
+                                          } else {
+                                            requestData[i][j].requestStatus = "WAIT SAMPLE";
+                                            requestData[i][j].itemStatus = "WAIT SAMPLE";
+                                            requestData[i][j].sampleStatus = "WAIT SAMPLE";
+                                          }
+                                        }
+                                      }
+                                    });
+                                  },
                                 ),
-                                Container(
-                                  height: heightBox1,
-                                  /* decoration: BoxDecoration(
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: heightBox1,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: widthsection1,
+                                child: Text(
+                                  "FULL ITEM",
+                                  style: stylesection,
+                                ),
+                              ),
+                              Container(
+                                child: Switch(
+                                  value: FullItem,
+                                  onChanged: (bool value) {
+                                    setState(() {
+                                      FullItem = value;
+                                      context
+                                          .read<ManageDataRoutineRequest>()
+                                          .add(EventRoutineRequestPage.reselectCustomer);
+                                      context
+                                          .read<ManageDataRoutineRequest>()
+                                          .add(EventRoutineRequestPage.findCustomerData);
+                                    });
+                                  },
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: heightBox1,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: widthsection1,
+                                child: Text(
+                                  "ATTACH FILE",
+                                  style: stylesection,
+                                ),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(bottom: 30),
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.upload_file,
+                                    color: Colors.green,
+                                    size: 20,
+                                  ),
+                                  onPressed: () {},
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: heightBox1,
+                          /* decoration: BoxDecoration(
                                             border: Border.all(
                                                 color: Colors.grey, width: 0)), */
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      Container(
-                                        width: widthsection1,
-                                        child: Text(
-                                          "REMARK",
-                                          style: stylesection,
-                                        ),
-                                      ),
-                                      Expanded(
-                                        /* 
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: widthsection1,
+                                child: Text(
+                                  "REMARK",
+                                  style: stylesection,
+                                ),
+                              ),
+                              Expanded(
+                                /* 
                                               width: 150,
                                               height: 40, */
-                                        child: FormBuilderTextField(
-                                          style: styledata,
-                                          decoration: input(),
-                                          name: 'requestRemark',
-                                          onChanged: (value) {
-                                            requestData[0][0].requestRemark =
-                                                value;
-                                          },
+                                child: FormBuilderTextField(
+                                  style: styledata,
+                                  decoration: input(),
+                                  name: 'requestRemark',
+                                  onChanged: (value) {
+                                    requestData[0][0].requestRemark = value;
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Container(
+                          height: heightBox1,
+                          width: 600,
+                          /* decoration: BoxDecoration(
+                                            border: Border.all(
+                                                color: Colors.blue, width: 0)), */
+                          child: Center(
+                            child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  textStyle: styledata,
+                                  backgroundColor: Colors.blue,
+                                  /* padding: EdgeInsets.symmetric(
+                                                    horizontal: 50,
+                                                    vertical: 20), */
+                                ),
+                                child: Text("SAVE AND PRINT LABEL"),
+                                onPressed: () {
+                                  manageData();
+                                  if (Closeline) {
+                                    routinePrinter = "";
+                                    context
+                                        .read<ManageDataRoutineRequest>()
+                                        .add(EventRoutineRequestPage.createRequest);
+                                  } else {
+                                    selectPrint();
+                                  }
+                                  _formKey.currentState?.save();
+                                  //manageRequestData();
+                                }),
+                          ),
+                        ),
+                      ]
+                    ]),
+                  ),
+                ),
+                SizedBox(height: 10),
+                if (state == 2) ...[
+                  Builder(builder: (BuildContext context) {
+                    return Container(
+                      height: 400,
+                      child: SingleChildScrollView(
+                        child: Container(
+                            width: 600,
+                            margin: EdgeInsets.only(top: 15, bottom: 15),
+                            child: ListView.separated(
+                              separatorBuilder: (BuildContext context, int index) {
+                                return SizedBox(
+                                  height: 10,
+                                );
+                              },
+                              shrinkWrap: true,
+                              itemCount: requestData.length,
+                              itemBuilder: (BuildContext context, int indexSample) {
+                                return Container(
+                                  width: 600,
+                                  padding: EdgeInsets.only(
+                                    top: 25,
+                                    left: 25,
+                                    right: 25,
+                                    bottom: 25,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: CustomTheme.colorWhite,
+                                    borderRadius: BorderRadius.all(Radius.circular(0)),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: CustomTheme.colorShadowBgStrong,
+                                          offset: Offset(0, 0),
+                                          blurRadius: 10,
+                                          spreadRadius: 0)
+                                    ],
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Center(
+                                        child: Column(
+                                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                  "SAMPLE NO ${requestData[indexSample][0].sampleNo.toString()}"),
+                                              rowData(
+                                                "SAMPLE GROUP",
+                                                Container(
+                                                  child: Text(
+                                                    requestData[indexSample][0].sampleGroup.toString(),
+                                                    style: styledata,
+                                                  ),
+                                                ),
+                                              ),
+                                              rowData(
+                                                "SAMPLE TYPE",
+                                                Container(
+                                                  child: Text(
+                                                    requestData[indexSample][0].sampleType.toString(),
+                                                    style: styledata,
+                                                  ),
+                                                ),
+                                              ),
+                                              rowData(
+                                                "SAMPLE TANK",
+                                                Container(
+                                                  child: Text(
+                                                    requestData[indexSample][0].sampleTank.toString(),
+                                                    style: styledata,
+                                                  ),
+                                                ),
+                                              ),
+                                              if (requestData[indexSample][0].sampleName != "TEST PIECE" &&
+                                                  requestData[indexSample][0].sampleName != "WORK PIECE")
+                                                rowData(
+                                                  "SAMPLE NAME",
+                                                  Container(
+                                                    child: Text(
+                                                      requestData[indexSample][0].sampleName.toString(),
+                                                      style: styledata,
+                                                    ),
+                                                  ),
+                                                ),
+                                              if (requestData[indexSample][0].sampleName == "TEST PIECE" ||
+                                                  requestData[indexSample][0].sampleName == "WORK PIECE")
+                                                rowData(
+                                                  "SAMPLE NAME",
+                                                  Expanded(
+                                                    child: FormBuilderTextField(
+                                                      style: styleDataInTable,
+                                                      decoration: input(),
+                                                      name: 'samplename$indexSample',
+                                                      onChanged: (value) {
+                                                        requestData[indexSample][0].sampleName =
+                                                            value.toString();
+                                                        requestData[indexSample][0].processReportName =
+                                                            value.toString();
+                                                      },
+                                                    ),
+                                                  ),
+                                                ),
+                                              rowData(
+                                                "SAMPLE AMOUNT",
+                                                Container(
+                                                  width: 100,
+                                                  padding: EdgeInsets.only(bottom: 10),
+                                                  child: FormBuilderTouchSpin(
+                                                    name: 'amount$indexSample',
+                                                    textStyle: TextStyle(fontSize: 15),
+                                                    decoration: InputDecoration(
+                                                        contentPadding: EdgeInsets.only(bottom: 10),
+                                                        border: InputBorder.none),
+                                                    min: 1,
+                                                    max: 5,
+                                                    step: 1,
+                                                    iconSize: 13,
+                                                    initialValue: requestData[indexSample][0].sampleAmount,
+                                                    addIcon: Icon(Icons.add_circle_outline),
+                                                    subtractIcon: Icon(Icons.remove_circle_outline),
+                                                    iconActiveColor: Colors.green,
+                                                    iconDisabledColor: Colors.grey,
+                                                    iconPadding: EdgeInsets.only(left: 0),
+                                                    onChanged: (val) {
+                                                      requestData[indexSample][0].sampleAmount = val;
+                                                    },
+                                                  ),
+                                                ),
+                                              ),
+                                              rowData(
+                                                "SAMPLE REMARK",
+                                                Expanded(
+                                                  child: FormBuilderTextField(
+                                                    style: styleDataInTable,
+                                                    decoration: input(),
+                                                    name: 'remark$indexSample',
+                                                    onChanged: (value) {
+                                                      requestData[indexSample][0].sampleRemark =
+                                                          value.toString();
+                                                      print(requestData[indexSample][0]
+                                                          .sampleRemark
+                                                          .toString());
+                                                    },
+                                                  ),
+                                                ),
+                                              ),
+                                            ]),
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: CustomTheme.colorWhite,
+                                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                                          boxShadow: [
+                                            BoxShadow(
+                                                color: CustomTheme.colorShadowBgStrong,
+                                                offset: Offset(0, 0),
+                                                blurRadius: 0,
+                                                spreadRadius: 0)
+                                          ],
+                                        ),
+                                        child: SingleChildScrollView(
+                                          physics: AlwaysScrollableScrollPhysics(),
+                                          scrollDirection: Axis.horizontal,
+                                          child: DataTable(
+                                              columnSpacing: 5,
+                                              horizontalMargin: 10,
+                                              dataRowHeight: 60,
+                                              columns: [
+                                                DataColumn(
+                                                  label: Text('NO', style: styleHeaderTable),
+                                                  tooltip: "ITEM NO",
+                                                ),
+                                                DataColumn(label: _verticalDivider),
+                                                DataColumn(
+                                                  label: Text('INSTRUMENT', style: styleHeaderTable),
+                                                  tooltip: "INSTRUMENT NAME",
+                                                ),
+                                                DataColumn(label: _verticalDivider),
+                                                DataColumn(
+                                                  label: Text('ITEM NAME', style: styleHeaderTable),
+                                                  tooltip: "ITEM NAME",
+                                                ),
+                                                DataColumn(label: _verticalDivider),
+                                                DataColumn(
+                                                  label: Text('POS', style: styleHeaderTable),
+                                                  tooltip: "POSITION",
+                                                ),
+                                                DataColumn(label: _verticalDivider),
+                                                DataColumn(
+                                                  label: Text('TEMP', style: styleHeaderTable),
+                                                  tooltip: "TEMPERATURE",
+                                                ),
+                                                DataColumn(label: _verticalDivider),
+                                                DataColumn(
+                                                  label: Text('MAG', style: styleHeaderTable),
+                                                  tooltip: "MAGNIFICATION",
+                                                ),
+                                                DataColumn(label: _verticalDivider),
+                                                DataColumn(
+                                                  label: Text('STATUS', style: styleHeaderTable),
+                                                  tooltip: "ITEM STATUS",
+                                                )
+                                              ],
+                                              rows: List<DataRow>.generate(
+                                                  requestData[indexSample].length,
+                                                  (indexItem) => DataRow(cells: [
+                                                        DataCell(
+                                                          Container(
+                                                            child: Text(
+                                                                requestData[indexSample][indexItem]
+                                                                    .itemNo
+                                                                    .toString(),
+                                                                style: styleDataInTable),
+                                                          ),
+                                                        ),
+                                                        DataCell(_verticalDivider),
+                                                        DataCell(
+                                                          Container(
+                                                            child: Text(
+                                                                requestData[indexSample][indexItem]
+                                                                    .instrumentName
+                                                                    .toString(),
+                                                                style: styleDataInTable),
+                                                          ),
+                                                        ),
+                                                        DataCell(_verticalDivider),
+                                                        DataCell(
+                                                          Container(
+                                                            child: Text(
+                                                                requestData[indexSample][indexItem]
+                                                                    .itemName
+                                                                    .toString(),
+                                                                style: styleDataInTable),
+                                                          ),
+                                                        ),
+                                                        DataCell(_verticalDivider),
+                                                        DataCell(
+                                                          Container(
+                                                            child: Text(
+                                                                requestData[indexSample][indexItem]
+                                                                    .position
+                                                                    .toString(),
+                                                                style: styleDataInTable),
+                                                          ),
+                                                        ),
+                                                        DataCell(_verticalDivider),
+                                                        DataCell(
+                                                          Container(
+                                                            child: Text(
+                                                                requestData[indexSample][indexItem]
+                                                                    .temp
+                                                                    .toString(),
+                                                                style: styleDataInTable),
+                                                          ),
+                                                        ),
+                                                        DataCell(_verticalDivider),
+                                                        DataCell(
+                                                          Container(
+                                                            child: Text(
+                                                                requestData[indexSample][indexItem]
+                                                                    .mag
+                                                                    .toString(),
+                                                                style: styleDataInTable),
+                                                          ),
+                                                        ),
+                                                        DataCell(_verticalDivider),
+                                                        DataCell(
+                                                          Container(
+                                                            child: Text(
+                                                                requestData[indexSample][indexItem]
+                                                                    .itemStatus
+                                                                    .toString(),
+                                                                style: styleDataInTable),
+                                                          ),
+                                                        ),
+                                                      ]))),
+                                        ),
+                                      ),
+                                      Center(
+                                        child: rowData(
+                                          "ADD ITEM ANALYSIS",
+                                          IconButton(
+                                            icon: Icon(
+                                              Icons.add_circle,
+                                              size: 20,
+                                              color: Colors.green,
+                                            ),
+                                            onPressed: () {
+                                              sampleTypeName =
+                                                  requestData[indexSample][0].sampleType.toString();
+                                              addItem(indexSample);
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                      Center(
+                                        child: Container(
+                                          width: 400,
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              SizedBox(width: 25),
+                                              Expanded(
+                                                child: FormBuilderCheckbox(
+                                                  // Core attributes
+                                                  activeColor: Colors.green,
+                                                  name: 'samplesend$indexSample',
+                                                  initialValue: requestData[indexSample][0].selected,
+                                                  title: Text('SEND'),
+                                                  onChanged: (value) {
+                                                    if (value == true) {
+                                                      requestData[indexSample][0].sampleStatus =
+                                                          "WAIT SAMPLE";
+                                                    } else {
+                                                      requestData[indexSample][0].sampleStatus =
+                                                          "NOT SEND SAMPLE";
+                                                      requestData[indexSample][0].itemStatus =
+                                                          "NOT SEND SAMPLE";
+                                                    }
+                                                  },
+                                                ),
+                                              ),
+                                              SizedBox(width: 25),
+                                              Expanded(
+                                                child: FormBuilderCheckbox(
+                                                  activeColor: Colors.green,
+                                                  // Core attributes
+                                                  name: 'print$indexSample',
+                                                  initialValue: requestData[indexSample][0].selected,
+                                                  title: Text('PRINT'),
+                                                  onChanged: (value) {
+                                                    if (value == true) {
+                                                      routineSamplePrint[indexSample] = 1;
+                                                    } else {
+                                                      routineSamplePrint[indexSample] = 0;
+                                                    }
+                                                  },
+                                                ),
+                                              )
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ],
                                   ),
-                                ),
-                                SizedBox(height: 10),
-                                Container(
-                                  height: heightBox1,
-                                  width: 600,
-                                  /* decoration: BoxDecoration(
-                                            border: Border.all(
-                                                color: Colors.blue, width: 0)), */
-                                  child: Center(
-                                    child: ElevatedButton(
-                                        style: ElevatedButton.styleFrom(
-                                          textStyle: styledata,
-                                          backgroundColor: Colors.blue,
-                                          /* padding: EdgeInsets.symmetric(
-                                                    horizontal: 50,
-                                                    vertical: 20), */
-                                        ),
-                                        child: Text("SAVE AND PRINT LABEL"),
-                                        onPressed: () {
-                                          manageData();
-                                          selectPrint();
-                                          _formKey.currentState?.save();
-                                          //manageRequestData();
-                                        }),
-                                  ),
-                                ),
-                              ]
-                            ]),
+                                );
+                              },
+                            )),
                       ),
-                    ),
-                    SizedBox(height: 10),
-                    if (state == 2) ...[
-                      Builder(builder: (BuildContext context) {
-                        return Container(
-                          height: 400,
-                          child: SingleChildScrollView(
-                            child: Container(
-                                width: 600,
-                                margin: EdgeInsets.only(top: 15, bottom: 15),
-                                child: ListView.separated(
-                                  separatorBuilder:
-                                      (BuildContext context, int index) {
-                                    return SizedBox(
-                                      height: 10,
-                                    );
-                                  },
-                                  shrinkWrap: true,
-                                  itemCount: requestData.length,
-                                  itemBuilder:
-                                      (BuildContext context, int indexSample) {
-                                    return Container(
-                                      width: 600,
-                                      padding: EdgeInsets.only(
-                                        top: 25,
-                                        left: 25,
-                                        right: 25,
-                                        bottom: 25,
-                                      ),
-                                      decoration: BoxDecoration(
-                                        color: CustomTheme.colorWhite,
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(0)),
-                                        boxShadow: [
-                                          BoxShadow(
-                                              color: CustomTheme
-                                                  .colorShadowBgStrong,
-                                              offset: Offset(0, 0),
-                                              blurRadius: 10,
-                                              spreadRadius: 0)
-                                        ],
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Center(
-                                            child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Text(
-                                                      "SAMPLE NO ${requestData[indexSample][0].sampleNo.toString()}"),
-                                                  rowData(
-                                                    "SAMPLE GROUP",
-                                                    Container(
-                                                      child: Text(
-                                                        requestData[indexSample]
-                                                                [0]
-                                                            .sampleGroup
-                                                            .toString(),
-                                                        style: styledata,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  rowData(
-                                                    "SAMPLE TYPE",
-                                                    Container(
-                                                      child: Text(
-                                                        requestData[indexSample]
-                                                                [0]
-                                                            .sampleType
-                                                            .toString(),
-                                                        style: styledata,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  rowData(
-                                                    "SAMPLE TANK",
-                                                    Container(
-                                                      child: Text(
-                                                        requestData[indexSample]
-                                                                [0]
-                                                            .sampleTank
-                                                            .toString(),
-                                                        style: styledata,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  if (requestData[indexSample]
-                                                                  [0]
-                                                              .sampleName !=
-                                                          "TEST PIECE" &&
-                                                      requestData[indexSample]
-                                                                  [0]
-                                                              .sampleName !=
-                                                          "WORK PIECE")
-                                                    rowData(
-                                                      "SAMPLE NAME",
-                                                      Container(
-                                                        child: Text(
-                                                          requestData[
-                                                                  indexSample][0]
-                                                              .sampleName
-                                                              .toString(),
-                                                          style: styledata,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  if (requestData[indexSample]
-                                                                  [0]
-                                                              .sampleName ==
-                                                          "TEST PIECE" ||
-                                                      requestData[indexSample]
-                                                                  [0]
-                                                              .sampleName ==
-                                                          "WORK PIECE")
-                                                    rowData(
-                                                      "SAMPLE NAME",
-                                                      Expanded(
-                                                        child:
-                                                            FormBuilderTextField(
-                                                          style:
-                                                              styleDataInTable,
-                                                          decoration: input(),
-                                                          name:
-                                                              'samplename$indexSample',
-                                                          onChanged: (value) {
-                                                            requestData[indexSample]
-                                                                        [0]
-                                                                    .sampleName =
-                                                                value
-                                                                    .toString();
-                                                            requestData[indexSample]
-                                                                        [0]
-                                                                    .processReportName =
-                                                                value
-                                                                    .toString();
-                                                          },
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  rowData(
-                                                    "SAMPLE AMOUNT",
-                                                    Container(
-                                                      width: 100,
-                                                      padding: EdgeInsets.only(
-                                                          bottom: 10),
-                                                      child:
-                                                          FormBuilderTouchSpin(
-                                                        name:
-                                                            'amount$indexSample',
-                                                        textStyle: TextStyle(
-                                                            fontSize: 15),
-                                                        decoration: InputDecoration(
-                                                            contentPadding:
-                                                                EdgeInsets.only(
-                                                                    bottom: 10),
-                                                            border: InputBorder
-                                                                .none),
-                                                        min: 1,
-                                                        max: 5,
-                                                        step: 1,
-                                                        iconSize: 13,
-                                                        initialValue: requestData[
-                                                                indexSample][0]
-                                                            .sampleAmount,
-                                                        addIcon: Icon(Icons
-                                                            .add_circle_outline),
-                                                        subtractIcon: Icon(Icons
-                                                            .remove_circle_outline),
-                                                        iconActiveColor:
-                                                            Colors.green,
-                                                        iconDisabledColor:
-                                                            Colors.grey,
-                                                        iconPadding:
-                                                            EdgeInsets.only(
-                                                                left: 0),
-                                                        onChanged: (val) {
-                                                          requestData[indexSample]
-                                                                      [0]
-                                                                  .sampleAmount =
-                                                              val;
-                                                        },
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  rowData(
-                                                    "SAMPLE REMARK",
-                                                    Expanded(
-                                                      child:
-                                                          FormBuilderTextField(
-                                                        style: styleDataInTable,
-                                                        decoration: input(),
-                                                        name:
-                                                            'remark$indexSample',
-                                                        onChanged: (value) {
-                                                          requestData[indexSample]
-                                                                      [0]
-                                                                  .sampleRemark =
-                                                              value.toString();
-                                                          print(requestData[
-                                                                  indexSample][0]
-                                                              .sampleRemark
-                                                              .toString());
-                                                        },
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ]),
-                                          ),
-                                          SizedBox(
-                                            height: 15,
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              color: CustomTheme.colorWhite,
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(5)),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                    color: CustomTheme
-                                                        .colorShadowBgStrong,
-                                                    offset: Offset(0, 0),
-                                                    blurRadius: 0,
-                                                    spreadRadius: 0)
-                                              ],
-                                            ),
-                                            child: SingleChildScrollView(
-                                              physics:
-                                                  AlwaysScrollableScrollPhysics(),
-                                              scrollDirection: Axis.horizontal,
-                                              child: DataTable(
-                                                  columnSpacing: 5,
-                                                  horizontalMargin: 10,
-                                                  dataRowHeight: 60,
-                                                  columns: [
-                                                    DataColumn(
-                                                      label: Text('NO',
-                                                          style:
-                                                              styleHeaderTable),
-                                                      tooltip: "ITEM NO",
-                                                    ),
-                                                    DataColumn(
-                                                        label:
-                                                            _verticalDivider),
-                                                    DataColumn(
-                                                      label: Text('INSTRUMENT',
-                                                          style:
-                                                              styleHeaderTable),
-                                                      tooltip:
-                                                          "INSTRUMENT NAME",
-                                                    ),
-                                                    DataColumn(
-                                                        label:
-                                                            _verticalDivider),
-                                                    DataColumn(
-                                                      label: Text('ITEM NAME',
-                                                          style:
-                                                              styleHeaderTable),
-                                                      tooltip: "ITEM NAME",
-                                                    ),
-                                                    DataColumn(
-                                                        label:
-                                                            _verticalDivider),
-                                                    DataColumn(
-                                                      label: Text('POS',
-                                                          style:
-                                                              styleHeaderTable),
-                                                      tooltip: "POSITION",
-                                                    ),
-                                                    DataColumn(
-                                                        label:
-                                                            _verticalDivider),
-                                                    DataColumn(
-                                                      label: Text('TEMP',
-                                                          style:
-                                                              styleHeaderTable),
-                                                      tooltip: "TEMPERATURE",
-                                                    ),
-                                                    DataColumn(
-                                                        label:
-                                                            _verticalDivider),
-                                                    DataColumn(
-                                                      label: Text('MAG',
-                                                          style:
-                                                              styleHeaderTable),
-                                                      tooltip: "MAGNIFICATION",
-                                                    ),
-                                                    DataColumn(
-                                                        label:
-                                                            _verticalDivider),
-                                                    DataColumn(
-                                                      label: Text('STATUS',
-                                                          style:
-                                                              styleHeaderTable),
-                                                      tooltip: "ITEM STATUS",
-                                                    )
-                                                  ],
-                                                  rows: List<DataRow>.generate(
-                                                      requestData[indexSample]
-                                                          .length,
-                                                      (indexItem) => DataRow(
-                                                              cells: [
-                                                                DataCell(
-                                                                  Container(
-                                                                    child: Text(
-                                                                        requestData[indexSample][indexItem]
-                                                                            .itemNo
-                                                                            .toString(),
-                                                                        style:
-                                                                            styleDataInTable),
-                                                                  ),
-                                                                ),
-                                                                DataCell(
-                                                                    _verticalDivider),
-                                                                DataCell(
-                                                                  Container(
-                                                                    child: Text(
-                                                                        requestData[indexSample][indexItem]
-                                                                            .instrumentName
-                                                                            .toString(),
-                                                                        style:
-                                                                            styleDataInTable),
-                                                                  ),
-                                                                ),
-                                                                DataCell(
-                                                                    _verticalDivider),
-                                                                DataCell(
-                                                                  Container(
-                                                                    child: Text(
-                                                                        requestData[indexSample][indexItem]
-                                                                            .itemName
-                                                                            .toString(),
-                                                                        style:
-                                                                            styleDataInTable),
-                                                                  ),
-                                                                ),
-                                                                DataCell(
-                                                                    _verticalDivider),
-                                                                DataCell(
-                                                                  Container(
-                                                                    child: Text(
-                                                                        requestData[indexSample][indexItem]
-                                                                            .position
-                                                                            .toString(),
-                                                                        style:
-                                                                            styleDataInTable),
-                                                                  ),
-                                                                ),
-                                                                DataCell(
-                                                                    _verticalDivider),
-                                                                DataCell(
-                                                                  Container(
-                                                                    child: Text(
-                                                                        requestData[indexSample][indexItem]
-                                                                            .temp
-                                                                            .toString(),
-                                                                        style:
-                                                                            styleDataInTable),
-                                                                  ),
-                                                                ),
-                                                                DataCell(
-                                                                    _verticalDivider),
-                                                                DataCell(
-                                                                  Container(
-                                                                    child: Text(
-                                                                        requestData[indexSample][indexItem]
-                                                                            .mag
-                                                                            .toString(),
-                                                                        style:
-                                                                            styleDataInTable),
-                                                                  ),
-                                                                ),
-                                                                DataCell(
-                                                                    _verticalDivider),
-                                                                DataCell(
-                                                                  Container(
-                                                                    child: Text(
-                                                                        requestData[indexSample][indexItem]
-                                                                            .itemStatus
-                                                                            .toString(),
-                                                                        style:
-                                                                            styleDataInTable),
-                                                                  ),
-                                                                ),
-                                                              ]))),
-                                            ),
-                                          ),
-                                          Center(
-                                            child: rowData(
-                                              "ADD ITEM ANALYSIS",
-                                              IconButton(
-                                                icon: Icon(
-                                                  Icons.add_circle,
-                                                  size: 20,
-                                                  color: Colors.green,
-                                                ),
-                                                onPressed: () {
-                                                  sampleTypeName =
-                                                      requestData[indexSample]
-                                                              [0]
-                                                          .sampleType
-                                                          .toString();
-                                                  addItem(indexSample);
-                                                },
-                                              ),
-                                            ),
-                                          ),
-                                          Center(
-                                            child: Container(
-                                              width: 400,
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  SizedBox(width: 25),
-                                                  Expanded(
-                                                    child: FormBuilderCheckbox(
-                                                      // Core attributes
-                                                      activeColor: Colors.green,
-                                                      name:
-                                                          'samplesend$indexSample',
-                                                      initialValue: requestData[
-                                                              indexSample][0]
-                                                          .selected,
-                                                      title: Text('SEND'),
-                                                      onChanged: (value) {
-                                                        if (value == true) {
-                                                          requestData[indexSample]
-                                                                      [0]
-                                                                  .sampleStatus =
-                                                              "WAIT SAMPLE";
-                                                        } else {
-                                                          requestData[indexSample]
-                                                                      [0]
-                                                                  .sampleStatus =
-                                                              "NOT SEND SAMPLE";
-                                                          requestData[indexSample]
-                                                                      [0]
-                                                                  .itemStatus =
-                                                              "NOT SEND SAMPLE";
-                                                        }
-                                                      },
-                                                    ),
-                                                  ),
-                                                  SizedBox(width: 25),
-                                                  Expanded(
-                                                    child: FormBuilderCheckbox(
-                                                      activeColor: Colors.green,
-                                                      // Core attributes
-                                                      name: 'print$indexSample',
-                                                      initialValue: requestData[
-                                                              indexSample][0]
-                                                          .selected,
-                                                      title: Text('PRINT'),
-                                                      onChanged: (value) {
-                                                        if (value == true) {
-                                                          routineSamplePrint[
-                                                              indexSample] = 1;
-                                                        } else {
-                                                          routineSamplePrint[
-                                                              indexSample] = 0;
-                                                        }
-                                                      },
-                                                    ),
-                                                  )
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                )),
-                          ),
-                        );
-                      }),
-                    ]
-                  ]);
+                    );
+                  }),
+                ]
+              ]);
             } else {
               return Container();
             }
@@ -1167,8 +984,7 @@ class _RoutineCreateRequestState extends State<RoutineCreateRequest> {
 Container rowData(String sectionName, Widget data) {
   double heightBox1 = 30;
   double widthsection1 = 150;
-  TextStyle stylesection =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle stylesection = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
 
   return Container(
     height: heightBox1,
@@ -1199,14 +1015,11 @@ Widget _verticalDivider = const VerticalDivider(
 );
 
 InputDecoration input() {
-  return InputDecoration(
-      contentPadding: EdgeInsets.only(left: 10, bottom: 10),
-      border: OutlineInputBorder());
+  return InputDecoration(contentPadding: EdgeInsets.only(left: 10, bottom: 10), border: OutlineInputBorder());
 }
 
 InputDecoration noInput() {
-  return InputDecoration(
-      contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder());
+  return InputDecoration(contentPadding: EdgeInsets.all(10.0), border: OutlineInputBorder());
 }
 
 class selectAddItem extends StatefulWidget {
@@ -1221,11 +1034,9 @@ class _selectAddItemState extends State<selectAddItem> {
     super.initState();
   }
 
-  TextStyle stylesection =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle stylesection = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
   TextStyle styledata = TextStyle(fontSize: 13, fontFamily: 'Mitr');
-  TextStyle styleHeaderTable =
-      TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
+  TextStyle styleHeaderTable = TextStyle(fontSize: 13, fontWeight: FontWeight.bold, fontFamily: 'Mitr');
   TextStyle styleDataInTable = TextStyle(fontSize: 12, fontFamily: 'Mitr');
 
   @override
@@ -1245,10 +1056,7 @@ class _selectAddItemState extends State<selectAddItem> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                              width: 100,
-                              child:
-                                  Text("INSTRU | ITEM", style: stylesection)),
+                          Container(width: 100, child: Text("INSTRU | ITEM", style: stylesection)),
                           Container(
                             child: Expanded(
                               child: CustomSearchableDropDown(
@@ -1268,10 +1076,8 @@ class _selectAddItemState extends State<selectAddItem> {
                                 onChanged: (value) {
                                   print('instrument' + value.instrumentName);
                                   if (value != null) {
-                                    selectedItemAdd[0].instrumentName =
-                                        value.instrumentName;
-                                    selectedItemAdd[0].itemName =
-                                        value.itemName;
+                                    selectedItemAdd[0].instrumentName = value.instrumentName;
+                                    selectedItemAdd[0].itemName = value.itemName;
                                   }
                                 },
                               ),
@@ -1285,9 +1091,7 @@ class _selectAddItemState extends State<selectAddItem> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                              width: 100,
-                              child: Text("POSITION", style: stylesection)),
+                          Container(width: 100, child: Text("POSITION", style: stylesection)),
                           Container(
                             child: Expanded(
                               child: FormBuilderTextField(
@@ -1328,9 +1132,7 @@ class _selectAddItemState extends State<selectAddItem> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                              width: 100,
-                              child: Text("TEMPERATURE", style: stylesection)),
+                          Container(width: 100, child: Text("TEMPERATURE", style: stylesection)),
                           Container(
                             child: Expanded(
                               child: FormBuilderTextField(
@@ -1372,10 +1174,7 @@ class _selectAddItemState extends State<selectAddItem> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                              width: 100,
-                              child:
-                                  Text("MAGNIFICATION", style: stylesection)),
+                          Container(width: 100, child: Text("MAGNIFICATION", style: stylesection)),
                           Container(
                             child: Expanded(
                               child: FormBuilderTextField(
