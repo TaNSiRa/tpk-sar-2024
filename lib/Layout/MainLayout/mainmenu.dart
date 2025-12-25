@@ -124,14 +124,16 @@ class Data_Menu_mainmenu extends StatelessWidget {
           //     userName == 'K.WORACHAI' ||
           //     userName == 'R.TRIMATE' ||
           //     userName == 'P.RATCHANEE')
-          new menu_normal(
-            name: "MKT KPI",
-            page: 'MKTKPIPage',
-          ),
-          new menu_normal(
-            name: "EXPORT DATA HISTORY",
-            page: 'EXPORT DATA HISTORY',
-          ),
+          if (userSection != "TTC" || userRoleId == 99)
+            new menu_normal(
+              name: "MKT KPI",
+              page: 'MKTKPIPage',
+            ),
+          if (userSection != "TTC" || userRoleId == 99)
+            new menu_normal(
+              name: "EXPORT DATA HISTORY",
+              page: 'EXPORT DATA HISTORY',
+            ),
         ],
       ),
     );
