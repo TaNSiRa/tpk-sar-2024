@@ -16,6 +16,8 @@ import 'package:tpk_login_arsa_01/page/7ReceiveSamplePage/ReceiveSamplePage.dart
 import 'package:tpk_login_arsa_01/page/8ListJobPage/ListJobPage.dart';
 import 'package:tpk_login_arsa_01/page/9ItemListPage/ItemListPage.dart';
 
+import '../../page/33ExportDataPage/ExportDataHistory.dart';
+
 Widget selectpage(String input) {
   Widget output = LoginPage();
   print("Page IN SelectPage : $input");
@@ -51,6 +53,8 @@ Widget selectpage(String input) {
     output = SummaryDataPage();
   } else if (input == "EditPatternLabPage") {
     output = EditPatternLabPage();
+  } else if (input == "EXPORT DATA HISTORY") {
+    output = ExportExcelPage();
   }
   /* else if (input == "Page10") {
     output = Page10();

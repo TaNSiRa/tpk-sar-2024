@@ -106,8 +106,7 @@ class Data_Menu_mainmenu extends StatelessWidget {
               name: "APPROVERESULT",
               page: 'ApproveResultPage',
             ),
-          if ((userSection == "TTC" /*  && userRoleId > 5 */) ||
-              userRoleId == 99)
+          if ((userSection == "TTC" /*  && userRoleId > 5 */) || userRoleId == 99)
             new menu_normal(
               name: "SUMMARY DATA",
               page: 'SummaryDataPage',
@@ -128,6 +127,10 @@ class Data_Menu_mainmenu extends StatelessWidget {
           new menu_normal(
             name: "MKT KPI",
             page: 'MKTKPIPage',
+          ),
+          new menu_normal(
+            name: "EXPORT DATA HISTORY",
+            page: 'EXPORT DATA HISTORY',
           ),
         ],
       ),
