@@ -35,8 +35,9 @@ class _ExportExcelPageState extends State<ExportExcelPage> {
 
   Future<void> loadCustomers() async {
     try {
-      final response = await Dio().get(
-        "${url}/MasterCustName",
+      final response = await Dio().post(
+        "${url}/CustomerName",
+        data: {'Incharge': userName},
         options: Options(validateStatus: (_) => true),
       );
 
