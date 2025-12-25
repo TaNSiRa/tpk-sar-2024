@@ -87,6 +87,7 @@ class _ExportExcelPageState extends State<ExportExcelPage> {
           'customer': selectedCustomer!.custFull,
           'startDate': DateFormat('yyyy-MM-dd').format(startDate),
           'endDate': DateFormat('yyyy-MM-dd').format(endDate),
+          'userName': userName,
         },
         options: Options(
           responseType: ResponseType.bytes, // รับเป็น bytes
