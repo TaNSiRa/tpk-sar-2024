@@ -131,6 +131,11 @@ class Data_Menu_mainmenu extends StatelessWidget {
             ),
           if (userSection != "TTC" || userRoleId == 99)
             new menu_normal(
+              name: "MASTER SAR",
+              page: 'MASTER SAR Page',
+            ),
+          if (userSection != "TTC" || userRoleId == 99)
+            new menu_normal(
               name: "EXPORT DATA HISTORY",
               page: 'EXPORT DATA HISTORY',
             ),

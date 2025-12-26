@@ -17,6 +17,8 @@ class menu_normal extends StatelessWidget {
       onTap: () {
         if (page == "MKTKPIPage") {
           launchUrl(Uri.parse("http://172.23.10.51:7600/"));
+        } else if (page == "MASTER SAR Page") {
+          launchUrl(Uri.parse("http://172.23.10.51:7800/"));
         } else {
           Navigator.pop(context);
           BlocProvider.of<SwPageCubit>(context).togglePage(page);
